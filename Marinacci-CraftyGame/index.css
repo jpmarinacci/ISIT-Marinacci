@@ -2,11 +2,11 @@ body {
 	background: #00FF55;
 }
 
-#game {
+/*#game {
 	width: 400px;
 	height: 400px;
 	background-color: #00BB88;
-}
+}*/
 
 #textDisplay, #gameBoard {
 	float: left;
@@ -21,8 +21,7 @@ body {
 }
 #VictoryScene
 {   
-	margin-left:0;
-	margin-right:0;
+	height:480px;
+	width:672px;
   	text-align:center;
-	font-size:24px;
 }

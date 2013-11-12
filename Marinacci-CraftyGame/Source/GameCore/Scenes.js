@@ -75,7 +75,7 @@ Crafty.scene('Victory', function() {'use strict';
 	Crafty.e('2D, DOM, Text').attr({
 		x : 0,
 		y : 0
-	}).text("<div id='VictoryScene'>You are victorious!</div>");
+	}).text("<div id='VictoryScene'>Level Passed!</div>").textFont({ family: 'Segoe',  size: '44px', weight: 'bold' }).textColor('#FF0000');
 
 	// restart the game when a key is pressed
 	this.restart = function() {

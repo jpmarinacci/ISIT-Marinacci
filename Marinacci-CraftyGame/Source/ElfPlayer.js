@@ -41,7 +41,7 @@ angular.module('elfPlayer', ['elfGameMod'])
 
 .controller('ElfController', function($scope, gameEventService, elfgame) { 'use strict';
 
-	$scope.name = "ElfPlayer";
+	$scope.name = "Doggy";
 	$scope.eventNote = "no messages";
 	$scope.crazyFoo = "";
 	$scope.debugMessages = [];
