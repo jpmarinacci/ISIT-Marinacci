@@ -5,7 +5,7 @@
 /* jshint browser: true */
 
 // Draw the initial game state
-Crafty.scene('Game', function() { 'use strict';
+Crafty.scene('Game', function() {'use strict';
 
 	// A 2D array to keep track of all gameBoard tiles
 	this.gameBoard = new Array(Crafty.game.map_grid.width);
@@ -37,15 +37,19 @@ Crafty.scene('Game', function() { 'use strict';
 		}
 	}
 
-	// Generate up to five villages on the map in random locations
+	// Generate up between one and five villages on the map in random locations
 	var max_villages = 5;
-	for (var col = 0; col < Crafty.game.map_grid.width; col++) {
-		for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-			if (Math.random() < 0.02) {
-				if (Crafty('Village').length < max_villages && !this.gameBoard[col][row]) {
-					var village = Crafty.e('Village').at(col, row);
-					village.setName(village._entityName.replace('Entity', 'Village'));
-					Crafty.game.newVillage(village);
+	var villageCount = 0;
+	while (villageCount < 1) {
+		for (var col = 0; col < Crafty.game.map_grid.width; col++) {
+			for (var row = 0; row < Crafty.game.map_grid.height; row++) {
+				if (Math.random() < 0.02) {
+					if (Crafty('Village').length < max_villages && !this.gameBoard[col][row]) {
+						var village = Crafty.e('Village').at(col, row);
+						village.setName(village._entityName.replace('Entity', 'Village'));
+						Crafty.game.newVillage(village);
+						villageCount++;
+					}
 				}
 			}
 		}
@@ -58,20 +62,20 @@ Crafty.scene('Game', function() { 'use strict';
 			Crafty.scene('Victory');
 		}
 	});
-}, function() { 'use strict';
+}, function() {'use strict';
 	// Remove our event binding from above so that we don't
 	//  end up having multiple redundant event watchers after
 	//  multiple restarts of the game
 	this.unbind('VillageVisited', this.show_victory);
 });
 
-
 // Victory scene : Announce victory, set up a new game
-Crafty.scene('Victory', function() { 'use strict';
+Crafty.scene('Victory', function() {'use strict';
 	// Display some text in celebration of the victory
-	Crafty.e('2D, DOM, Text')
-		.attr({ x: 0, y: 0 })
-		.text('You are victorious!');
+	Crafty.e('2D, DOM, Text').attr({
+		x : 0,
+		y : 0
+	}).text("<div id='VictoryScene'>You are victorious!</div>");
 
 	// restart the game when a key is pressed
 	this.restart = function() {
@@ -80,7 +84,7 @@ Crafty.scene('Victory', function() { 'use strict';
 
 	// Bind keydown event. This was done wrong in the demo
 	this.bind('KeyDown', this.restart);
-}, function() { 'use strict';
+}, function() {'use strict';
 	// Remove key binding to prevent multiple restarts
 	if (!this.unbind('KeyDown', this.restart)) {
 		window.alert("Could not unbind");
@@ -89,36 +93,34 @@ Crafty.scene('Victory', function() { 'use strict';
 });
 
 // Load binary assets such as images and audio files
-Crafty.scene('Loading', function(){ 'use strict';
+Crafty.scene('Loading', function() {'use strict';
 
-	var assets = ['Assets/cscGarden01-32X32.png',
-		'Assets/BoyWalk.png',
-		'Assets/door_knock_3x.mp3',
-		'Assets/People256.png'
-		];
+	var assets = ['Assets/backgrounds.png', 'Assets/dog.png','Assets/smb_breakblock.wav'];
 
 	// Load our sprite map image
-	Crafty.load(assets, function(){
-		Crafty.sprite(32, assets[0], {
-			spr_tree:    [0, 3],
-			spr_bush:    [2, 0],
-			spr_village: [0, 1]
+	Crafty.load(assets, function() {
+		Crafty.sprite(48, 48, assets[0], {
+			spr_tree : [0, 2],
+			spr_bush : [0, 1],
+			spr_village : [1, 0]
 		});
 
 		//  The main character
-		Crafty.sprite(32, 32, assets[3], {
-			spr_mainCharacter:  [0, 0],
+		Crafty.sprite(48, assets[1], {
+			spr_mainCharacter : [0, 1],
 		}, 0, 0);
 
 		// Define our sounds for later use
 		Crafty.audio.add({
-			knock: ['http://desolate-caverns-4829.herokuapp.com/assets/door_knock_3x.mp3']
+			breakblock : ['Assets/smb_breakblock.wav']
 		});
 
 		// Display text while loading
-		Crafty.e('2D, DOM, Text')
-			.attr({ x: 0, y: Crafty.viewport.height / 2 - 24, w: Crafty.viewport.width })
-			.text('Loading...');
+		Crafty.e('2D, DOM, Text').attr({
+			x : 0,
+			y : Crafty.viewport.height / 2 - 24,
+			w : Crafty.viewport.width
+		}).text('Loading...');
 
 		// Now that our sprites are ready to draw, start the game
 		Crafty.scene('Game');

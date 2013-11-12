@@ -18,29 +18,58 @@ Crafty.c('PlayerCharacter', {
             //  - the x and y coordinates within the sprite
             //     map at which the animation set begins
             //  - the number of animation frames *in addition to* the first one
-            .animate('PlayerMovingUp',    0, 0, 4)
-            .animate('PlayerMovingRight', 0, 0, 4)
-            // .animate('PlayerMovingRight', [[0,0], [1,0], [2,0], [3, 0], [4,0], [5, 0]])
-            .animate('PlayerMovingDown',  0, 0, 4)
-            .animate('PlayerMovingLeft',  0, 1, 4);
-
+            .animate('PlayerMovingRight', 0, 0, 2)
+            .animate('PlayerMovingLeft',  0, 2, 2)
+			.animate('PlayerEncounterRight', 0, 1, 2)
+			.animate('PlayerEncounterLeft', 0,3,2);
         // Watch for a change of direction and switch animations accordingly
-        var animation_speed = 8;
+        var animation_speed = 16;
+        var movingLeft = false;
+        var fightMode = false;
         this.bind('NewDirection', function(data) {
             this.encounterMode = false;
-            if (data.x > 0) {
+            if(this.fightMode)
+            {
+            	if (movingLeft)
+            	{
+            		this.playAnimation('PlayerEncounterLeft', animation_speed, -1);
+            	}
+            	else
+            	{
+        			this.playAnimation('PlayerEncounterRight', animation_speed, -1);
+        		}
+            }
+            else if (data.x > 0) {
                 Crafty.game.changeDirectionMessage("Going Right");
+                movingLeft=false;
                 this.playAnimation('PlayerMovingRight', animation_speed, -1);
+                
             } else if (data.x < 0) {
                 Crafty.game.changeDirectionMessage("Going Left");
+                movingLeft=true;
                 this.playAnimation('PlayerMovingLeft', animation_speed, -1);
-            } else if (data.y > 0) {
+                } else if (data.y > 0) {
                 Crafty.game.changeDirectionMessage("Going Down");
-                this.playAnimation('PlayerMovingDown', animation_speed, -1);
+                if(movingLeft)
+                	{
+                		this.playAnimation('PlayerMovingLeft', animation_speed, -1);
+                	}
+                else
+                {
+                	this.playAnimation('PlayerMovingRight', animation_speed, -1);
+                }
             } else if (data.y < 0) {
                 Crafty.game.changeDirectionMessage("Going Up");
-                this.playAnimation('PlayerMovingUp', animation_speed, -1);
-            } else {
+                 if(movingLeft)
+                	{
+                		this.playAnimation('PlayerMovingLeft', animation_speed, -1);
+                	}
+                else
+                {
+                	this.playAnimation('PlayerMovingRight', animation_speed, -1);
+                }
+            }
+             else {
                 this.resetAnimation();
             }
         });
@@ -82,17 +111,18 @@ Crafty.c('PlayerCharacter', {
     // Respond to this player visiting a village
     visitVillage: function(data) { 'use strict';
         this.stopMovement();
-        
         // If we are in an encounter, then we do nothing until the user
         // asks to move again.
         if (this.encounterMode) {
+        	this.fightMode=true;
             return;
         }   
     
         Crafty.game.reportEvent("Found Tower: " + data[0].obj._entityName);
         if (Crafty.game.encounter(data[0].obj)) {
-           var villlage = data[0].obj;
-           villlage.visit();
+           var village = data[0].obj;
+           village.visit();
+           this.fightMode=false;
         } else {
             this.encounterMode = true;
         }

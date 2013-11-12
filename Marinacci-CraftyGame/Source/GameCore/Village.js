@@ -11,7 +11,7 @@ Crafty.c('Village', {
 	// Process a visitation with this village
 	visit: function() { 'use strict';
 		this.destroy();
-		Crafty.audio.play('knock');
+		Crafty.audio.play('breakblock');
 		Crafty.trigger('VillageVisited', this);
 	}
 });

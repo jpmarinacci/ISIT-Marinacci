@@ -8,11 +8,11 @@ angular.module('elfGameMod', ['characters'])
 		map_grid : null,
 
 		defaultMapGrid : {
-			width : 18,
-			height : 12,
+			width : 14,
+			height : 10,
 			tile : {
-				width : 32,
-				height : 32
+				width : 48,
+				height : 48
 			}
 		},
 
