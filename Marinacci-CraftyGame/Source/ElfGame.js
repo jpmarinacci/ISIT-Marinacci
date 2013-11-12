@@ -1,7 +1,6 @@
 /* jshint browser: true */
 
-angular.module('elfGameMod', ['characters'])
-.factory('elfgame', function(gameEventService, people) { 'use strict';
+angular.module('elfGameMod', ['characters']).factory('elfgame', function(gameEventService, people) {'use strict';
 
 	return {
 
@@ -31,19 +30,31 @@ angular.module('elfGameMod', ['characters'])
 		},
 
 		rollD3 : function(village) {
-			village.tower.hitPoints -= Math.floor(Math.random() * 3);
+			people.hero.hitPoints -= 2;
+			village.tower.hitPoints -= 3;
 		},
 
 		encounter : function(village) {
-			this.rollD3(village);
 
-			gameEventService.debugBroadcast('Tower hit points: ' + village.tower.hitPoints);
-			if (village.tower.hitPoints <= 0) {
-				gameEventService.encounterBroadcast('success');
-				return true;
-			} else {
-				gameEventService.encounterBroadcast('miss');
-				return false;
+			gameEventService.debugBroadcast('Hydrant hit points: ' + village.tower.hitPoints);
+			this.rollD3(village);
+			gameEventService.debugBroadcast('Hit Hydrant, hydrant health: ' + village.tower.hitPoints + ' hero health: ' + people.hero.hitPoints);
+			if (people.hero.hitPoints > 0) {
+
+				if (village.tower.hitPoints <= 0) {
+					gameEventService.encounterBroadcast('destroyed hydrant');
+					people.hero.hitPoints+=2;
+					return true;
+				} else {
+					gameEventService.encounterBroadcast('Hit hydrant ' + '\n' + 'Hydrant health: ' + village.tower.hitPoints + '\n Hero health: ' + people.hero.hitPoints);
+					return false;
+				}
+			}
+			else
+			{
+				people.hero.hitPoints=20;
+				Crafty.scene('Defeat');
+				
 			}
 		},
 
@@ -71,7 +82,7 @@ angular.module('elfGameMod', ['characters'])
 		},
 
 		// Initialize and start our game
-		start : function(mapGrid) {			
+		start : function(mapGrid) {
 			// Start crafty
 			var gameDiv = document.getElementById("gameBoard");
 			if (mapGrid) {

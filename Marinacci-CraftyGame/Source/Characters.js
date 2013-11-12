@@ -71,7 +71,7 @@ angular.module('characters', []).factory('people', function() {'use strict';
 		hero : {
 			// race: this.races[2],
 			// "class": this.classes[2],
-			hitPoints : 12,
+			hitPoints : 20,
 			damage : 2,
 			bonusDamage : function() {
 				return Math.floor(Math.random() * 2) + 1;
@@ -83,7 +83,7 @@ angular.module('characters', []).factory('people', function() {'use strict';
 
 		tower : function() {
 			return {
-				hitPoints : 4,
+				hitPoints : 6,
 				damage : 1,
 				bonusDamage : function() {
 					return Math.floor(Math.random() * 2) + 1;

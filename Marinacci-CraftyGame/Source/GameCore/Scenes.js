@@ -69,7 +69,7 @@ Crafty.scene('Game', function() {'use strict';
 	this.unbind('VillageVisited', this.show_victory);
 });
 
-// Victory scene : Announce victory, set up a new game
+// Victory scene : Announce victory, set up a new level
 Crafty.scene('Victory', function() {'use strict';
 	// Display some text in celebration of the victory
 	Crafty.e('2D, DOM, Text').attr({
@@ -91,6 +91,30 @@ Crafty.scene('Victory', function() {'use strict';
 	}
 
 });
+
+//Defeat scene: Announce victory, set up a new game
+Crafty.scene('Defeat', function() {'use strict';
+	// Display some text about loss
+	Crafty.e('2D, DOM, Text').attr({
+		x : 0,
+		y : 0
+	}).text("<div id='VictoryScene'>Hydrant Soaked You! \n Game Over</div>").textFont({ family: 'Segoe',  size: '44px', weight: 'bold' }).textColor('#FF0000');
+
+	// restart the game when a key is pressed
+	this.restart = function() {
+		Crafty.scene('Game');
+	};
+
+	// Bind keydown event. This was done wrong in the demo
+	this.bind('KeyDown', this.restart);
+}, function() {'use strict';
+	// Remove key binding to prevent multiple restarts
+	if (!this.unbind('KeyDown', this.restart)) {
+		window.alert("Could not unbind");
+	}
+
+});
+
 
 // Load binary assets such as images and audio files
 Crafty.scene('Loading', function() {'use strict';
