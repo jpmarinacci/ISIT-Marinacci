@@ -2,7 +2,7 @@
  * @author Charlie
  */
 
-describe("npcapp", function() {'use strict';
+describe("NPC Editor Unit Test", function() {'use strict';
     var $mockScope = null;
     var $mockDialog = null;
     var pc = null;
@@ -36,7 +36,7 @@ describe("npcapp", function() {'use strict';
     	expect(typeof ($mockScope.npcs[0].totalMoves)).toEqual('number');
     });
     
-    it('Test firs record has default values set to Lucy', function(){
+    it('Test first record has default values set to Lucy', function(){
     	expect($mockScope.npcs[0].npcName).toEqual('Lucy');
     	expect($mockScope.npcs[0].hitPoints).toEqual(25);
     	expect($mockScope.npcs[0].health).toEqual(32);

@@ -2,18 +2,17 @@
  * @author Charlie
  */
 
-describe("mycontrollertest", function() {'use strict';
+describe("Miles Converter Unit Test", function() {'use strict';
     var $mockScope = null;
     var pc = null;
-
+	beforeEach(function() {
+		module('mileConverterApp');
+	});
+	
     beforeEach(inject(function($rootScope, $controller) {
         $mockScope = $rootScope.$new();
-        pc = $controller('MyController', { $scope: $mockScope }); 
+        pc = $controller('MileConverterController', { $scope: $mockScope }); 
     }));
-
-    it("Test hint", function() {
-        expect($mockScope.hint).toEqual("Enter a number of miles");
-    });
     
     it("TestMilesToFeetForOneMile", function() {
         $mockScope.miles = 1;
