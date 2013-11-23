@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html ng-app='mileConverterApp'>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="Angular Mile Converter & Unit Testing">
+		<meta name="author" content="JP">
+		<title>Marinacci Week4</title>
+		<link rel="shortcut icon" href="../mainAssets/World.ico">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+        <script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script>
+        <script src="MileConverter.js"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link rel='stylesheet' href='index.css' />
+    </head>
+    <body>
+        <h1>Marinacci Week4 Unit Test Assignment</h1>
+        <div ng-controller="MileConverterController">
+        	<p id='prompt'>Enter Miles or Kilometers to make the proper conversion.</p>
+            <table class="table table-bordered" id='milesTable'>
+                <thead>
+                	<tr>
+                        <th>Miles</th>
+                        <th>Inches</th>
+                        <th>Feet</th>
+                        <th>Yards</th>
+                        <th>Kilometers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" id='milesInputControl' ng-model="miles" /></td>
+                        <td>{{convertMilesToInches()}}</td>
+                        <td>{{convertMilesToFeet()}}</td>
+                        <td>{{convertMilesToYards()}}</td>
+                        <td><input type='number' id='kilometersInputControl' ng-model='kilometers'/></td>
+                   </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

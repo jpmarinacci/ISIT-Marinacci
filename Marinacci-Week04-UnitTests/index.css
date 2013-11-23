@@ -1,0 +1,22 @@
+body {
+
+}
+h1{
+	text-align:center;
+}
+#milesTable{
+	table-layout:fixed;
+	width:95%;
+	margin:auto;
+}
+
+#milesInputControl{
+	width:95%;
+}
+
+#kilometersInputControl{
+	width:95%;
+}
+#prompt{
+	text-align:center;
+}
