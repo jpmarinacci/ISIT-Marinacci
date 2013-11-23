@@ -9,6 +9,11 @@ function NpcController($scope, $dialog) {
     $scope.npcs = [];
     
     var defaultNpcs = [{
+        npcName : 'Lucy',
+        hitPoints : 25,
+        health : 32,
+        totalMoves : 0
+    },{
         npcName : 'Defaulto',
         hitPoints : 8,
         health : 6,
@@ -50,11 +55,11 @@ function NpcController($scope, $dialog) {
     
     $scope.newNPC = function(){
     	var npc = {
-    			 npcName : '',
-		        hitPoints : 0,
-		        health : 0,
-		        totalMoves : 0
-		        };
+    		npcName : '',
+		    hitPoints : 0,
+		    health : 0,
+		    totalMoves : 0
+		    };
     $scope.npcs.push(npc);
     $scope.edit(npc);
     };
