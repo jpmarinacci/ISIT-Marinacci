@@ -1,28 +1,26 @@
-/* global process: true */
-
 module.exports = function(config) { 'use strict';
   config.set({
     // base path, that will be used to resolve files and exclude
-    basePath: '',
+    basePath: '.',
 
     frameworks: ['jasmine', 'commonjs'],
 
     // list of files / patterns to load in the browser
     files: [   
-      'mainLibrary/angular.js',
-      'mainLibrary/angular-mocks.js',
-      'mainLibrary/ui-bootstrap-tpls-0.1.0.js',
-      'Marinacci-Week04-UnitTests/Source/MileConverter.js',
-      'Marinacci-Week04-UnitTests/Test/TestMilesConverter.js'     
+      'angular.js',
+      'angular-mocks.js',
+      'index.js',
+      'Test01.js'
     ],
 
     // list of files to exclude
-    exclude: [      
+    exclude: [
+      
     ],
 
     preprocessors: {
-    	'client/*.js': ['commonjs', 'coverage'],
-    	'test/client/*.js': ['commonjs']
+      'index.js': ['commonjs', 'coverage'],
+      'test/client/*.js': ['commonjs']
     },
 
     // use dots reporter, as travis terminal does not support escaping sequences
@@ -62,7 +60,6 @@ module.exports = function(config) { 'use strict';
     // - IE (only Windows)
     // CLI --browsers Chrome,Firefox,Safari
     browsers: [process.env.TRAVIS ? 'Firefox' : 'Chrome'],
-    // browsers: ['PhantomJS'],
 
     // If browser does not capture in given timeout [ms], kill it
     // CLI --capture-timeout 5000
@@ -78,8 +75,8 @@ module.exports = function(config) { 'use strict';
 
     plugins: [      
       'karma-jasmine',
-      'karma-coverage',
       'karma-chrome-launcher',
+      'karma-coverage',
       'karma-firefox-launcher',
       'karma-junit-reporter',
       'karma-commonjs'
