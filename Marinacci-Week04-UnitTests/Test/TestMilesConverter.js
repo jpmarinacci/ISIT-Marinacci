@@ -19,7 +19,7 @@ describe("Miles Converter Unit Test", function() {'use strict';
         var actual = $mockScope.convertMilesToFeet();
         expect(actual).toEqual(5280);
     });
-    
+   
     it("Test Miles To Feet For 2 Miles", function() {
         $mockScope.miles = 2;
         var actual = $mockScope.convertMilesToFeet();
@@ -129,32 +129,6 @@ describe("Miles Converter Unit Test", function() {'use strict';
         $mockScope.miles = 1000000000000000;
         var actual = $mockScope.convertMilesToKilometers();
         expect(actual).toEqual(1609340000000000);
-    });
+    }); 
 });
 
-(function() {'use strict';
-    var jasmineEnv = jasmine.getEnv();
-    jasmineEnv.updateInterval = 1000;
-
-    var reporter = new jasmine.HtmlReporter();
-
-    jasmineEnv.addReporter(reporter);
-
-    jasmineEnv.specFilter = function(spec) {
-        return reporter.specFilter(spec);
-    };
-
-    var currentWindowOnload = window.onload;
-
-    window.onload = function() {
-        if (currentWindowOnload) {
-            currentWindowOnload();
-        }
-        execJasmine();
-    };
-
-    function execJasmine() {
-        jasmineEnv.execute();
-    }
-
-})();

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 31.0.1650 (Windows 7)" package="undefined" timestamp="2013-12-05T00:15:51" id="0" hostname="Flash" tests="18" errors="0" failures="0" time="0.094">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36"/>
+    </properties>
+    <testcase name="Test Miles To Feet For One Mile" time="0.047" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Feet For 2 Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Feet For Default" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Inches For One Mile" time="0.015" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Yards For One Mile" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Kilometers For One Mile" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Feet For No Miles" time="0.016" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Inches For No Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Yards For No Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Kilometers For No Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Feet For Negative One Mile" time="0.016" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Inches For Negative One Mile" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Yards For Negative One Mile" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Kilometers For Negative One Mile" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Feet For One Quadrillion Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Inches For One Quadrillion Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Yards For One Quadrillion Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <testcase name="Test Miles To Kilometers For One Quadrillion Miles" time="0" classname="Chrome 31.0.1650 (Windows 7).Miles Converter Unit Test"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
