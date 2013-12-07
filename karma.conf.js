@@ -21,8 +21,8 @@ module.exports = function(config) { 'use strict';
     ],
 
     preprocessors: {
-      'index.js': ['commonjs', 'coverage'],
-      'test/client/*.js': ['commonjs']
+    	'client/*.js': ['commonjs', 'coverage'],
+    	'test/client/*.js': ['commonjs']
     },
 
     // use dots reporter, as travis terminal does not support escaping sequences
