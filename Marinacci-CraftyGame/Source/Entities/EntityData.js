@@ -13,7 +13,7 @@ angular.module('entityData', ['ngResource'])
     API_KEY: '8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG'
 })
 .factory('entityDataFactory', function($resource, CONFIG) {
-	console.log('Presidents factory called');
+	console.log('entity data factory called');
 	var Presidents = $resource(
         'https://api.mongolab.com/api/1/databases/' + CONFIG.DB_NAME + 
         '/collections/' + CONFIG.COLLECTION + '/:id', {      
@@ -52,7 +52,5 @@ angular.module('entityData', ['ngResource'])
       return this.remove(cb, errorcb);
     };
 
-    return Presidents;    
-	 
-	// return { a: 2 };		
+    return Presidents;    	
 });

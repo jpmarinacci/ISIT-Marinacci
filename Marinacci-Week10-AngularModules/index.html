@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app='musicAndBookApp'>
+  <head>
+  	<link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="../mainLibrary/angular.js"></script>   
+    <script src='Source/Music.js'></script>
+    <script src='Source/musicAndBookApp.js'></script>
+  </head>
+  <body>
+  	<h1>Music and Books</h1>
+    <!--div ng-init="races = [
+	    	{race:'Orc', hitPoints: 10, height: 3},
+			{race:'Dwarf', hitPoints: 11, height: 4},
+			{race:'Human', hitPoints: 12, height: 5},
+			{race:'Elf', hitPoints: 13, height: 6},
+			{race:'Hobbit', hitPoints: 14, height: 7},
+			{race:'Eagle', hitPoints: 15, height: 8}
+		]">
+	</div-->
+    
+    <div ng-controller='SearchController'>
+    <span class="caption">Search all fields: </span> <input ng-model="search.$"> <br>
+    <span class="caption">Search musician: </span> <input ng-model="search.musician"><br>
+    <span class="caption">Search album: </span> <input ng-model="search.album"><br>
+    
+    Use exact match <input type="checkbox" ng-model="strict"><br>
+    
+    <hr />
+    
+    <table id="searchObjResults">
+      <tr><th>Musician</th><th>Album</th></tr>
+      <tr ng-repeat="album in albums | filter:search:strict">
+        <td>{{music.albums.musician}}</td>
+        <td>{{music.albums.album}}</td>
+      </tr>
+    </table>
+    <span class="caption">Search musician: </span> <input ng-model="album"><br>
+    <button ng-click="getMusicianFromAlbum()">Get Musician</button>
+    <div>{{musicianResult}}</div>
+    </div>
+  </body>
+</html>
