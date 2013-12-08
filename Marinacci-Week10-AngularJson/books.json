@@ -1,0 +1,7 @@
+{"books": [{"book": "Lord of the Rings", "author": "J.R. Tolkien"},
+   	{"book": "The Lion, The Witch and the Wardrobe", "author": "C.S. Lewis"},
+   	{"book": "The Grapes of Wrath", "author": "John Steinbeck"},
+   	{"book": "Lord of the Flies", "author": "William Golding"},
+   	{"book": "Dune", "author": "Frank Herbert"},
+   	{"book": "The Call of the Wild", "author": "Jack London"}]
+}
