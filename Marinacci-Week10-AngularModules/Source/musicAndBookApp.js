@@ -9,5 +9,5 @@ var app = angular.module('musicAndBookApp', ['musicMod'])
 	//$scope.music = musicFactory.albums;
 	$scope.getMusicianFromAlbum = function(){
 		$scope.musicianResult=musicFactory.getMusicanFromAlbum($scope.album);
-	}
+	};
 });

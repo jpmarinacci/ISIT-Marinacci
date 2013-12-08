@@ -11,14 +11,14 @@ var app = angular.module('musicMod', [])
    	{musician:'The Doors', album: 'L.A. Woman'}
    	],
    	getMusicanFromAlbum : function(albumName){
-   		for(var i=0;i <albums.length; i++){
-   			if(albums[i].album===albumName){
-   				return albums[i].album;
+   		for(var i=0;i < this.albums.length; i++){
+   			if(this.albums[i].album===albumName){
+   				return this.albums[i].musician;
    			}
    		}
    	},
    	getAlbumFromMusician: function(musicianName){
    		
    	}
-   }
+   };
 });
