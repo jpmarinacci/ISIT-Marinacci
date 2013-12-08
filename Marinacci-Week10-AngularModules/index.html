@@ -8,6 +8,7 @@
   </head>
   <body>
   	<h1>Music and Books</h1>
+  	<div ng-controller='SearchController'>
     <!--div ng-init="races = [
 	    	{race:'Orc', hitPoints: 10, height: 3},
 			{race:'Dwarf', hitPoints: 11, height: 4},
@@ -17,8 +18,6 @@
 			{race:'Eagle', hitPoints: 15, height: 8}
 		]">
 	</div-->
-    
-    <div ng-controller='SearchController'>
     <span class="caption">Search all fields: </span> <input ng-model="search.$"> <br>
     <span class="caption">Search musician: </span> <input ng-model="search.musician"><br>
     <span class="caption">Search album: </span> <input ng-model="search.album"><br>
@@ -34,7 +33,7 @@
         <td>{{music.albums.album}}</td>
       </tr>
     </table>
-    <span class="caption">Search musician: </span> <input ng-model="album"><br>
+    <span class="caption">Search musician: ddhfhfhfcg</span> <input ng-model="album"><br>
     <button ng-click="getMusicianFromAlbum()">Get Musician</button>
     <div>{{musicianResult}}</div>
     </div>
