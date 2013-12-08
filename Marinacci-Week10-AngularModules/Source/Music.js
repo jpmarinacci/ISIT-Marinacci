@@ -8,7 +8,8 @@ var app = angular.module('musicMod', [])
    	{musician:'Rolling Stones', album: "Get Yer Ya Ya's Out"},
    	{musician:'Led Zeppelin', album: 'Houses of the Holy'},
    	{musician:'Pink Floyd', album: 'Dark Side of the Moon'},
-   	{musician:'The Doors', album: 'L.A. Woman'}
+   	{musician:'Doors', album: 'L.A. Woman'},
+   	{musician: 'Eagles', album: 'Hotel California'}
    	],
    	getMusicanFromAlbum : function(albumName){
    		for(var i=0;i < this.albums.length; i++){
@@ -18,7 +19,11 @@ var app = angular.module('musicMod', [])
    		}
    	},
    	getAlbumFromMusician: function(musicianName){
-   		
+   		for(var i=0;i < this.albums.length; i++){
+   			if(this.albums[i].musician===musicianName){
+   				return this.albums[i].album;
+   			}
+   		}
    	}
    };
 });
