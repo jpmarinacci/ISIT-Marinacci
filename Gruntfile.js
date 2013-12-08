@@ -5,7 +5,8 @@ module.exports = function(grunt) { 'use strict';
 			files: ['**/*.js'],
 
 			options: {
-				ignores: ['*/angular-mocks.js', 
+				ignores: [
+					'*/angular-mocks.js', 
 					'*/ui-bootstrap-tpls-*.js',
 					'*/knockout-*.js', 
 					'*/Ractive.js', 

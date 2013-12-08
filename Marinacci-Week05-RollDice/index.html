@@ -7,10 +7,12 @@
 		<title>Marinacci - Roll Dice</title>
 		<meta name="description" content="">
 		<meta name="author" content="JP">
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
 		<link rel="shortcut icon" href="../../mainAssets/dice13.gif">
-		<script src='RollDice.js'></script>
-		<script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script>
+		<script src='../mainLibrary/angular.js'></script>
+		<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>	
+		<script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script-->
+		<script src='../mainLibrary/ui-bootstrap-tpls-0.1.0.js'></script>
+		<script src='Source/RollDice.js'></script>
 	</head>
 
 	<body>
@@ -26,7 +28,7 @@
 				<button ng-click='roll20SidedDice()'>Roll 20 sided Dice</button>
 			<p> </p>
 			<div>{{details}}</div>	
-			<div>Total: {{total}}<div>
+			<div>Total: {{total}}</div>
 		</div>
 	</body>
 </html>
