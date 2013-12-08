@@ -6,17 +6,20 @@ module.exports = function(grunt) { 'use strict';
 
 			options: {
 				ignores: [
+					'**/coverage/**',
 					'*/angular-mocks.js', 
 					'*/ui-bootstrap-tpls-*.js',
 					'*/knockout-*.js', 
 					'*/Ractive.js', 
 					'*/**/angular.js',
-					'**/Library/**', 
+					'**/Library/**',
+					'**/mainLibrary/**',
 					'**/node_modules/**',
 					'**/handlebars.js',
 					'**/jquery*.js',
 					'**/cordova*.js',
-					'**/qunit*.js'],
+					'**/qunit*.js',
+					'*/angular-resource.js'],
 				reporter: 'checkstyle',
 				reporterOutput: 'result.xml',
 				strict: true,
