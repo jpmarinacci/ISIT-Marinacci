@@ -7,7 +7,7 @@ describe("Test Music", function() {'use strict';
     var musicFactory = null;
 
    	beforeEach(function() {
-	    module('musicAndBookApp');
+	    module('musicAndBooksApp');
 	    module('musicMod');
 	 });
 	

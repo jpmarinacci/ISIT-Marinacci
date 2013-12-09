@@ -1,7 +1,7 @@
 /**
  * @author JP
  */
-var app = angular.module('bookMod', [])
+var app = angular.module('booksMod', [])
 .factory('bookFactory', function() {
    return {
    	books: 	[

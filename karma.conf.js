@@ -8,7 +8,28 @@ module.exports = function(config) {'use strict';
 		frameworks : ['jasmine', 'commonjs'],
 
 		// list of files / patterns to load in the browser
-		files : ['mainLibrary/angular.js', 'mainLibrary/angular-mocks.js', 'mainLibrary/angular-resource.js', 'mainLibrary/jquery-1.8.3.min.js', 'mainLibrary/ui-bootstrap-tpls-0.1.0.js', 'Marinacci-Week03-NPCs/Source/NpcController.js', 'Marinacci-Week03-NPCs/Test/TestNpcs.js', 'Marinacci-Week04-UnitTests/Source/MileConverter.js', 'Marinacci-Week04-UnitTests/Test/TestMilesConverter.js', 'Marinacci-Week05-RollDice/Source/RollDice.js', 'Marinacci-Week05-RollDice/Test/TestRollDice.js', 'Marinacci-Week10-AngularModules/Source/MusicAndBookApp.js', 'Marinacci-Week10-AngularModules/Source/Book.js', 'Marinacci-Week10-AngularModules/Test/TestBooks.js', 'Marinacci-Week10-AngularModules/Source/Music.js', 'Marinacci-Week10-AngularModules/Test/TestMusic.js'],
+		files : ['mainLibrary/angular.js',
+		'mainLibrary/angular-mocks.js',
+		'mainLibrary/angular-resource.js',
+		'mainLibrary/jquery-1.8.3.min.js',
+		'mainLibrary/ui-bootstrap-tpls-0.1.0.js',
+		'Marinacci-Week03-NPCs/Source/NpcController.js',
+		'Marinacci-Week03-NPCs/Test/TestNpcs.js',
+		'Marinacci-Week04-UnitTests/Source/MileConverter.js',
+		'Marinacci-Week04-UnitTests/Test/TestMilesConverter.js',
+		'Marinacci-Week05-RollDice/Source/RollDice.js',
+		'Marinacci-Week05-RollDice/Test/TestRollDice.js',
+		'Marinacci-Week10-AngularModules/Source/MusicAndBooksApp.js',
+		'Marinacci-Week10-AngularModules/Source/Music.js',
+		'Marinacci-Week10-AngularModules/Source/Books.js',
+		'Marinacci-Week10-AngularModules/Test/TestMusic.js',
+		'Marinacci-Week10-AngularModules/Test/TestBooks.js',
+		'Marinacci-Week10-AngularJson/Source/JsonBooks.js',
+		'Marinacci-Week10-AngularJson/Source/JsonMusic.js',
+		'Marinacci-Week10-AngularJson/Source/JsonMusicAndBooksApp.js',
+		'Marinacci-Week10-AngularJson/Test/TestJsonMusic.js',
+		'Marinacci-Week10-AngularJson/Test/TestJsonBooks.js'
+		],
 
 		// list of files to exclude
 		exclude : [],

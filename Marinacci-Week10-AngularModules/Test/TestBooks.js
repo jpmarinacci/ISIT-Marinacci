@@ -7,8 +7,8 @@ describe("Test Books", function() {'use strict';
     var bookFactory = null;
 
    	beforeEach(function() {
-	    module('musicAndBookApp');
-	    module('bookMod');
+	    module('musicAndBooksApp');
+	    module('booksMod');
 	 });
 	
 	beforeEach(inject(function($rootScope, $controller, $injector) {

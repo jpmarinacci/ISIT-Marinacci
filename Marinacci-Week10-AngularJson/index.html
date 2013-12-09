@@ -1,38 +1,53 @@
 <!DOCTYPE HTML>
-<html data-ng-app='jsonServerMod'>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        
-        <title>Elvenware Test Project</title>
-        <link rel="shortcut icon" href="favicon.png">
-        <script src="Library/angular.js"></script>
-        <script src="Source/index.js"></script>
-    </head>
-    <body>
-        <h1>Elvenware Angular JSON</h1>
-        
-        <div ng-controller="myController">
-        	<p>This project retrieves a small amount of JSON from
-        		a node server.</p>
-            <div ng-bind-html-unsafe="hint"> </div>
-            
-            <button ng-click='loadJson()'>Load Data</button>
-            
-            <p>Here is the JSON retreived from the server: </p>
-            
-            <p>All data: {{data}}</p>
-            <p>Name: {{data.name}}</p>            
-            <p>hitPoints: {{data.hitPoints}}</p>
-            <p>damage: {{data.damage}}</p>
-            
-            <button ng-click="loadJson02('moreData.json')">Load Data02</button>
-            
-            <p>Here is the JSON retreived from the server: </p>
-            
-            <p>All data: {{data2}}</p>
-            <p>Name: {{data2.name}}</p>            
-            <p>hitPoints: {{data2.hitPoints}}</p>
-            <p>damage: {{data2.damage}}</p>
-        </div>
-    </body>
+<html ng-app='jsonMusicAndBooksApp'>
+  <head>
+  	<title>Week 10 - Angualr Json</title>
+  	<script src="../mainLibrary/jquery-1.8.3.min.js"></script>
+  	<script src="../mainLibrary/angular.js"></script>
+  	<script src='Source/JsonMusic.js'></script>
+  	<script src='Source/JsonBooks.js'></script>
+  	<script src='Source/JsonMusicAndBooksApp.js'></script>
+  	<script src='Source/JsonPanels.js'></script>
+  	<link href="Style/index.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <div ng-controller='SearchController'>
+  <div id='musicPanel'>         
+    <span class="caption">Search all albums: </span> <input ng-model="search.$"> <br>
+    <span class="caption">Search musician: </span> <input ng-model="search.musician"><br>
+    <span class="caption">Search album: </span> <input ng-model="search.album"><br>
+    
+    Use exact match <input type="checkbox" ng-model="strict"><br>
+    <hr/>
+    <table class="searchObjResults">
+      <tr><th>Musician</th><th>Album</th></tr>
+      <tr ng-repeat="musician in albums | filter:search:strict">
+        <td>{{musician.musician}}</td>
+        <td>{{musician.album}}</td>
+      </tr>
+    </table>
+     </div>
+    	<div id='bookPanel'>  
+		    
+		    <span class="caption">Search all books: </span> <input ng-model="search.$"> <br>
+		    <span class="caption">Search book: </span> <input ng-model="search.book"><br>
+		    <span class="caption">Search author: </span> <input ng-model="search.author"><br>
+		    
+		    Use exact match <input type="checkbox" ng-model="strict"><br>
+		    <hr/>
+		    <table class="searchObjResults">
+		      <tr><th>Book</th><th>Author</th></tr>
+		      <tr ng-repeat="book in books | filter:search:strict">
+		        <td>{{book.book}}</td>
+		        <td>{{book.author}}</td>
+		      </tr>
+		    </table>
+	    </div>
+	    <section id="radios">
+	    	<span>music <input type="radio" name="radioToggle" id="music" checked ="checked" /></span>
+	    	<span>books <input type="radio" name="radioToggle" id="books"/></span>
+    	</section>
+    </div>
+    
+  </body>
 </html>
