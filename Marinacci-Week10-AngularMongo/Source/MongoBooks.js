@@ -44,19 +44,5 @@ var app = angular.module('mongoBooksMod', ['ngResource'])
       return this.remove(cb, errorcb);
     };
     
-	/*getBookFromAuthor : function(authorName){
-   		for(var i=0;i < this.books.length; i++){
-   			if(this.books[i].author===authorName){
-   				return this.books[i].book;
-   			}
-   		}
-   	},
-   	getAuthorFromBook: function(bookName){
-   		for(var i=0;i < this.books.length; i++){
-   			if(this.books[i].book===bookName){
-   				return this.books[i].author;
-   			}
-   		}
-   	}*/
     return books;
 });
