@@ -1,11 +1,12 @@
 /* jshint browser: true */
 
-angular.module('elfGameMod', ['entities']).factory('elfgame', function(gameEventService, people) {'use strict';
+angular.module('dogGameMod', ['entities', 'gameWrapMod'])
+.factory('dogGameService', function(gameEventService, people, gameWrap) {'use strict';
 
 	return {
 
 		map_grid : null,
-
+		misses: 0,
 		defaultMapGrid : {
 			width : 14,
 			height : 10,
@@ -33,7 +34,11 @@ angular.module('elfGameMod', ['entities']).factory('elfgame', function(gameEvent
 			people.hero.hitPoints -= 2;
 			village.tower.hitPoints -= 3;
 		},
-
+		encounterFood : function(food, count) {
+			gameEventService.debugBroadcast("food");
+			gameEventService.encounterBroadcast('Food success');
+			return true;
+		},
 		encounter : function(village) {
 
 			gameEventService.debugBroadcast('Hydrant hit points: ' + village.tower.hitPoints);
@@ -63,14 +68,6 @@ angular.module('elfGameMod', ['entities']).factory('elfgame', function(gameEvent
 			this.villages.push(village);
 		},
 
-		goLeft : function() {
-			Crafty.trigger('goLeft', Crafty);
-		},
-
-		stopMove : function() {
-			Crafty.trigger('stopMove', Crafty);
-		},
-
 		// Get width of the game screen in pixels
 		width : function() {
 			return this.map_grid.width * this.map_grid.tile.width;
@@ -80,7 +77,10 @@ angular.module('elfGameMod', ['entities']).factory('elfgame', function(gameEvent
 		height : function() {
 			return this.map_grid.height * this.map_grid.tile.height;
 		},
-
+		
+		initMapGrid : function(mapGrid) {
+			this.map_grid = mapGrid;
+		},
 		// Initialize and start our game
 		start : function(mapGrid) {
 			// Start crafty
@@ -90,12 +90,7 @@ angular.module('elfGameMod', ['entities']).factory('elfgame', function(gameEvent
 			} else {
 				this.map_grid = this.defaultMapGrid;
 			}
-			Crafty.init(this.width(), this.height(), gameDiv);
-			Crafty.game = this;
-			Crafty.background('rgb(0, 109, 20)');
-
-			// Call load scene, defined below
-			Crafty.scene('Loading');
+			gameWrap.startGame(gameDiv, this);
 		}
 	};
 });

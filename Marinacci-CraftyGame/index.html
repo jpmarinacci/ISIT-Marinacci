@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="elfPlayer">
+<html ng-app="dogPlayer">
 <head>
     <title>Doggy Game</title>
     <link rel="shortcut icon" href="Assets/doggy.ico">
@@ -12,11 +12,12 @@
 	<script src="Source/GameCore/Player.js"></script>
 	<script src="Source/GameCore/Scenes.js"></script>
 	<script src="Source/GameCore/Village.js"></script>
+	<script src="Source/GameWrapper.js"></script>
 	<script src="Source/Entities/Entities.js"></script>
 	<script src="Source/Entities/EntityData.js"></script>
 	<script src="Source/Entities/Species.js"></script>
-	<script src="Source/ElfGame.js"></script>
-	<script src="Source/ElfPlayer.js"></script>	
+	<script src="Source/DogGame.js"></script>
+	<script src="Source/DogPlayer.js"></script>	
 			      
 </head>
 <body>
@@ -24,20 +25,15 @@
         
     </div>
     
-    <div id="textDisplay" ng-controller="ElfController">
+    <div id="textDisplay" ng-controller="DogController">
         <p>Doggy Game</p>
         <p>{{name}}</p>        
         <p>{{eventNote}}</p>
         <p>{{encounterMessage}}</p>
-        <!--button ng-click="goLeft()">Left</button>
-        <button ng-click="stopMove()">Stop</button-->
         <p>Move Messages</p>
         <select size=3 ng-model="crazyFoo" ng-options="msg for msg in moveMessages"> </select><br>
         <p>Debug Messages</p>
-        	<select size=3 ng-model="crazyBar" ng-options="message for message in debugMessages"> </select><br>
-            <!-- ul ng-repeat="debugMessage in debugMessages track by $index">			
-                <li>{{debugMessage}}</li>
-            </ul -->                
+        	<select size=3 ng-model="crazyBar" ng-options="message for message in debugMessages"> </select><br>              
     </div>
 </body>
 </html>

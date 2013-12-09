@@ -4,7 +4,7 @@
 
  /* jshint devel: true */
 
-angular.module('elfPlayer', ['elfGameMod'])
+angular.module('dogPlayer', ['dogGameMod'])
 .factory('gameEventService', function($rootScope) { 'use strict';
 	return {
 		message: "",
@@ -34,20 +34,14 @@ angular.module('elfPlayer', ['elfGameMod'])
 		}
 	};
 })
-
-/*.controller('starter', function() {
-	game.start();
-}); */
-
-.controller('ElfController', function($scope, gameEventService, elfgame) { 'use strict';
+.controller('DogController', function($scope, gameEventService, dogGameService) { 'use strict';
 
 	$scope.name = "Doggy";
 	$scope.eventNote = "no messages";
-	$scope.crazyFoo = "";
 	$scope.debugMessages = [];
 	$scope.moveMessages = [];
 	
-	elfgame.start();
+	dogGameService.start();
 
 	// This event is fired from inside crafty when a tower is found.
 	// We need to call $apply because we are calling from Crafty, not from Angular.
@@ -74,15 +68,4 @@ angular.module('elfPlayer', ['elfGameMod'])
 		$scope.$apply(function() { $scope.encounterMessage = gameEventService.message; });
 		console.log(gameEventService.message);
 	});
-
-	$scope.goLeft = function() {
-		elfgame.goLeft();
-	};
-
-	$scope.stopMove = function() {
-		elfgame.stopMove();
-	};
 });
-
-// ElfPlayer.$inject = ['$scope', 'gameEventService'];
-

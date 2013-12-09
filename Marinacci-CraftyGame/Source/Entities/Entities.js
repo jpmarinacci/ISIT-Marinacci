@@ -26,7 +26,7 @@ angular.module('entities', ['speciesMod', 'entityData']).factory('people', funct
 			return {
 				hitPoints : 6,
 				damage : 1
-				}
+			};
 		}
 	};
 	

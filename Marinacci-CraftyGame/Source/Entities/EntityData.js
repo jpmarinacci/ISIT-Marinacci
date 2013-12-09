@@ -4,8 +4,6 @@
 
 /* global angular */
 
-
-
 angular.module('entityData', ['ngResource'])
 .constant('CONFIG', {
     DB_NAME: 'jpdata',
