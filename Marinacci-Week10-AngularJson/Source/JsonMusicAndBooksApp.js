@@ -5,8 +5,7 @@
 var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'])
 .controller('SearchController', function($scope, $http, musicFactory, bookFactory) { 'use strict';
 	 
-	
-   	$scope.loadAlbumsFromJson = function() { 
+	$scope.loadAlbumsFromJson = function() { 
 	
 		var getDataJson = $http.get('albums.json');
 	
@@ -21,7 +20,6 @@ var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'
 		});
 	}();
 	
-
 	$scope.getMusicianFromAlbum = function(){
 		$scope.musicianResult = musicFactory.getMusicanFromAlbum($scope.albums, $scope.album);
 	};
