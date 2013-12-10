@@ -4,7 +4,7 @@
 
 /* global angular:true */
 
-angular.module('entitiesMod', ['speciesMod', 'entityData']).factory('people', function(entityDataFactory) {'use strict';
+angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', function(heroDataFactory) {'use strict';
 
 	var entities= {
 
@@ -14,15 +14,15 @@ angular.module('entitiesMod', ['speciesMod', 'entityData']).factory('people', fu
 			hitPoints : 0,
 			damage : 2,
 			
-			getFromDataBase: function() {
-				entityDataFactory.query({}, function(queryResult) {
+			loadHeroFromData: function() {
+				heroDataFactory.query({}, function(queryResult) {
             		entities.hero = queryResult[0].hero;
             	});	
 				
 			}
 		},
 
-		tower : function() {
+		hydrant : function() {
 			return {
 				hitPoints : 6,
 				damage : 1
@@ -30,6 +30,6 @@ angular.module('entitiesMod', ['speciesMod', 'entityData']).factory('people', fu
 		}
 	};
 	
-	entities.hero.getFromDataBase();
+	entities.hero.loadHeroFromData();
 	return entities;
 });

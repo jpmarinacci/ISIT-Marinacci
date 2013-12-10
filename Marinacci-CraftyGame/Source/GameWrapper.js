@@ -5,9 +5,9 @@
 angular.module('gameWrapMod', [])
 .factory('gameWrap', function() { 'use strict';
 	return {
-		startGame: function(gameDiv, elfGameService) {
-			Crafty.init(elfGameService.width(), elfGameService.height(), gameDiv);
-			Crafty.game = elfGameService;
+		startGame: function(gameDiv, dogGameService) {
+			Crafty.init(dogGameService.width(), dogGameService.height(), gameDiv);
+			Crafty.game = dogGameService;
 			Crafty.background('rgb(0, 109, 20)');
 			// Load the game
 			Crafty.scene('Loading');

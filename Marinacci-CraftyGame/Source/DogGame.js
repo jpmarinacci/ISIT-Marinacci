@@ -1,7 +1,7 @@
 /* jshint browser: true */
 
-angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
-.factory('elfGameService', function(gameEventService, people, gameWrap) {
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
+.factory('dogGameService', function(gameEventService, entities, gameWrap) {
 	'use strict';
 	return {
 
@@ -16,10 +16,10 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 			}
 		},
 
-		villages : [],
+		enemys : [],
 
 		reportEvent : function(message) {
-			return gameEventService.towerBroadcast(message);
+			return gameEventService.hydrantBroadcast(message);
 		},
 
 		changeDirectionMessage : function(message) {
@@ -29,41 +29,41 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 		sendDebugMessage : function(message) {
 			return gameEventService.debugBroadcast(message);
 		},
-		encounterVillage : function(village) {
-			people.hero.hitPoints -= 2;
-			village.tower.hitPoints -= 3;
+		encounterEnemy : function(enemy) {
+			entities.hero.hitPoints -= 2;
+			enemy.hydrant.hitPoints -= 3;
 		},
 		encounterFood : function(food) {
 			gameEventService.debugBroadcast("food");
 			gameEventService.encounterBroadcast('Food success');
 			return true;
 		},
-		encounter : function(village) {
+		encounter : function(enemy) {
 
-			gameEventService.debugBroadcast('Hydrant hit points: ' + village.tower.hitPoints);
-			this.encounterVillage(village);
-			gameEventService.debugBroadcast('Hit Hydrant, hydrant health: ' + village.tower.hitPoints + ' hero health: ' + people.hero.hitPoints);
-			if (people.hero.hitPoints > 0) {
+			gameEventService.debugBroadcast('Hydrant hit points: ' + enemy.hydrant.hitPoints);
+			this.encounterEnemy(enemy);
+			gameEventService.debugBroadcast('Hit Hydrant, hydrant health: ' + enemy.hydrant.hitPoints + ' hero health: ' + entities.hero.hitPoints);
+			if (entities.hero.hitPoints > 0) {
 
-				if (village.tower.hitPoints <= 0) {
+				if (enemy.hydrant.hitPoints <= 0) {
 					gameEventService.encounterBroadcast('destroyed hydrant');
-					people.hero.hitPoints+=2;
+					entities.hero.hitPoints+=2;
 					return true;
 				} else {
-					gameEventService.encounterBroadcast('Hit hydrant ' + '\n' + 'Hydrant health: ' + village.tower.hitPoints + '\n Hero health: ' + people.hero.hitPoints);
+					gameEventService.encounterBroadcast('Hit hydrant ' + '\n' + 'Hydrant health: ' + enemy.hydrant.hitPoints + '\n Hero health: ' + entities.hero.hitPoints);
 					return false;
 				}
 			}
 			else
 			{
-				people.hero.hitPoints=20;
+				entities.hero.hitPoints=20;
 				Crafty.scene('Defeat');			
 			}
 		},
 
-		newVillage : function(village) {
-			village.tower = people.tower();
-			return this.villages.push(village);
+		newEnemy : function(enemy) {
+			enemy.hydrant = entities.hydrant();
+			return this.enemys.push(enemy);
 		},
 
 		goLeft : function() {

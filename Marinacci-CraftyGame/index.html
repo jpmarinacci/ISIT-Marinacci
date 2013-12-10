@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-app="elfPlayer">
+<html ng-app="dogPlayer">
 <head>
     <title>Doggy Game</title>
-    <link rel="shortcut icon" href="Assets/favicon.png">
+    <link rel="shortcut icon" href="Assets/doggy.ico">
     <link href="Style/index.css" rel="stylesheet" type="text/css" />    
     <script src="../mainLibrary/angular.js"></script>
     <script src="../mainLibrary/angular-resource.js"></script>
@@ -12,13 +12,13 @@
 	<script src="Source/GameCore/Grid.js"></script>	
 	<script src="Source/GameCore/Player.js"></script>
 	<script src="Source/GameCore/Scenes.js"></script>
-	<script src="Source/GameCore/Village.js"></script>
+	<script src="Source/GameCore/Enemy.js"></script>
 	<script src="Source/GameWrapper.js"></script>
 	<script src="Source/Entities/Entities.js"></script>
-	<script src="Source/Entities/EntityData.js"></script>
+	<script src="Source/Entities/HeroData.js"></script>
 	<script src="Source/Entities/Species.js"></script>
-	<script src="Source/ElfGame.js"></script>
-	<script src="Source/ElfPlayer.js"></script>	
+	<script src="Source/DogGame.js"></script>
+	<script src="Source/DogPlayer.js"></script>	
 			      
 </head>
 <body>
@@ -26,7 +26,7 @@
         
     </div>
     
-    <div id="textDisplay" ng-controller="ElfController">
+    <div id="textDisplay" ng-controller="DogController">
         <h1>Doggy Game</h1>
         <p>{{name}}</p>        
         <p>{{eventNote}}</p>

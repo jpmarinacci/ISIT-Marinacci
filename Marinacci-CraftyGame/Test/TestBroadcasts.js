@@ -3,16 +3,16 @@
  */
 
 describe("Test Broadcasts: gameEventService", function() {'use strict';
-	var elfController = null;	
+	var dogController = null;	
 	var gameEventService = null;
 	
 	beforeEach(function() {
-		module('elfPlayer');			
+		module('dogPlayer');			
 	});
 	
 	beforeEach(inject(function($rootScope, $controller, $injector) {
-		elfController = $rootScope.$new();		
-		$controller('ElfController', { $scope: elfController});
+		dogController = $rootScope.$new();		
+		$controller('DogController', { $scope: dogController});
 		gameEventService = $injector.get('gameEventService');
 		
 	}));
@@ -20,7 +20,7 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 	it("Change Direction Broadcast", function() {
 		var testValue = "Test Change Direction Broadcast";
 		gameEventService.changeDirectionBroadcast(testValue);
-		var actual = elfController.moveMessages;			
+		var actual = dogController.moveMessages;			
 		expect(actual).toEqual([testValue]);
 	});
 	
@@ -29,32 +29,32 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 		var testValue02 = 'Direction';
 		gameEventService.changeDirectionBroadcast(testValue01);
 		gameEventService.changeDirectionBroadcast(testValue02);
-		var actual = elfController.moveMessages;			
+		var actual = dogController.moveMessages;			
 		expect(actual).toEqual([testValue02, testValue01]);
 	});
 	
-	it("Change Tower Broadcast", function() {
+	it("Change Hydrant Broadcast", function() {
 		gameEventService.hydrantBroadcast("Goober");
-		var actual = elfController.eventNote;			
+		var actual = dogController.eventNote;			
 		expect(actual).toEqual('Goober');
 	});
 	
 	it("Tests a Debug Broadcast", function() {
 		gameEventService.debugBroadcast("Qux");
-		var actual = elfController.debugMessages;			
+		var actual = dogController.debugMessages;			
 		expect(actual).toEqual(['Qux']);
 	});
 	
 	it("Two Debug Broadcast", function() {
 		gameEventService.debugBroadcast("Qux");
 		gameEventService.debugBroadcast("QuxFoo");
-		var actual = elfController.debugMessages;			
+		var actual = dogController.debugMessages;			
 		expect(actual).toEqual(['QuxFoo', 'Qux']);
 	});
 	
 	it("Tests Encounter Broadcast", function() {
 		gameEventService.encounterBroadcast("Encounter");
-		var actual = elfController.encounterMessage;			
+		var actual = dogController.encounterMessage;			
 		expect(actual).toEqual('Encounter');
 	});
 	

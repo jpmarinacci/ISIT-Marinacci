@@ -11,7 +11,7 @@ Crafty.c('PlayerCharacter', {
 		this.requires('Actor, Fourway, Collision, spr_mainCharacter, SpriteAnimation')
 		.fourway(4)
 		.stopOnSolids()
-		.onHit('Village', this.visitVillage)
+		.onHit('Enemy', this.visitEnemy)
 		.onHit('Food', this.visitFood)
 		// These next lines define our four animations
 		// each call to .animate specifies:
@@ -76,17 +76,6 @@ Crafty.c('PlayerCharacter', {
             }
         });
 
-		this.bind('goLeft', function() {
-			// this.trigger('NewDirection', {x: 1, y: 0});
-			this._movement.x = this._movement.x - 0.2;
-			// this.x = this.x - 2;
-			// this.animate('PlayerMovingRight', animation_speed, -1);
-		});
-
-		this.bind('stopMove', function() {
-			this.stopMovement();
-		});
-
 		this.bind('youLose', function() {
 			Crafty.scene('Failure');
 		});
@@ -99,10 +88,6 @@ Crafty.c('PlayerCharacter', {
 		return this;
 	},
 
-	stop : function() {
-		// Not sure what this is supposed to do
-	},
-
 	// Stops the movement
 	stopMovement : function() {'use strict';
 		this._speed = 0;
@@ -112,8 +97,8 @@ Crafty.c('PlayerCharacter', {
 		}
 	},
 
-	// Respond to this player visiting a village
-	visitVillage : function(data) {'use strict';
+	// Respond to this player visiting a enemy
+	visitEnemy : function(data) {'use strict';
 		this.stopMovement();
 
 		// If we are in an encounter, then we do nothing until the user
@@ -123,10 +108,10 @@ Crafty.c('PlayerCharacter', {
 			return;
 		}
 
-		Crafty.game.reportEvent("Found Tower: " + data[0].obj._entityName);
+		Crafty.game.reportEvent("Found Hydrant: " + data[0].obj._entityName);
 		if (Crafty.game.encounter(data[0].obj)) {
-			var village = data[0].obj;
-			village.visit();
+			var enemy = data[0].obj;
+			enemy.visit();
 			this.fightMode=false;
 		} else {
 			this.encounterMode = true;

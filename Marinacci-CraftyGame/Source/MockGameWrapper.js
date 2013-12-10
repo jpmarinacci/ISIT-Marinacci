@@ -5,8 +5,8 @@
 angular.module('gameWrapMod', [])
 .factory('gameWrap', function() { 'use strict';
 	return {
-		startGame: function(gameDiv, elfGameService) {
-			Crafty.game = elfGameService;
+		startGame: function(gameDiv, dogGameService) {
+			Crafty.game = dogGameService;
 		},
 
 		trigger: function() {

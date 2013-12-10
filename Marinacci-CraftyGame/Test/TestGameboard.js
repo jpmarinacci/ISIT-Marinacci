@@ -8,11 +8,11 @@ describe("TestGameboard", function() {'use strict';
 	
 	beforeEach(function() {
 		module('gameWrapMod');
-		module('elfGameMod');
-		module('elfPlayer');				
+		module('dogGameMod');
+		module('dogPlayer');				
 	});
 	
-	it("TestGameBoard Check ElfGame Width", inject(function(elfGameService) {
+	it("TestGameBoard Check DogGame Width", inject(function(dogGameService) {
 		var mapGrid = {
 			width : 18,
 			height : 12,
@@ -21,8 +21,8 @@ describe("TestGameboard", function() {'use strict';
 				height : 32
 			}
 		};
-		elfGameService.start(mapGrid);
-		var actual = elfGameService.width();		
+		dogGameService.start(mapGrid);
+		var actual = dogGameService.width();		
 		expect(actual).toEqual(576);
 	}));
 });

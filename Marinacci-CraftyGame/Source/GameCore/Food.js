@@ -11,6 +11,7 @@ Crafty.c('Food', {
 
 	visit: function() { 'use strict';
 		this.destroy();
+		Crafty.audio.play('marioCoin');
 		Crafty.game.encounterFood(this);
 	},
 

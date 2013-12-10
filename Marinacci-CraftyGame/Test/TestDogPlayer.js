@@ -3,36 +3,36 @@
  */
 
 // specs code
-describe("TestElfController", function() {'use strict';
-	var elfController = null;	
+describe("TestDogController", function() {'use strict';
+	var dogController = null;	
 	
 	beforeEach(function() {
-		module('elfPlayer');			
+		module('dogPlayer');			
 	});
 	
 	beforeEach(inject(function($rootScope, $controller, $injector) {
-		elfController = $rootScope.$new();		
-		$controller('ElfController', { $scope: elfController});		
+		dogController = $rootScope.$new();		
+		$controller('DogController', { $scope: dogController});		
 		
 	}));
 
 	it("Check Name", function() {
-		var actual = elfController.name;		
-		expect(actual).toEqual('ElfPlayer');
+		var actual = dogController.name;		
+		expect(actual).toEqual('DogPlayer');
 	});	
 	
 	it("Check Event Note", function() {
-		var actual = elfController.eventNote;		
+		var actual = dogController.eventNote;		
 		expect(actual).toEqual('no messages');
 	});
 	
 	it("Check Debug Messages", function() {
-		var actual = elfController.debugMessages;		
+		var actual = dogController.debugMessages;		
 		expect(actual).toEqual([]);
 	});
 	
 	it("Check move Messages", function() {
-		var actual = elfController.moveMessages;		
+		var actual = dogController.moveMessages;		
 		expect(actual).toEqual([]);
 	});	
 });

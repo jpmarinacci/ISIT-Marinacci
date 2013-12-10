@@ -4,14 +4,14 @@
 
  /* jshint devel: true */
 
-angular.module('elfPlayer', ['elfGameMod'])
+angular.module('dogPlayer', ['dogGameMod'])
 .factory('gameEventService', function($rootScope) { 'use strict';
 	return {
 		message: "",
 
-		towerBroadcast: function(message) {
+		hydrantBroadcast: function(message) {
 			this.message = message;
-			this.broadcastMessage('towerBroadcast');
+			this.broadcastMessage('hydrantBroadcast');
 			return true;
 		},
 
@@ -37,7 +37,7 @@ angular.module('elfPlayer', ['elfGameMod'])
 		}
 	};
 })
-.controller('ElfController', function($scope, gameEventService, elfGameService) { 'use strict';
+.controller('DogController', function($scope, gameEventService, dogGameService) { 'use strict';
 
 	$scope.name = "Fido";
 	$scope.eventNote = "no messages";
@@ -45,11 +45,11 @@ angular.module('elfPlayer', ['elfGameMod'])
 	$scope.debugMessages = [];
 	$scope.moveMessages = [];
 	
-	elfGameService.start();
+	dogGameService.start();
 
-	// This event is fired from inside crafty when a tower is found.
+	// This event is fired from inside crafty when a hydrant is found.
 	// We need to call $apply because we are calling from Crafty, not from Angular.
-	$scope.$on('towerBroadcast', function() {		
+	$scope.$on('hydrantBroadcast', function() {		
 		$scope.$apply(function() { $scope.eventNote = gameEventService.message; });		
 	});
 
@@ -67,10 +67,10 @@ angular.module('elfPlayer', ['elfGameMod'])
 	});
 
 	$scope.goLeft = function() {
-		elfGameService.goLeft();
+		dogGameService.goLeft();
 	};
 
 	$scope.stopMove = function() {
-		elfGameService.stopMove();
+		dogGameService.stopMove();
 	};
 });

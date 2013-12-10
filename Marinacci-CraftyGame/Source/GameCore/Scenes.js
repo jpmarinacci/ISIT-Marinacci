@@ -33,27 +33,26 @@ Crafty.scene('Game', function() { 'use strict';
 				// Place a bush entity at the current tile
 				Crafty.e('Bush').at(x, y);
 				this.gameBoard[x][y] = true;
-			} else if (Math.random() < 0.05 && !this.gameBoard[x][y]) {
+			} else if (Math.random() < 0.02 && !this.gameBoard[x][y]) {
+				//Place a food entity at the current tile
 				Crafty.e('Food').at(x, y);
 				this.gameBoard[x][y] = true;
 			}
 		}
 	}
-
     
-    
-	// Generate up between one and five villages on the map in random locations
-	var max_villages = 5;
-	var villageCount = 0;
-	while (villageCount < 1) {
+	// Generate up between one and five enemys on the map in random locations
+	var max_enemys = 7;
+	var enemyCount = 0;
+	while (enemyCount < 1) {
 		for (var col = 0; col < Crafty.game.map_grid.width; col++) {
 			for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-				if (Math.random() < 0.02) {
-					if (Crafty('Village').length < max_villages && !this.gameBoard[col][row]) {
-						var village = Crafty.e('Village').at(col, row);
-						village.setName(village._entityName.replace('Entity', 'Village'));
-						Crafty.game.newVillage(village);
-						villageCount++;
+				if (Math.random() < 0.03) {
+					if (Crafty('Enemy').length < max_enemys && !this.gameBoard[col][row]) {
+						var enemy = Crafty.e('Enemy').at(col, row);
+						enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
+						Crafty.game.newEnemy(enemy);
+						enemyCount++;
 					}
 				}
 			}
@@ -62,10 +61,10 @@ Crafty.scene('Game', function() { 'use strict';
 	
 	
 
-	// Show the victory screen once all villages are visisted
-	this.show_victory = this.bind('VillageVisited', function() {
-		Crafty.game.sendDebugMessage("Village Length: " + Crafty('Village').length);
-		if (!Crafty('Village').length) {
+	// Show the victory screen once all enemys are visisted
+	this.show_victory = this.bind('EnemyVisited', function() {
+		Crafty.game.sendDebugMessage("Enemy Length: " + Crafty('Enemy').length);
+		if (!Crafty('Enemy').length) {
 			Crafty.scene('Victory');
 		}
 	});
@@ -73,7 +72,7 @@ Crafty.scene('Game', function() { 'use strict';
 	// Remove our event binding from above so that we don't
 	//  end up having multiple redundant event watchers after
 	//  multiple restarts of the game
-	this.unbind('VillageVisited', this.show_victory);
+	this.unbind('EnemyVisited', this.show_victory);
 });
 
 
@@ -129,7 +128,8 @@ Crafty.scene('Loading', function(){ 'use strict';
 	var assets = [
 	'Assets/backgrounds.png', 
 	'Assets/dog.png',
-	'Assets/smb_breakblock.wav'
+	'Assets/smb_kick.wav',
+	'Assets/smb_coin.wav'
 	];
 
 	// Load our sprite map image
@@ -137,7 +137,7 @@ Crafty.scene('Loading', function(){ 'use strict';
 		Crafty.sprite(48, 48, assets[0], {
 			spr_tree : [0, 2],
 			spr_bush : [0, 1],
-			spr_village : [1, 0],
+			spr_enemy : [1, 0],
 			spr_food: [3, 2]			
 		});
 
@@ -148,7 +148,8 @@ Crafty.scene('Loading', function(){ 'use strict';
 
 		// Define our sounds for later use
 		Crafty.audio.add({
-			knock: ['Assets/smb_breakblock.wav']
+			marioKick: ['Assets/smb_kick.wav'],
+			marioCoin: ['Assets/smb_coin.wav']
 		});
 
 		// Display text while loading
