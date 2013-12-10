@@ -20,61 +20,49 @@ Crafty.c('PlayerCharacter', {
 		// map at which the animation set begins
 		// - the number of animation frames *in addition to* the first one
 		.animate('PlayerMovingRight', 0, 0, 2)
-		.animate('PlayerMovingLeft',  0, 2, 2)
+		.animate('PlayerMovingLeft', 0, 2, 2)
 		.animate('PlayerEncounterRight', 0, 1, 2)
-		.animate('PlayerEncounterLeft', 0,3,2);
-		
+		.animate('PlayerEncounterLeft', 0, 3, 2);
+
 		// Watch for a change of direction and switch animations accordingly
 		var animation_speed = 16;
 		var movingLeft = false;
-        var fightMode = false;
+		var fightMode = false;
 		this.bind('NewDirection', function(data) {
 			this.encounterMode = false;
-			if(this.fightMode)
-            {
-            	if (movingLeft)
-            	{
-            		this.playAnimation('PlayerEncounterLeft', animation_speed, -1);
-            	}
-            	else
-            	{
-        			this.playAnimation('PlayerEncounterRight', animation_speed, -1);
-        		}
-            }
-            else if (data.x > 0) {
-                Crafty.game.changeDirectionMessage("Going Right");
-                movingLeft=false;
-                this.playAnimation('PlayerMovingRight', animation_speed, -1);
-                
-            } else if (data.x < 0) {
-                Crafty.game.changeDirectionMessage("Going Left");
-                movingLeft=true;
-                this.playAnimation('PlayerMovingLeft', animation_speed, -1);
-                } else if (data.y > 0) {
-                Crafty.game.changeDirectionMessage("Going Down");
-                if(movingLeft)
-                	{
-                		this.playAnimation('PlayerMovingLeft', animation_speed, -1);
-                	}
-                else
-                {
-                	this.playAnimation('PlayerMovingRight', animation_speed, -1);
-                }
-            } else if (data.y < 0) {
-                Crafty.game.changeDirectionMessage("Going Up");
-                 if(movingLeft)
-                	{
-                		this.playAnimation('PlayerMovingLeft', animation_speed, -1);
-                	}
-                else
-                {
-                	this.playAnimation('PlayerMovingRight', animation_speed, -1);
-                }
-            }
-             else {
-                this.resetAnimation();
-            }
-        });
+			if (this.fightMode) {
+				if (movingLeft) {
+					this.playAnimation('PlayerEncounterLeft', animation_speed, -1);
+				} else {
+					this.playAnimation('PlayerEncounterRight', animation_speed, -1);
+				}
+			} else if (data.x > 0) {
+				Crafty.game.changeDirectionMessage("Going Right");
+				movingLeft = false;
+				this.playAnimation('PlayerMovingRight', animation_speed, -1);
+
+			} else if (data.x < 0) {
+				Crafty.game.changeDirectionMessage("Going Left");
+				movingLeft = true;
+				this.playAnimation('PlayerMovingLeft', animation_speed, -1);
+			} else if (data.y > 0) {
+				Crafty.game.changeDirectionMessage("Going Down");
+				if (movingLeft) {
+					this.playAnimation('PlayerMovingLeft', animation_speed, -1);
+				} else {
+					this.playAnimation('PlayerMovingRight', animation_speed, -1);
+				}
+			} else if (data.y < 0) {
+				Crafty.game.changeDirectionMessage("Going Up");
+				if (movingLeft) {
+					this.playAnimation('PlayerMovingLeft', animation_speed, -1);
+				} else {
+					this.playAnimation('PlayerMovingRight', animation_speed, -1);
+				}
+			} else {
+				this.resetAnimation();
+			}
+		});
 
 		this.bind('youLose', function() {
 			Crafty.scene('Failure');
@@ -104,7 +92,7 @@ Crafty.c('PlayerCharacter', {
 		// If we are in an encounter, then we do nothing until the user
 		// asks to move again.
 		if (this.encounterMode) {
-			this.fightMode=true;
+			this.fightMode = true;
 			return;
 		}
 
@@ -112,7 +100,7 @@ Crafty.c('PlayerCharacter', {
 		if (Crafty.game.encounter(data[0].obj)) {
 			var enemy = data[0].obj;
 			enemy.visit();
-			this.fightMode=false;
+			this.fightMode = false;
 		} else {
 			this.encounterMode = true;
 		}

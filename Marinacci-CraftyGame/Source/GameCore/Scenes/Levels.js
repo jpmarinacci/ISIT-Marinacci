@@ -3,9 +3,10 @@
  */
 
 // Draw the initial game state
-Crafty.scene('Levels', function() { 'use strict';
+Crafty.scene('Levels', function() {'use strict';
 
 	//this.level=1;
+
 	this.boards = [
 
         // Level 1
@@ -45,33 +46,33 @@ Crafty.scene('Levels', function() { 'use strict';
         [2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]]
        ];
        
-	var createEntity = function(name, col, row) {
-    	Crafty.e(name).at(col, row);
-    };
-     
+       var createEntity = function(name, col, row) {
+		Crafty.e(name).at(col, row);
+	};
+
 	var createEntities = function(board) {
-	    for (var x = 0; x < Crafty.game.map_grid.width; x++) {
-	        for (var y = 0; y < Crafty.game.map_grid.height; y++) {
-	            var gridValue = board[y][x];
-	            if (gridValue === 1) {
-	                createEntity('Rock', x, y);
-	            } else if (gridValue === 2) {
-	                createEntity('Bush', x, y);
-	            } else if (gridValue === 3) {
-	                createEntity('Food', x, y);
-	            } else if (gridValue === 4) {
-	                //createEnemy(x, y);
-	                var enemy = Crafty.e('Enemy').at(x, y);
+		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
+			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
+				var gridValue = board[y][x];
+				if (gridValue === 1) {
+					createEntity('Rock', x, y);
+				} else if (gridValue === 2) {
+					createEntity('Bush', x, y);
+				} else if (gridValue === 3) {
+					createEntity('Food', x, y);
+				} else if (gridValue === 4) {
+					//createEnemy(x, y);
+					var enemy = Crafty.e('Enemy').at(x, y);
 					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
 					Crafty.game.newEnemy(enemy);
-	            } else if(gridValue ===5){
+				} else if (gridValue === 5) {
 					//this.player = Crafty.e('PlayerCharacter').at(x, y);
 					var player = createEntity('PlayerCharacter', x, y);
 					Crafty.game.newHero(player);
 					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
-					
-	            }
-	        }
-	    }
-	}; 
+
+				}
+			}
+		}
+	};
 });

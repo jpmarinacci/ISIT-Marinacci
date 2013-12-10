@@ -6,19 +6,19 @@
 
 angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', function(heroDataFactory) {'use strict';
 
-	var entities= {
+	var entities = {
 
 		hero : {
 			//species: this.speciesFactory.species[4],
 			// "class": this.classes[2],
 			hitPoints : 0,
 			damage : 2,
-			
-			loadHeroFromData: function() {
+
+			loadHeroFromData : function() {
 				heroDataFactory.query({}, function(queryResult) {
-            		entities.hero = queryResult[0].hero;
-            	});	
-				
+					entities.hero = queryResult[0].hero;
+				});
+
 			}
 		},
 
@@ -29,7 +29,7 @@ angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', fu
 			};
 		}
 	};
-	
+
 	entities.hero.loadHeroFromData();
 	return entities;
 });

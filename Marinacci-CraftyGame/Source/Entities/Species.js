@@ -4,7 +4,7 @@
 
 
 angular.module('speciesMod', [])
-.factory('speciesFactory', function($http) {
+.factory('speciesFactory', function($http) {'use strict';
 	
 	var species;
 	species.loadSpecies = function() { 
