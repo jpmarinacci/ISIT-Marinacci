@@ -11,7 +11,7 @@ describe("Miles Converter Unit Test", function() {'use strict';
 	
     beforeEach(inject(function($rootScope, $controller) {
         $mockScope = $rootScope.$new();
-        pc = $controller('MileConverterController', { $scope: $mockScope }); 
+        $controller('MileConverterController', { $scope: $mockScope }); 
     }));
     
     it("Test Miles To Feet For One Mile", function() {

@@ -34,7 +34,7 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 			people.hero.hitPoints -= 2;
 			village.tower.hitPoints -= 3;
 		},
-		encounterFood : function(food, count) {
+		encounterFood : function(food) {
 			gameEventService.debugBroadcast("food");
 			gameEventService.encounterBroadcast('Food success');
 			return true;

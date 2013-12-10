@@ -1,9 +1,8 @@
 /**
  * @author Charlie
  */
-angular.module('mileConverterApp', ['ui.bootstrap']);
-
-function MileConverterController($scope) {
+angular.module('mileConverterApp', ['ui.bootstrap'])
+.controller('MileConverterController', function($scope) { 'use strict';
     
     $scope.miles = 0;
     $scope.kilometers = 0;
@@ -31,4 +30,4 @@ function MileConverterController($scope) {
     $scope.convertMilesToKilometers = function(){
     	return $scope.miles * 1.60934;
     };  
-}
+});

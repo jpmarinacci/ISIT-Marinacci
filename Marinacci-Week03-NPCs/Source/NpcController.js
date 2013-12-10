@@ -2,9 +2,8 @@
  * @author Charlie Calvert
  */
 
-angular.module('npcapp', ['ui.bootstrap']);
-
-function NpcController($scope, $dialog) {
+angular.module('npcapp', ['ui.bootstrap'])
+.controller('NpcController', function($scope, $dialog) { 'use strict';
 
     $scope.npcs = [];
     
@@ -63,7 +62,7 @@ function NpcController($scope, $dialog) {
     $scope.npcs.push(npc);
     $scope.edit(npc);
     };
-}
+});
 
 // the dialog is injected in the specified controller
 function EditCtrl($scope, npc, dialog) {
