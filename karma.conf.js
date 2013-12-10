@@ -26,8 +26,8 @@ module.exports = function(config) {'use strict';
 		'Marinacci-Week10-AngularJson/Test/*.js',
 		'Marinacci-Week10-AngularMongo/Source/*.js',
 		'Marinacci-Week10-AngularMongo/Test/*.js',
-		'Marinacci-CraftyGame/Source/**/*.js',
-		'Marinacci-CraftyGame/Test/*.js'
+		'Marinacci-CraftyGame/Source/**/*.js'
+		//,'Marinacci-CraftyGame/Test/*.js'
 		],
 
 		// list of files to exclude

@@ -29,17 +29,17 @@ describe("Test Music", function() {'use strict';
 		$httpBackend.verifyNoOutstandingRequest();
 	});
 
-	/*it("Test loadAlbumsFromJson - musician field", function() {
+	it("Test loadAlbumsFromJson - musician field", function() {
 		$httpBackend.expectGET('albums.json').respond({
 			"albums" : [{
 				"musician" : "Jimi Hendrix",
 				"album" : "Are You Experencied"
 			}]
 		});
-		searchController.loadAlbums();
+		searchController.loadAlbumsFromJson();
 		$httpBackend.flush();
 		expect(searchController.albums.musician).toEqual("Jimi Hendrix");
-	});*/
+	});
 
 	//Example Test
 	/*it("Test load json name", function() {
