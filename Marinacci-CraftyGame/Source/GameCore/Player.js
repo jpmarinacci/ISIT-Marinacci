@@ -97,7 +97,7 @@ Crafty.c('PlayerCharacter', {
 		}
 	},
 
-	// Respond to this player visiting a enemy
+	// Respond to this player visiting an enemy
 	visitEnemy : function(data) {'use strict';
 		this.stopMovement();
 
@@ -117,8 +117,6 @@ Crafty.c('PlayerCharacter', {
 			this.encounterMode = true;
 		}
 	},
-
-	// visitFoodStart: function() {},
 
 	visitFood : function(data) {'use strict';
 		this.stopMovement();
