@@ -33,7 +33,7 @@ Crafty.c('Enemy', {
 				break;
 		}
 		//this.destroy();*/
-		Crafty.trigger('EnemyVisited', this);
+		Crafty.trigger('EnemyDestroyed', this);
 	}
 });
 

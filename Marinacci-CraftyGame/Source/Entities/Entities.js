@@ -9,7 +9,7 @@ angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', fu
 	var entities= {
 
 		hero : {
-			//species: this.species[4],
+			//species: this.speciesFactory.species[4],
 			// "class": this.classes[2],
 			hitPoints : 0,
 			damage : 2,

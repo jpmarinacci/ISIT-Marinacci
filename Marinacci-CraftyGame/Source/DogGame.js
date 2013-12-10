@@ -65,15 +65,9 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 			enemy.hydrant = entities.hydrant();
 			return this.enemys.push(enemy);
 		},
-
-		goLeft : function() {
-			Crafty.trigger('goLeft', Crafty);
-			return true;
-		},
-
-		stopMove : function() {
-			Crafty.trigger('stopMove', Crafty);
-			return true;
+		
+		newHero : function(player){
+			entities.hero=player;
 		},
 
 		// Get width of the game screen in pixels
