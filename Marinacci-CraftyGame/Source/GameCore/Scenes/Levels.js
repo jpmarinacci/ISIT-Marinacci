@@ -66,7 +66,6 @@ Crafty.scene('Levels', function() { 'use strict';
 					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
 					Crafty.game.newEnemy(enemy);
 	            } else if(gridValue ===5){
-	            	// Player character, placed at x, y on our grid
 					//this.player = Crafty.e('PlayerCharacter').at(x, y);
 					var player = createEntity('PlayerCharacter', x, y);
 					Crafty.game.newHero(player);

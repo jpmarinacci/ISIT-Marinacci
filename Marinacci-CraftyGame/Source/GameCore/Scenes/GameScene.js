@@ -38,19 +38,23 @@ Crafty.scene('Game', function() { 'use strict';
 		}
 	}
    
-	// Generate up to five Enemys on the map in random locations
-	var max_enemies = 5;
-	for (var col = 0; col < Crafty.game.map_grid.width; col++) {
-		for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-			if (Math.random() < 0.02) {
-				if (Crafty('Enemy').length < max_enemies && !this.gameBoard[col][row]) {
-					var enemy = Crafty.e('Enemy').at(col, row);
-					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
-					Crafty.game.newEnemy(enemy);
+			// Generate up between one and five enemys on the map in random locations
+			var max_enemys = 7;
+			var enemyCount = 0;
+			while (enemyCount < 1) {
+				for (var col = 0; col < Crafty.game.map_grid.width; col++) {
+					for (var row = 0; row < Crafty.game.map_grid.height; row++) {
+						if (Math.random() < 0.03) {
+							if (Crafty('Enemy').length < max_enemys && !this.gameBoard[col][row]) {
+								var enemy = Crafty.e('Enemy').at(col, row);
+								enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
+								Crafty.game.newEnemy(enemy);
+								enemyCount++;
+							}
+						}
+					}
 				}
 			}
-		}
-	}
 	
 	
 
