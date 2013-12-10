@@ -34,7 +34,7 @@ describe("main controller test", function() {'use strict';
         expect(mainController.name).toEqual("mainController");
     });    
     
-    it("can find tower hitpoints", function() {
+    it("can get data", function() {
         $httpBackend.expectGET('https://api.mongolab.com/api/1/databases/elvenlab01/collections/address?apiKey=qfSxFoUGHBA1EuUlqhux_op2fy6oF_wy')
         .respond([
             {presidentName: "George Washington", termEnd: 1, termStart: 11},
