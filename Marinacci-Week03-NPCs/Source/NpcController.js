@@ -3,77 +3,77 @@
  */
 
 angular.module('npcapp', ['ui.bootstrap'])
-.controller('NpcController', function($scope, $dialog) { 'use strict';
+.controller('NpcController', function($scope, $dialog) {'use strict';
 
-    $scope.npcs = [];
-    
-    var defaultNpcs = [{
-        npcName : 'Lucy',
-        hitPoints : 25,
-        health : 32,
-        totalMoves : 0
-    },{
-        npcName : 'Defaulto',
-        hitPoints : 8,
-        health : 6,
-        totalMoves : 7
-    }, {
-        npcName : 'Defaulta',
-        hitPoints : 5,
-        health : 3,
-        totalMoves : 0
-    }, {
-        npcName : 'Reverta',
-        hitPoints : 9,
-        health : 9,
-        totalMoves : 9
-    }];
-    
-    $scope.npcs=defaultNpcs;
+	$scope.npcs = [];
 
-    var dialogOptions = {
-        controller : 'EditCtrl',
-        templateUrl : 'itemEdit.html'
-    };
+	var defaultNpcs = [{
+		npcName : 'Lucy',
+		hitPoints : 25,
+		health : 32,
+		totalMoves : 0
+	}, {
+		npcName : 'Defaulto',
+		hitPoints : 8,
+		health : 6,
+		totalMoves : 7
+	}, {
+		npcName : 'Defaulta',
+		hitPoints : 5,
+		health : 3,
+		totalMoves : 0
+	}, {
+		npcName : 'Reverta',
+		hitPoints : 9,
+		health : 9,
+		totalMoves : 9
+	}];
 
-    $scope.edit = function(npc) {
+	$scope.npcs = defaultNpcs;
 
-        var itemToEdit = npc;
+	var dialogOptions = {
+		controller : 'EditCtrl',
+		templateUrl : 'itemEdit.html'
+	};
 
-        $dialog.dialog(angular.extend(dialogOptions, {
-            resolve : {
-                npc : angular.copy(itemToEdit)
-            }
-        })).open().then(function(result) {
-            if (result) {
-                angular.copy(result, itemToEdit);
-            }
-            itemToEdit = undefined;
-        });
-    };
-    
-    $scope.newNPC = function(){
-    	var npc = {
-    		npcName : '',
-		    hitPoints : 0,
-		    health : 0,
-		    totalMoves : 0
-		    };
-    $scope.npcs.push(npc);
-    $scope.edit(npc);
-    };
+	$scope.edit = function(npc) {
+
+		var itemToEdit = npc;
+
+		$dialog.dialog(angular.extend(dialogOptions, {
+			resolve : {
+				npc : angular.copy(itemToEdit)
+			}
+		})).open().then(function(result) {
+			if (result) {
+				angular.copy(result, itemToEdit);
+			}
+			itemToEdit = undefined;
+		});
+	};
+
+	$scope.newNPC = function() {
+		var npc = {
+			npcName : '',
+			hitPoints : 0,
+			health : 0,
+			totalMoves : 0
+		};
+		$scope.npcs.push(npc);
+		$scope.edit(npc);
+	};
 });
 
 // the dialog is injected in the specified controller
-function EditCtrl($scope, npc, dialog) {
+function EditCtrl($scope, npc, dialog) {'use strict';
 
-    $scope.npc = npc;
+	$scope.npc = npc;
 
-    $scope.save = function() {
-        dialog.close($scope.npc);
-    };
+	$scope.save = function() {
+		dialog.close($scope.npc);
+	};
 
-    $scope.close = function() {
-        dialog.close(undefined);
-    };
+	$scope.close = function() {
+		dialog.close(undefined);
+	};
 }

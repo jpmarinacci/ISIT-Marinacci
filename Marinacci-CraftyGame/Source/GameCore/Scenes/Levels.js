@@ -5,7 +5,7 @@
 // Draw the initial game state
 Crafty.scene('Levels', function() { 'use strict';
 
-	this.level=1;
+	//this.level=1;
 	this.boards = [
 
         // Level 1
@@ -48,8 +48,7 @@ Crafty.scene('Levels', function() { 'use strict';
 	var createEntity = function(name, col, row) {
     	Crafty.e(name).at(col, row);
     };
-    
-    
+     
 	var createEntities = function(board) {
 	    for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 	        for (var y = 0; y < Crafty.game.map_grid.height; y++) {
