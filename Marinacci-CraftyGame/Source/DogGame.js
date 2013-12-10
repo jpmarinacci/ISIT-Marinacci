@@ -8,7 +8,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 		map_grid : null,
 		misses: 0,
 		defaultMapGrid : {
-			width : 14,
+			width : 16,
 			height : 10,
 			tile : {
 				width : 48,

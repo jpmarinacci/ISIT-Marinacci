@@ -9,10 +9,10 @@ Crafty.c('Actor', {
     },
 });
 
-// A Tree is Solid so we can detect collisions, see Player
-Crafty.c('Tree', {
+// A Rock is Solid so we can detect collisions, see Player
+Crafty.c('Rock', {
     init: function() { 'use strict';
-        this.requires('Actor, Solid, spr_tree');
+        this.requires('Actor, Solid, spr_rock');
     },
 });
 
