@@ -39,9 +39,9 @@ angular.module('elfPlayer', ['elfGameMod'])
 })
 .controller('ElfController', function($scope, gameEventService, elfGameService) { 'use strict';
 
-	$scope.name = "ElfPlayer";
+	$scope.name = "Fido";
 	$scope.eventNote = "no messages";
-	$scope.crazyFoo = "";
+	$scope.messageDisplay = "";
 	$scope.debugMessages = [];
 	$scope.moveMessages = [];
 	
@@ -74,6 +74,3 @@ angular.module('elfPlayer', ['elfGameMod'])
 		elfGameService.stopMove();
 	};
 });
-
-// ElfPlayer.$inject = ['$scope', 'gameEventService'];
-

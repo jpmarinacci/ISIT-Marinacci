@@ -11,7 +11,7 @@ angular.module('entitiesMod', ['speciesMod', 'entityData']).factory('people', fu
 		hero : {
 			//species: this.species[4],
 			// "class": this.classes[2],
-			hitPoints : 15,
+			hitPoints : 0,
 			damage : 2,
 			
 			getFromDataBase: function() {

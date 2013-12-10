@@ -29,8 +29,7 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 		sendDebugMessage : function(message) {
 			return gameEventService.debugBroadcast(message);
 		},
-
-		rollD3 : function(village) {
+		encounterVillage : function(village) {
 			people.hero.hitPoints -= 2;
 			village.tower.hitPoints -= 3;
 		},
@@ -42,7 +41,7 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 		encounter : function(village) {
 
 			gameEventService.debugBroadcast('Hydrant hit points: ' + village.tower.hitPoints);
-			this.rollD3(village);
+			this.encounterVillage(village);
 			gameEventService.debugBroadcast('Hit Hydrant, hydrant health: ' + village.tower.hitPoints + ' hero health: ' + people.hero.hitPoints);
 			if (people.hero.hitPoints > 0) {
 

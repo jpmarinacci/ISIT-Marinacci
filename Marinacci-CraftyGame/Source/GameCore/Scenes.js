@@ -42,15 +42,19 @@ Crafty.scene('Game', function() { 'use strict';
 
     
     
-	// Generate up to five villages on the map in random locations
+	// Generate up between one and five villages on the map in random locations
 	var max_villages = 5;
-	for (var col = 0; col < Crafty.game.map_grid.width; col++) {
-		for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-			if (Math.random() < 0.02) {
-				if (Crafty('Village').length < max_villages && !this.gameBoard[col][row]) {
-					var village = Crafty.e('Village').at(col, row);
-					village.setName(village._entityName.replace('Entity', 'Village'));
-					Crafty.game.newVillage(village);
+	var villageCount = 0;
+	while (villageCount < 1) {
+		for (var col = 0; col < Crafty.game.map_grid.width; col++) {
+			for (var row = 0; row < Crafty.game.map_grid.height; row++) {
+				if (Math.random() < 0.02) {
+					if (Crafty('Village').length < max_villages && !this.gameBoard[col][row]) {
+						var village = Crafty.e('Village').at(col, row);
+						village.setName(village._entityName.replace('Entity', 'Village'));
+						Crafty.game.newVillage(village);
+						villageCount++;
+					}
 				}
 			}
 		}
@@ -73,12 +77,12 @@ Crafty.scene('Game', function() { 'use strict';
 });
 
 
-// Victory scene : Announce victory, set up a new game
+// Victory scene : Announce victory, set up a new level
 Crafty.scene('Victory', function() { 'use strict';
 	// Display some text in celebration of the victory
 	Crafty.e('2D, DOM, Text')
 		.attr({ x: 0, y: 0 })
-		.text('You are victorious!');
+		.text("<div id='VictoryScene'>Level Passed!</div>").textFont({ family: 'Segoe',  size: '44px', weight: 'bold' }).textColor('#FF0000');
 
 	// restart the game when a key is pressed
 	this.restart = function() {
