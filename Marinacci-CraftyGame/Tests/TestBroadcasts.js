@@ -34,7 +34,7 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 	});
 	
 	it("Change Tower Broadcast", function() {
-		gameEventService.towerBroadcast("Goober");
+		gameEventService.hydrantBroadcast("Goober");
 		var actual = elfController.eventNote;			
 		expect(actual).toEqual('Goober');
 	});

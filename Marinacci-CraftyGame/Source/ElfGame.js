@@ -1,8 +1,8 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entities', 'gameWrapMod'])
-.factory('dogGameService', function(gameEventService, people, gameWrap) {'use strict';
-
+angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
+.factory('elfGameService', function(gameEventService, people, gameWrap) {
+	'use strict';
 	return {
 
 		map_grid : null,
@@ -19,15 +19,15 @@ angular.module('dogGameMod', ['entities', 'gameWrapMod'])
 		villages : [],
 
 		reportEvent : function(message) {
-			gameEventService.towerBroadcast(message);
+			return gameEventService.towerBroadcast(message);
 		},
 
 		changeDirectionMessage : function(message) {
-			gameEventService.changeDirectionBroadcast(message);
+			return gameEventService.changeDirectionBroadcast(message);
 		},
 
 		sendDebugMessage : function(message) {
-			gameEventService.debugBroadcast(message);
+			return gameEventService.debugBroadcast(message);
 		},
 
 		rollD3 : function(village) {
@@ -65,7 +65,17 @@ angular.module('dogGameMod', ['entities', 'gameWrapMod'])
 
 		newVillage : function(village) {
 			village.tower = people.tower();
-			this.villages.push(village);
+			return this.villages.push(village);
+		},
+
+		goLeft : function() {
+			Crafty.trigger('goLeft', Crafty);
+			return true;
+		},
+
+		stopMove : function() {
+			Crafty.trigger('stopMove', Crafty);
+			return true;
 		},
 
 		// Get width of the game screen in pixels
@@ -77,10 +87,11 @@ angular.module('dogGameMod', ['entities', 'gameWrapMod'])
 		height : function() {
 			return this.map_grid.height * this.map_grid.tile.height;
 		},
-		
+
 		initMapGrid : function(mapGrid) {
 			this.map_grid = mapGrid;
 		},
+
 		// Initialize and start our game
 		start : function(mapGrid) {
 			// Start crafty

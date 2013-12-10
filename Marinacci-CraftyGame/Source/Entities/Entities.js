@@ -4,7 +4,7 @@
 
 /* global angular:true */
 
-angular.module('entities', ['speciesMod', 'entityData']).factory('people', function(entityDataFactory) {'use strict';
+angular.module('entitiesMod', ['speciesMod', 'entityData']).factory('people', function(entityDataFactory) {'use strict';
 
 	var entities= {
 
