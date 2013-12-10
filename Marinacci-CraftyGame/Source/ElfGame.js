@@ -57,8 +57,7 @@ angular.module('elfGameMod', ['entitiesMod', 'gameWrapMod'])
 			else
 			{
 				people.hero.hitPoints=20;
-				Crafty.scene('Defeat');
-				
+				Crafty.scene('Defeat');			
 			}
 		},
 
