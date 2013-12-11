@@ -1,15 +1,15 @@
 /**
  * @author JP
  */
-var app = angular.module('mongoMusicMod', ['ngResource']).constant('CONFIG', {
+var app = angular.module('mongoMusicMod', ['ngResource']).constant('MUSICCONFIG', {
 	DB_NAME : 'jpdata',
 	COLLECTION : 'Music',
 	API_KEY : '8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG'
-}).factory('mongoMusicFactory', function($resource, CONFIG) {'use strict';
+}).factory('mongoMusicFactory', function($resource, MUSICCONFIG) {'use strict';
 	console.log('music data factory called');
 
-	var music = $resource('https://api.mongolab.com/api/1/databases/' + CONFIG.DB_NAME + '/collections/' + CONFIG.COLLECTION + '/:id', {
-		apiKey : CONFIG.API_KEY
+	var music = $resource('https://api.mongolab.com/api/1/databases/' + MUSICCONFIG.DB_NAME + '/collections/' + MUSICCONFIG.COLLECTION + '/:id', {
+		apiKey : MUSICCONFIG.API_KEY
 	}, {
 		update : {
 			method : 'PUT'

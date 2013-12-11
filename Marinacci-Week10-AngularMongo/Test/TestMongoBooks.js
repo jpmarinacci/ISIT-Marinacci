@@ -3,8 +3,9 @@
  */
 
 describe("Test Mongo Books", function() {'use strict';
-	var searchController = null;
+	var booksSearchController = null;
 	var bookFactory = null;
+	var $httpBackend = null;
 
 	beforeEach(function() {
 		module('mongoMusicAndBooksApp');
@@ -12,11 +13,21 @@ describe("Test Mongo Books", function() {'use strict';
 	});
 
 	beforeEach(inject(function($rootScope, $controller, $injector) {
-		searchController = $rootScope.$new();
+		booksSearchController = $rootScope.$new();
 		$controller('SearchController', {
-			$scope : searchController
+			$scope : booksSearchController
 		});
 		bookFactory = $injector.get('bookFactory');
 	}));
-
+	
+	beforeEach(inject(function(_$httpBackend_) {
+        $httpBackend = _$httpBackend_;
+    }));
+    
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+	
+	
 }); 

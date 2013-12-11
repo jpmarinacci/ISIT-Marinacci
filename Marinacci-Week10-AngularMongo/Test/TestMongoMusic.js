@@ -3,48 +3,72 @@
  */
 
 describe("Test Mongo Music", function() {'use strict';
-	var searchController = null;
+	var musicSearchController = null;
 	var musicFactory = null;
+	var $httpBackend = null;
+	var configurationData = null;
 
 	beforeEach(function() {
 		module('mongoMusicAndBooksApp');
 		module('mongoMusicMod');
+		module('configMod');
 	});
 
 	beforeEach(inject(function($rootScope, $controller, $injector) {
-		searchController = $rootScope.$new();
+		//configurationData = $injector.get();
+		musicSearchController = $rootScope.$new();
 		$controller('SearchController', {
-			$scope : searchController
+			$scope : musicSearchController
 		});
-		musicFactory = $injector.get('musicFactory');
+		//musicFactory = $injector.get('musicFactory');
+		
 	}));
+	
+	beforeEach(inject(function(_$httpBackend_) {
+        $httpBackend = _$httpBackend_;
+    }));
+    
+    afterEach(function() {
+        $httpBackend.verifyNoOutstandingExpectation();
+        $httpBackend.verifyNoOutstandingRequest();
+    });
+    it("controller exists", function(){
+    	expect(musicSearchController).toNotEqual(null);
+    });
+    
 	it("can get music data", function() {
-		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/address?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG')
-		.respond([{
-			"albums" : [{
+		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/Music?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG')
+		.respond([
+			{
 				"musician" : "Beatles",
 				"album" : "Abbey Road"
-			}, {
+			}, 
+			{
 				"musician" : "Rolling Stones",
 				"album" : "Get Yer Ya Ya's Out"
-			}, {
+			},
+			 {
 				"musician" : "Led Zeppelin",
 				"album" : "Houses of the Holy"
-			}, {
+			},
+			{
 				"musician" : "Pink Floyd",
 				"album" : "Dark Side of the Moon"
-			}, {
+			},
+			 {
 				"musician" : "Doors",
 				"album" : "L.A. Woman"
-			}, {
+			}, 
+			{
 				"musician" : "Eagles",
 				"album" : "Hotel California"
 			}]
-		}]);
-		searchController.loadAlbumsFromData();
+		);
+		musicSearchController.loadAlbumsFromData();
 		$httpBackend.flush();
-		expect(searchController.albums[0].musician).toEqual('Beatles');
-	});
+		expect(musicSearchController.albums[0].musician).toEqual('Beatles');
+		//expect(musicSearchController.albums[0].albums.musician).toEqual('Beatles');
+	}); 
 	//Example Test
 	/*it("can get data", function() {
 		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/elvenlab01/collections/address?apiKey=qfSxFoUGHBA1EuUlqhux_op2fy6oF_wy')

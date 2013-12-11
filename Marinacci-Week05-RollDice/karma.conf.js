@@ -8,26 +8,13 @@ module.exports = function(config) {'use strict';
 		frameworks : ['jasmine', 'commonjs'],
 
 		// list of files / patterns to load in the browser
-		files : ['mainLibrary/angular.js',
-		'mainLibrary/angular-mocks.js',
-		'mainLibrary/angular-resource.js',
-		'mainLibrary/jquery-1.8.3.min.js',
-		'mainLibrary/ui-bootstrap-tpls-0.1.0.js',
-		'Marinacci-CraftyGame/Library/crafty.js',
-		'Marinacci-Week03-NPCs/Source/NpcController.js',
-		'Marinacci-Week03-NPCs/Test/TestNpcs.js',
-		'Marinacci-Week04-UnitTests/Source/MileConverter.js',
-		'Marinacci-Week04-UnitTests/Test/TestMilesConverter.js',
-		'Marinacci-Week05-RollDice/Source/RollDice.js',
-		'Marinacci-Week05-RollDice/Test/TestRollDice.js',
-		'Marinacci-Week10-AngularModules/Source/*.js',
-		'Marinacci-Week10-AngularModules/Test/*.js',
-		'Marinacci-Week10-AngularJson/Source/*.js',
-		'Marinacci-Week10-AngularJson/Test/*.js',
-		'Marinacci-Week10-AngularMongo/Source/*.js',
-		'Marinacci-Week10-AngularMongo/Test/*.js',
-		'Marinacci-CraftyGame/Source/**/*.js'
-		//,'Marinacci-CraftyGame/Test/*.js'
+		files : ['../mainLibrary/angular.js',
+		'../mainLibrary/angular-mocks.js',
+		'../mainLibrary/angular-resource.js',
+		'../mainLibrary/jquery-1.8.3.min.js',
+		'../mainLibrary/ui-bootstrap-tpls-0.1.0.js',
+		'Source/RollDice.js',
+		'Test/TestRollDice.js'
 		],
 
 		// list of files to exclude
@@ -38,8 +25,7 @@ module.exports = function(config) {'use strict';
 		],
 
 		preprocessors : {
-			'client/*.js' : ['commonjs', 'coverage'],
-			'test/client/*.js' : ['commonjs']
+			'Source/*.js' : ['commonjs', 'coverage', 'junit']
 		},
 
 		// use dots reporter, as travis terminal does not support escaping sequences

@@ -1,15 +1,15 @@
 /**
  * @author JP
  */
-var app = angular.module('mongoBooksMod', ['ngResource']).constant('CONFIG', {
+var app = angular.module('mongoBooksMod', ['ngResource']).constant('BOOKSCONFIG', {
 	DB_NAME : 'jpdata',
 	COLLECTION : 'Books',
 	API_KEY : '8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG'
-}).factory('mongoBookFactory', function($resource, CONFIG) {'use strict';
+}).factory('mongoBookFactory', function($resource, BOOKSCONFIG) {'use strict';
 	console.log('book data factory called');
 
-	var books = $resource('https://api.mongolab.com/api/1/databases/' + CONFIG.DB_NAME + '/collections/' + CONFIG.COLLECTION + '/:id', {
-		apiKey : CONFIG.API_KEY
+	var books = $resource('https://api.mongolab.com/api/1/databases/' + BOOKSCONFIG.DB_NAME + '/collections/' + BOOKSCONFIG.COLLECTION + '/:id', {
+		apiKey : BOOKSCONFIG.API_KEY
 	}, {
 		update : {
 			method : 'PUT'

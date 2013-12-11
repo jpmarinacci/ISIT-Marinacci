@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 31.0.1650 (Windows 7)" package="undefined" timestamp="2013-12-11T03:45:29" id="0" hostname="Flash" tests="6" errors="0" failures="0" time="0.063">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"/>
+    </properties>
+    <testcase name="Test Roll 4 Sided Dice" time="0.047" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <testcase name="Test Roll 6 Sided Dice" time="0" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <testcase name="Test Roll 10 Sided Dice" time="0.016" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <testcase name="Test Roll 20 Sided Dice" time="0" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <testcase name="Test Roll 2 Six Sided Dice" time="0" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <testcase name="Test Roll 3 Six Sided Dice" time="0" classname="Chrome 31.0.1650 (Windows 7).Roll Dice Unit Test"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

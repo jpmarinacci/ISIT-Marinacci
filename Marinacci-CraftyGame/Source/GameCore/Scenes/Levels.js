@@ -15,7 +15,7 @@ Crafty.scene('Levels', function() {'use strict';
         [1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1],
         [1, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 4, 0, 1],
         [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -23,7 +23,7 @@ Crafty.scene('Levels', function() {'use strict';
         
         // Level 2
         [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 4, 2],
         [2, 0, 4, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 4, 2],
         [2, 0, 0, 0, 0, 0, 1, 0, 3, 1, 0, 0, 0, 0, 0, 2],
         [2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 4, 2],
@@ -40,7 +40,7 @@ Crafty.scene('Levels', function() {'use strict';
         [2, 3, 0, 2, 2, 2, 3, 0, 3, 2, 0, 2, 3, 0, 0, 1],
         [1, 3, 0, 2, 0, 2, 3, 3, 3, 2, 2, 0, 3, 0, 0, 2],
         [2, 3, 3, 2, 0, 2, 3, 0, 3, 2, 0, 2, 3, 3, 3, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+        [1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
         [2, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 4, 0, 0, 1],
         [1, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 0, 2],
         [2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]]
@@ -48,9 +48,9 @@ Crafty.scene('Levels', function() {'use strict';
        
        var createEntity = function(name, col, row) {
 		Crafty.e(name).at(col, row);
-	};
-
-	var createEntities = function(board) {
+		};
+		
+		var createEntities = function(board) {
 		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
 				var gridValue = board[y][x];
@@ -75,4 +75,14 @@ Crafty.scene('Levels', function() {'use strict';
 			}
 		}
 	};
+	
+	// A 2D array to keep track of all gameBoard tiles
+	this.gameBoard = new Array(Crafty.game.map_grid.width);
+	for (var i = 0; i < Crafty.game.map_grid.width; i++) {
+		this.gameBoard[i] = new Array(Crafty.game.map_grid.height);
+		for (var j = 0; j < Crafty.game.map_grid.height; j++) {
+			this.gameBoard[i][j] = false;
+		}
+	}
+	createEntities(this.gameboard);
 });
