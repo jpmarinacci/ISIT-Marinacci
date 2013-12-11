@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 31.0.1650 (Windows 7)" package="undefined" timestamp="2013-12-11T18:09:33" id="0" hostname="Xavier" tests="14" errors="0" failures="0" time="0.047">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"/>
+    </properties>
+    <testcase name="gets bookFactory data" time="0.031" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="bookFactory book data is correct" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="gets book from author" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="gets author from book" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="search controller gets books" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="search controller gets book from author" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="search controller gets author from book" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Books"/>
+    <testcase name="gets musicFactory data" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="musicFactory album data is correct" time="0.016" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="gets musician from album" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="gets album from musician" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="search controller gets albums" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="search controller gets musician from album" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <testcase name="search controller gets album from musician" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Music"/>
+    <system-out><![CDATA[
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>

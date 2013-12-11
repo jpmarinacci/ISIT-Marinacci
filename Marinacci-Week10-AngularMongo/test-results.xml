@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="Chrome 31.0.1650 (Windows 7)" package="undefined" timestamp="2013-12-11T18:06:48" id="0" hostname="Xavier" tests="4" errors="0" failures="0" time="0.032">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36"/>
+    </properties>
+    <testcase name="controller exists" time="0.032" classname="Chrome 31.0.1650 (Windows 7).Test Mongo Books"/>
+    <testcase name="can get books data" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Mongo Books"/>
+    <testcase name="controller exists" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Mongo Music"/>
+    <testcase name="can get music data" time="0" classname="Chrome 31.0.1650 (Windows 7).Test Mongo Music"/>
+    <system-out><![CDATA[Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'music data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'book data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'music data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'book data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 6,Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'music data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'book data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'music data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 'book data factory called',Chrome 31.0.1650 (Windows 7) LOG: LOG
+ 6
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
