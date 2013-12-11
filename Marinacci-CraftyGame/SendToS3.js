@@ -144,5 +144,6 @@ function walkDirs(folderName) { 'use strict';
 walkDirs('Assets');
 walkDirs('Library');
 walkDirs('Source');
+walkDirs('Style');
 writeFile('index.html', '/index.html', false);
 listBuckets(s3);
