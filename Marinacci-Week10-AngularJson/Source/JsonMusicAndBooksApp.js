@@ -2,8 +2,8 @@
  * @author JP
  */
 
-var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'])
-.controller('SearchController', function($scope, $http, musicFactory, bookFactory) { 'use strict';
+var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod', 'configMod'])
+.controller('SearchController', function($scope, $http, musicFactory, bookFactory, configurationData) { 'use strict';
 	 
 	$scope.loadAlbumsFromJson = function() { 
 	
@@ -18,7 +18,7 @@ var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'
 			console.log(data, status, headers, config);
 			throw new Error('Could not load albums from Json file');
 		});
-	}();
+	};
 	
 	$scope.getMusicianFromAlbum = function(){
 		$scope.musicianResult = musicFactory.getMusicanFromAlbum($scope.albums, $scope.album);
@@ -41,7 +41,7 @@ var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'
 			console.log(data, status, headers, config);
 			throw new Error('Could not load books from Json file');
 		});
-	}();
+	};
 	
 	$scope.getBookFromAuthor= function(){
 		$scope.bookResult = bookFactory.getBookFromAuthor($scope.books, $scope.author);
@@ -51,4 +51,8 @@ var app = angular.module('jsonMusicAndBooksApp', ['jsonMusicMod', 'jsonBooksMod'
 		$scope.authorResult = bookFactory.getAuthorFromBook($scope.books, $scope.book);
 	};
 
+	if (configurationData.testing === false) {
+		$scope.loadAlbumsFromJson();
+		$scope.loadBooksFromJson();
+	}
 });

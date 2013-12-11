@@ -18,7 +18,6 @@ describe("Test Mongo Music", function() {'use strict';
 		$controller('SearchController', {
 			$scope : musicSearchController
 		});
-
 	}));
 
 	beforeEach(inject(function(_$httpBackend_) {
