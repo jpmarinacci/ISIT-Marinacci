@@ -4,7 +4,6 @@
 
 describe("Test Mongo Music", function() {'use strict';
 	var musicSearchController = null;
-	var musicFactory = null;
 	var $httpBackend = null;
 	var configurationData = null;
 
@@ -15,12 +14,10 @@ describe("Test Mongo Music", function() {'use strict';
 	});
 
 	beforeEach(inject(function($rootScope, $controller, $injector) {
-		//configurationData = $injector.get();
 		musicSearchController = $rootScope.$new();
 		$controller('SearchController', {
 			$scope : musicSearchController
 		});
-		//musicFactory = $injector.get('musicFactory');
 		
 	}));
 	
@@ -32,6 +29,7 @@ describe("Test Mongo Music", function() {'use strict';
         $httpBackend.verifyNoOutstandingExpectation();
         $httpBackend.verifyNoOutstandingRequest();
     });
+    
     it("controller exists", function(){
     	expect(musicSearchController).toNotEqual(null);
     });
@@ -67,27 +65,32 @@ describe("Test Mongo Music", function() {'use strict';
 		musicSearchController.loadAlbumsFromData();
 		$httpBackend.flush();
 		expect(musicSearchController.albums[0].musician).toEqual('Beatles');
-		//expect(musicSearchController.albums[0].albums.musician).toEqual('Beatles');
 	}); 
-	//Example Test
-	/*it("can get data", function() {
-		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/elvenlab01/collections/address?apiKey=qfSxFoUGHBA1EuUlqhux_op2fy6oF_wy')
-		.respond([{
-			presidentName : "George Washington",
-			termEnd : 1,
-			termStart : 11
-		}, {
-			presidentName : "John Adams",
-			termEnd : 2,
-			termStart : 22
-		}, {
-			presidentName : "Thomas Jefferson",
-			termEnd : 3,
-			termStart : 33
-		}]);
-		mainController.loadData();
+	
+	it("can get musician", function(){
+    	$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/Music?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG')
+		.respond([
+			{
+				"musician" : "Jimi Hendrix",
+				"album" : "Are You Experienced"
+			}, 
+			{
+				"musician" : "Scorpions",
+				"album" : "Crazy World"
+			}]
+		);
+		musicSearchController.loadAlbumsFromData();
 		$httpBackend.flush();
-		expect(mainController.presidents[0].presidentName).toEqual('George Washington');
-	});*/
+		expect(musicSearchController.albums[0].musician).toEqual('Beatles');
+    });
+    
+	/*
+	music.prototype.getMusician = function() {
+		return this.musician;
+	};
 
+	music.prototype.getAlbum = function() {
+		return this.album;
+	};*/
+	
 });

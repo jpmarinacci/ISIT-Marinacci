@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
 <html ng-app='mongoMusicAndBooksApp'>
   <head>
-  	<title>Week 10 - Angualr Modules</title>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Angular Mongo Unit Testing">
+    <meta name="author" content="JP">
+    <link rel="shortcut icon" href="../mainAssets/World.ico">
+  	<title>Week 10 - Angualar Mongo</title>
   	<script src="../mainLibrary/jquery-1.8.3.min.js"></script>
   	<script src="../mainLibrary/angular.js"></script>
   	<script src="../mainLibrary/angular-resource.js"></script>
@@ -15,30 +19,30 @@
   <body>
   <div ng-controller='SearchController'>
   <div id='musicPanel'>   
-    <span class="caption">Search all albums: </span> <input ng-model="search.$"> <br>
-    <span class="caption">Search musician: </span> <input ng-model="search.musician"><br>
-    <span class="caption">Search album: </span> <input ng-model="search.album"><br>
+    <span class="caption">Search all albums: </span> <input ng-model="searchMusic.$"> <br>
+    <span class="caption">Search musician: </span> <input ng-model="searchMusic.musician"><br>
+    <span class="caption">Search album: </span> <input ng-model="searchMusic.album"><br>
     
     Use exact match <input type="checkbox" ng-model="strict"><br>
     <hr/>
     <table class="searchObjResults">
       <tr><th>Musician</th><th>Album</th></tr>
-      <tr ng-repeat="musician in albums | filter:search:strict">
+      <tr ng-repeat="musician in albums | filter:searchMusic:strict">
         <td>{{musician.musician}}</td>
         <td>{{musician.album}}</td>
       </tr>
     </table>
      </div>
     	<div id='bookPanel'>		    
-		    <span class="caption">Search all books: </span> <input ng-model="search.$"> <br>
-		    <span class="caption">Search book: </span> <input ng-model="search.book"><br>
-		    <span class="caption">Search author: </span> <input ng-model="search.author"><br>
+		    <span class="caption">Search all books: </span> <input ng-model="searchBooks.$"> <br>
+		    <span class="caption">Search book: </span> <input ng-model="searchBooks.book"><br>
+		    <span class="caption">Search author: </span> <input ng-model="searchBooks.author"><br>
 		    
 		    Use exact match <input type="checkbox" ng-model="strict"><br>
 		    <hr/>
 		    <table class="searchObjResults">
 		      <tr><th>Book</th><th>Author</th></tr>
-		      <tr ng-repeat="book in books | filter:search:strict">
+		      <tr ng-repeat="book in books | filter:searchBooks:strict">
 		        <td>{{book.book}}</td>
 		        <td>{{book.author}}</td>
 		      </tr>

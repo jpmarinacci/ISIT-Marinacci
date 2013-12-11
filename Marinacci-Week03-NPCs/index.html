@@ -1,45 +1,49 @@
 <!DOCTYPE HTML>
 <html ng-app="npcapp">
-    <head>
-    	<meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>Marinacci-Week3 Angular NPCs</title>
 		<meta name="description" content="Angular NPC Editable Grid">
 		<meta name="author" content="JP">
 		<link rel="shortcut icon" href="../mainAssets/World.ico">
-        <script src="../mainLibrary/angular.js"></script>
-        <script src="../mainLibrary/ui-bootstrap-tpls-0.1.0.js"></script>
-        <script src="Source/NpcController.js"></script>
-        <!--link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet"-->
-        <link rel='stylesheet' href='../mainStyle/bootstrap.min.css'>
-        <link rel='stylesheet' href='Style/index.css' />
-    </head>
-    <body>
-        <h1>Marinacci-Week 3 Angular NPCs</h1>
-        <div ng-controller="NpcController">
-            <table class="table table-bordered" id='npcTable'>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>HitPoints</th>
-                        <th>Health</th>
-                        <th>TotalMoves</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="npc in npcs">
-                        <td>{{npc.npcName}}</td>
-                        <td>{{npc.hitPoints}}</td>
-                        <td>{{npc.health}}</td>
-                        <td>{{npc.totalMoves}}</td>
-                        <td>
-                        <button class="btn btn-small" ng-click="edit(npc)">
-                            Edit
-                        </button></td>
-                    </tr>
-                </tbody>
-            </table><div id='newButtonContainer'><button class='btn-small' ng-click='newNPC()'>New NPC</button></div>
-        </div>
+		<script src="../mainLibrary/angular.js"></script>
+		<script src="../mainLibrary/ui-bootstrap-tpls-0.1.0.js"></script>
+		<script src="Source/NpcController.js"></script>
+		<link rel='stylesheet' href='../mainStyle/bootstrap.min.css'>
+		<link rel='stylesheet' href='Style/index.css' />
+	</head>
+	<body>
+		<h1>Marinacci-Week 3 Angular NPCs</h1>
+		<div ng-controller="NpcController">
+			<table class="table table-bordered" id='npcTable'>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>HitPoints</th>
+						<th>Health</th>
+						<th>TotalMoves</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="npc in npcs">
+						<td>{{npc.npcName}}</td>
+						<td>{{npc.hitPoints}}</td>
+						<td>{{npc.health}}</td>
+						<td>{{npc.totalMoves}}</td>
+						<td>
+						<button class="btn btn-small" ng-click="edit(npc)">
+							Edit
+						</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<div id='newButtonContainer'>
+				<button class='btn-small' ng-click='newNPC()'>
+					New NPC
+				</button>
+			</div>
+		</div>
 
-    </body>
+	</body>
 </html>

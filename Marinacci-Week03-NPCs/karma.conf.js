@@ -13,8 +13,8 @@ module.exports = function(config) {'use strict';
 		'../mainLibrary/angular-resource.js',
 		'../mainLibrary/jquery-1.8.3.min.js',
 		'../mainLibrary/ui-bootstrap-tpls-0.1.0.js',
-		'Source/RollDice.js',
-		'Test/TestRollDice.js'
+		'Source/NpcController.js',
+		'Test/TestNpcs.js'
 		],
 
 		// list of files to exclude

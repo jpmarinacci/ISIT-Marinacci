@@ -3,14 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
 		<title>Marinacci - Roll Dice</title>
-		<meta name="description" content="">
+		<meta name="description" content="Roll Dice App">
 		<meta name="author" content="JP">
-		<link rel="shortcut icon" href="../../mainAssets/dice13.gif">
+		<link rel="shortcut icon" href="../mainAssets/dice13.gif">
 		<script src='../mainLibrary/angular.js'></script>
-		<!--script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>	
-		<script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script-->
 		<script src='../mainLibrary/ui-bootstrap-tpls-0.1.0.js'></script>
 		<script src='Source/RollDice.js'></script>
 	</head>
@@ -20,15 +17,31 @@
 			<header>
 				<h1>Roll Dice</h1>
 			</header>
-				<button ng-click='roll6SidedDice()'>Roll 6 sided Dice</button>
-				<button ng-click='roll2SixSidedDice()'>Roll 2 6 sided Dice</button>
-				<button ng-click='roll3SixSidedDice()'>Roll 3 6 sided Dice</button>
-				<button ng-click='roll4SidedDice()'>Roll 4 sided Dice</button>
-				<button ng-click='roll10SidedDice()'>Roll 10 sided Dice</button>
-				<button ng-click='roll20SidedDice()'>Roll 20 sided Dice</button>
-			<p> </p>
-			<div>{{details}}</div>	
-			<div>Total: {{total}}</div>
+			<button ng-click='roll6SidedDice()'>
+				Roll 6 sided Dice
+			</button>
+			<button ng-click='roll2SixSidedDice()'>
+				Roll 2 6 sided Dice
+			</button>
+			<button ng-click='roll3SixSidedDice()'>
+				Roll 3 6 sided Dice
+			</button>
+			<button ng-click='roll4SidedDice()'>
+				Roll 4 sided Dice
+			</button>
+			<button ng-click='roll10SidedDice()'>
+				Roll 10 sided Dice
+			</button>
+			<button ng-click='roll20SidedDice()'>
+				Roll 20 sided Dice
+			</button>
+			<br />
+			<div>
+				{{details}}
+			</div>
+			<div>
+				Total: {{total}}
+			</div>
 		</div>
 	</body>
 </html>
