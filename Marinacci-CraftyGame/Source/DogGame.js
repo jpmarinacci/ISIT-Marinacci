@@ -15,6 +15,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 				height : 48
 			}
 		},
+		level: 1,
 
 		enemys : [],
 

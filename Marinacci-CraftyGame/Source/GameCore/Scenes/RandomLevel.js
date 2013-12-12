@@ -2,11 +2,9 @@
  * @author JP
  */
 
-// Draw the initial game state
 Crafty.scene('Game', function() { 'use strict';
 
 	// A 2D array to keep track of all gameBoard tiles
-	/*
 	this.gameBoard = new Array(Crafty.game.map_grid.width);
 	for (var i = 0; i < Crafty.game.map_grid.width; i++) {
 		this.gameBoard[i] = new Array(Crafty.game.map_grid.height);
@@ -18,39 +16,10 @@ Crafty.scene('Game', function() { 'use strict';
 	// Player character, placed at 4, 5 on our grid
 	this.player = Crafty.e('PlayerCharacter').at(4, 5);
 	this.gameBoard[this.player.at().x][this.player.at().y] = true;
-	*/
-	var createEntity = function(name, col, row) {
-		Crafty.e(name).at(col, row);
-		};
-		
-		var createEntities = function(board) {
-		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
-			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
-				var gridValue = board[y][x];
-				if (gridValue === 1) {
-					createEntity('Rock', x, y);
-				} else if (gridValue === 2) {
-					createEntity('Bush', x, y);
-				} else if (gridValue === 3) {
-					createEntity('Food', x, y);
-				} else if (gridValue === 4) {
-					//createEnemy(x, y);
-					var enemy = Crafty.e('Enemy').at(x, y);
-					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
-					Crafty.game.newEnemy(enemy);
-				} else if (gridValue === 5) {
-					//this.player = Crafty.e('PlayerCharacter').at(x, y);
-					var player = createEntity('PlayerCharacter', x, y);
-					Crafty.game.newHero(player);
-					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
 
-				}
-			}
-		}
-	};
-	
-	this.gameBoard=this.boards[Crafty.game.level];
-	createEntities(this.gameBoard);
+
+	//this.gameBoard=this.boards[this.level-1];
+	//createEntities(this.gameBoard);
 		/*var initLevel = function (initGameBoard, initBoards, initLevelNumber){
 			var index=initLevelNumber-1;
 			initGameBoard=initBoards[index];
@@ -62,7 +31,6 @@ Crafty.scene('Game', function() { 'use strict';
 			
 	//var randomizedGameBoard = function(board) {
 	// Place a Rock at every edge square on our grid of 16x16 tiles
-	/*
 	for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 		for (var y = 0; y < Crafty.game.map_grid.height; y++) {
 			var at_edge = x === 0 || x === Crafty.game.map_grid.width - 1 || y === 0 || y === Crafty.game.map_grid.height - 1;
@@ -98,7 +66,7 @@ Crafty.scene('Game', function() { 'use strict';
 					}
 				}
 			}
-	*/
+	
 	
 
 	// Show the victory screen once all enemies are visisted
