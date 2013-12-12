@@ -14,11 +14,11 @@ describe("My Circle", function() {'use strict';
     }));
 
     it("gets circle area", function() {
-        expect(circle.areaOfCircle()).toEqual(0);
+        expect(circle.areaOfCircle(0)).toEqual(0);
     });
     
     it("gets circle circumference", function() {
-        expect(circle.circumferenceOfCircle()).toEqual(1);
+        expect(circle.circumferenceOfCircle(1)).toEqual(6.283185307179586);
     });
 });
 

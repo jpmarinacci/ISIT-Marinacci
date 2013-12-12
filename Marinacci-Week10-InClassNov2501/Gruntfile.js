@@ -15,7 +15,7 @@ module.exports = function(grunt) { 'use strict';
 					'**/Crafty.js',
 					'**/Crafty01.js',
 					'*/Ractive.js',
-					'*/**/angular.js',
+					'*/angular.js',
 					'**/angular.min.js',
 					'**/angular-mocks.js',
 					'**/angular-resource.js',

@@ -65,12 +65,4 @@ angular.module('dogPlayer', ['dogGameMod'])
 	$scope.$on('encounterBroadcast', function() {		
 		$scope.$apply(function() { $scope.encounterMessage = gameEventService.message; });		
 	});
-
-	$scope.goLeft = function() {
-		dogGameService.goLeft();
-	};
-
-	$scope.stopMove = function() {
-		dogGameService.stopMove();
-	};
 });

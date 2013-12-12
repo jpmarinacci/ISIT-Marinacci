@@ -2,7 +2,7 @@
  * @author Charlie Calvert
  */
 
-describe("Test Circle", function() {'use strict';
+describe("Test Traingle", function() {'use strict';
 
     var triangle = null;
 
