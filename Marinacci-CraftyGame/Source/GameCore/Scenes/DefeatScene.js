@@ -13,10 +13,6 @@ Crafty.scene('Defeat', function() { 'use strict';
 
 	// restart the game when a key is pressed
 	this.restart = function() {
-		if (this.level===3)
-		{
-			this.level=1;
-		}
 		Crafty.scene('Game');
 	};
 

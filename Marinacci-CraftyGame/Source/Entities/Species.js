@@ -9,7 +9,7 @@ angular.module('speciesMod', [])
 	var species;
 	species.loadSpecies = function() { 
 	
-		var getSpeciesFromJson = $http.get('albums.json');
+		var getSpeciesFromJson = $http.get('species.json');
 	
 		getSpeciesFromJson.success(function(data, status, headers, config)  {
 			console.log(data, status, headers, config);

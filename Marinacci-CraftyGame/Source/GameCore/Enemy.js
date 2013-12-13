@@ -14,13 +14,14 @@ Crafty.c('Enemy', {
 	visit: function() { 'use strict';
 		this.count++;
 		var animation_speed=16;
-		//this.playAnimation('EnemyAttack', animation_speed, -1); 
 		switch (this.count) {
 			case 1:
 				this.sprite(3, 0);
 				break;
 			case 2:
-				this.playAnimation('EnemyAttack', 16, -1); //animationspeed-16
+				break;	
+			case 3:
+				this.playAnimation('EnemyAttack', animation_speed, -1);
 				break;
 
 			//case 3:
@@ -28,12 +29,11 @@ Crafty.c('Enemy', {
 				//break;
 
 			default:
-				this.destroy();
 				Crafty.audio.play('marioKick');
+				this.destroy();
+				Crafty.trigger('EnemyDestroyed', this);			
 				break;
 		}
-		//this.destroy();*/
-		Crafty.trigger('EnemyDestroyed', this);
 	}
 });
 

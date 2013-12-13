@@ -11,7 +11,7 @@ angular.module('gameWrapMod', [])
 		startGame: function(gameDiv, dogGameService) {
 			Crafty.init(dogGameService.width(), dogGameService.height(), gameDiv);
 			Crafty.game = dogGameService;
-			Crafty.background('rgb(0, 109, 20)');
+			Crafty.background('rgb(0, 109, 20)'); //green background
 			// Load the game
 			Crafty.scene('Loading');
 		},

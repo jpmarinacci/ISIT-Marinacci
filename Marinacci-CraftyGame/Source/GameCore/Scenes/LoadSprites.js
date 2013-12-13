@@ -48,7 +48,6 @@ Crafty.scene('Loading', function(){ 'use strict';
 
 	// Now that our sprites are ready to draw, start the game
 	Crafty.scene('Game');
-	
 	});
 });
 

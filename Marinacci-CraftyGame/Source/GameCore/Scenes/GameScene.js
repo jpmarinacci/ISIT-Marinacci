@@ -5,8 +5,46 @@
 // Draw the initial game state
 Crafty.scene('Game', function() { 'use strict';
 
+	this.boards = [
+
+        // Level 1
+        [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1],
+        [1, 0, 0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 4, 0, 1],
+        [1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+        
+        // Level 2
+        [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 4, 2],
+        [2, 0, 4, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 4, 2],
+        [2, 0, 0, 0, 0, 0, 1, 0, 3, 1, 0, 0, 0, 0, 0, 2],
+        [2, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 4, 2],
+        [2, 0, 3, 1, 0, 0, 1, 4, 0, 1, 0, 0, 1, 0, 4, 2],
+        [2, 0, 0, 1, 4, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 2],
+        [2, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 2],
+        [2, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2],
+        [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]],
+        
+        // Level 3
+        [[1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 3, 3, 2, 0, 2, 3, 3, 3, 2, 2, 2, 3, 0, 0, 2],
+        [2, 3, 0, 2, 2, 2, 3, 0, 3, 2, 0, 2, 3, 0, 0, 1],
+        [1, 3, 0, 2, 0, 2, 3, 3, 3, 2, 2, 0, 3, 0, 0, 2],
+        [2, 3, 3, 2, 0, 2, 3, 0, 3, 2, 0, 2, 3, 3, 3, 1],
+        [1, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+        [2, 0, 0, 0, 0, 0, 0, 0, 4, 0, 4, 0, 4, 0, 0, 1],
+        [1, 0, 4, 4, 4, 4, 0, 0, 4, 4, 4, 4, 4, 0, 0, 2],
+        [2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1]]
+       ];
+
 	// A 2D array to keep track of all gameBoard tiles
-	/*
 	this.gameBoard = new Array(Crafty.game.map_grid.width);
 	for (var i = 0; i < Crafty.game.map_grid.width; i++) {
 		this.gameBoard[i] = new Array(Crafty.game.map_grid.height);
@@ -14,11 +52,7 @@ Crafty.scene('Game', function() { 'use strict';
 			this.gameBoard[i][j] = false;
 		}
 	}
-
-	// Player character, placed at 4, 5 on our grid
-	this.player = Crafty.e('PlayerCharacter').at(4, 5);
-	this.gameBoard[this.player.at().x][this.player.at().y] = true;
-	*/
+	
 	var createEntity = function(name, col, row) {
 		Crafty.e(name).at(col, row);
 		};
@@ -41,15 +75,14 @@ Crafty.scene('Game', function() { 'use strict';
 				} else if (gridValue === 5) {
 					//this.player = Crafty.e('PlayerCharacter').at(x, y);
 					var player = createEntity('PlayerCharacter', x, y);
-					Crafty.game.newHero(player);
+					//Crafty.game.newHero(player);
 					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
 
 				}
 			}
 		}
 	};
-	
-	this.gameBoard=this.boards[Crafty.game.level];
+	this.gameBoard=this.boards[Crafty.game.level-1];
 	createEntities(this.gameBoard);
 		/*var initLevel = function (initGameBoard, initBoards, initLevelNumber){
 			var index=initLevelNumber-1;
@@ -60,47 +93,54 @@ Crafty.scene('Game', function() { 'use strict';
 		var levelNumber=this.level;
 		initLevel(this.gameboard, this.boards, levelNumber);*/
 			
-	//var randomizedGameBoard = function(board) {
-	// Place a Rock at every edge square on our grid of 16x16 tiles
-	/*
-	for (var x = 0; x < Crafty.game.map_grid.width; x++) {
-		for (var y = 0; y < Crafty.game.map_grid.height; y++) {
-			var at_edge = x === 0 || x === Crafty.game.map_grid.width - 1 || y === 0 || y === Crafty.game.map_grid.height - 1;
-
-			if (at_edge) {
-				// Place a Rock entity at the current tile
-				Crafty.e('Rock').at(x, y);
-				this.gameBoard[x][y] = true;
-			} else if (Math.random() < 0.06 && !this.gameBoard[x][y]) {
-				// Place a bush entity at the current tile
-				Crafty.e('Bush').at(x, y);
-				this.gameBoard[x][y] = true;
-			} else if (Math.random() < 0.05 && !this.gameBoard[x][y]) {
-				Crafty.e('Food').at(x, y);
-				this.gameBoard[x][y] = true;
+	var randomizedGameBoard = function(board) {
+		
+	// Player character, placed at 4, 5 on our grid
+	var player = Crafty.e('PlayerCharacter').at(4, 5);
+	//Crafty.game.newHero(player);
+	//this.gameBoard[this.player.at().x][this.player.at().y] = true;
+	
+		// Place a Rock at every edge square on our grid of 16x16 tiles
+		
+		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
+			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
+				var at_edge = x === 0 || x === Crafty.game.map_grid.width - 1 || y === 0 || y === Crafty.game.map_grid.height - 1;
+	
+				if (at_edge) {
+					// Place a Rock entity at the current tile
+					Crafty.e('Rock').at(x, y);
+					board[x][y] = true;
+				} else if (Math.random() < 0.06 && !board[x][y]) {
+					// Place a bush entity at the current tile
+					Crafty.e('Bush').at(x, y);
+					board[x][y] = true;
+					// Place a food entity at the current tile
+				} else if (Math.random() < 0.05 && !board[x][y]) {
+					Crafty.e('Food').at(x, y);
+					board[x][y] = true;
+				}
 			}
-		}
-	}
-			// Generate up between one and five enemys on the map in random locations
-			var max_enemys = 7;
-			var enemyCount = 0;
-			while (enemyCount < 1) {
-				for (var col = 0; col < Crafty.game.map_grid.width; col++) {
-					for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-						if (Math.random() < 0.03) {
-							if (Crafty('Enemy').length < max_enemys && !this.gameBoard[col][row]) {
-								var enemy = Crafty.e('Enemy').at(col, row);
-								enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
-								Crafty.game.newEnemy(enemy);
-								enemyCount++;
-							}
+		}	
+		// Generate up between one and five enemys on the map in random locations
+		var max_enemys = 7;
+		var enemyCount = 0;
+		while (enemyCount < 1) {
+			for (var col = 0; col < Crafty.game.map_grid.width; col++) {
+				for (var row = 0; row < Crafty.game.map_grid.height; row++) {
+					if (Math.random() < 0.03) {
+						if (Crafty('Enemy').length < max_enemys && !board[col][row]) {
+							var enemy = Crafty.e('Enemy').at(col, row);
+							enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
+							Crafty.game.newEnemy(enemy);
+							enemyCount++;
 						}
 					}
 				}
 			}
-	*/
-	
+		}
+	};
 
+	//randomizedGameBoard(this.gameBoard);
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemy Length: " + Crafty('Enemy').length);

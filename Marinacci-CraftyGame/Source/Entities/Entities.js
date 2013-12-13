@@ -4,14 +4,15 @@
 
 /* global angular:true */
 
-angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', function(heroDataFactory) {'use strict';
+angular.module('entitiesMod', ['heroData','speciesMod'])
+.factory('entities', function(heroDataFactory) {'use strict';
 
 	var entities = {
 
 		hero : {
 			//species: this.speciesFactory.species[4],
 			// "class": this.classes[2],
-			hitPoints : 0,
+			hitPoints : 20,
 			damage : 2,
 
 			loadHeroFromData : function() {
@@ -30,6 +31,6 @@ angular.module('entitiesMod', ['speciesMod', 'heroData']).factory('entities', fu
 		}
 	};
 
-	entities.hero.loadHeroFromData();
+	//entities.hero.loadHeroFromData();
 	return entities;
 });

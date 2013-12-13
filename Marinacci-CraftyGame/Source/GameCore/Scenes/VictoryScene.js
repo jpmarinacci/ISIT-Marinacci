@@ -11,30 +11,19 @@ Crafty.scene('Victory', function() { 'use strict';
 
 	// advance to the next level when a key is pressed
 	this.nextLevel = function() {
-		
+		switch (Crafty.game.level){
+			case 1:
+			Crafty.game.level=2;
+			break;
+			case 2:
+			Crafty.game.level=3;
+			break;
+			default:
+			Crafty.game.level=1;		
+		}
 		Crafty.scene('Game');
-		/*
-		if (this.level===3)
-		{
-			this.level=1;
-		}
-		else
-		{
-			this.level++;
-		}
-		//initLevel(this.gameBoard, this.boards, this.level);
-		if(this.level===2)
-		{
-			Crafty.scene('Game');
-		}
-		else
-		{
-			//Crafty.scene('Level3');
-		}
-		//this.gameBoard=this.boards[this.level-1];
-		//createEntities(this.gameBoard);
-		*/
 	};
+	
 
 	// Bind keydown event. This was done wrong in the demo
 	this.bind('KeyDown', this.nextLevel);

@@ -18,23 +18,13 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 		level: 1,
 
 		enemys : [],
-
-		reportEvent : function(message) {
-			return gameEventService.hydrantBroadcast(message);
-		},
-
-		changeDirectionMessage : function(message) {
-			return gameEventService.changeDirectionBroadcast(message);
-		},
-
-		sendDebugMessage : function(message) {
-			return gameEventService.debugBroadcast(message);
-		},
+		
 		encounterEnemy : function(enemy) {
 			entities.hero.hitPoints -= 2;
 			enemy.hydrant.hitPoints -= 3;
 		},
 		encounterFood : function(food) {
+			entities.hero.hitPoints +=5;
 			gameEventService.debugBroadcast("food");
 			gameEventService.encounterBroadcast('Food success');
 			return true;
@@ -68,7 +58,19 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 		},
 		
 		newHero : function(player){
-			entities.hero=player;
+			//entities.hero=player;
+		},
+
+		reportEvent : function(message) {
+			return gameEventService.hydrantBroadcast(message);
+		},
+
+		changeDirectionMessage : function(message) {
+			return gameEventService.changeDirectionBroadcast(message);
+		},
+
+		sendDebugMessage : function(message) {
+			return gameEventService.debugBroadcast(message);
 		},
 
 		// Get width of the game screen in pixels
