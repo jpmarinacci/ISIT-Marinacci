@@ -1,7 +1,9 @@
 /**
  * @author JP
  */
-var app = angular.module('mongoMusicMod', ['ngResource']).constant('MUSICCONFIG', {
+/* global angular */
+
+angular.module('mongoMusicMod', ['ngResource']).constant('MUSICCONFIG', {
 	DB_NAME : 'jpdata',
 	COLLECTION : 'Music',
 	API_KEY : '8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG'

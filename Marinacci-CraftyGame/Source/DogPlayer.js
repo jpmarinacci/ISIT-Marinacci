@@ -31,6 +31,10 @@ angular.module('dogPlayer', ['dogGameMod'])
 			this.broadcastMessage('changeDirectionBroadcast');
 			return true;
 		},
+		speciesBroadcast: function(message){
+			this.message=message;
+			this.broadcastMessage('speciesBroadcast');
+		},
 
 		broadcastMessage: function(broadcastType) {
 			$rootScope.$broadcast(broadcastType);
@@ -40,6 +44,7 @@ angular.module('dogPlayer', ['dogGameMod'])
 .controller('DogController', function($scope, gameEventService, dogGameService) { 'use strict';
 
 	$scope.name = "Fido";
+	$scope.speciesName = "";
 	$scope.eventNote = "no messages";
 	$scope.messageDisplay = "";
 	$scope.debugMessages = [];
@@ -64,5 +69,9 @@ angular.module('dogPlayer', ['dogGameMod'])
 
 	$scope.$on('encounterBroadcast', function() {		
 		$scope.$apply(function() { $scope.encounterMessage = gameEventService.message; });		
+	});
+	
+	$scope.$on('speciesBroadcast', function() {		
+		$scope.$apply(function() { $scope.speciesName= speciesEventService.message; });		
 	});
 });

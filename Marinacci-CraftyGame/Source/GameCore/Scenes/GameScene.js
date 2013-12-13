@@ -106,7 +106,7 @@ Crafty.scene('Game', function() { 'use strict';
 	//randomizedGameBoard(this.gameBoard);
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
-		Crafty.game.sendDebugMessage("Enemy Length: " + Crafty('Enemy').length);
+		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);
 		if (!Crafty('Enemy').length) {
 			Crafty.scene('Victory');
 		}

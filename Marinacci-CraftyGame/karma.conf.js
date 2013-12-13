@@ -30,7 +30,8 @@ module.exports = function(config) {'use strict';
 
 		junitReporter : {
 			// will be resolved to basePath (in the same way as files/exclude patterns)
-			outputFile : 'test-results.xml'
+			outputFile : 'test-results.xml',
+			suite:''
 		},
 
 		// web server port

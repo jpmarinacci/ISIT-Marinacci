@@ -29,8 +29,8 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
 		},
 		encounterFood : function(food) {
 			entities.hero.hitPoints +=3;
-			gameEventService.debugBroadcast("food");
-			gameEventService.encounterBroadcast('Food success');
+			gameEventService.debugBroadcast('ate some food hero health: ' + entities.hero.hitPoints);
+			gameEventService.encounterBroadcast('Found item: Food');
 			return true;
 		},
 		encounter : function(enemy) {
@@ -45,7 +45,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
 					entities.hero.hitPoints+=2;
 					return true;
 				} else {
-					gameEventService.encounterBroadcast('Hit hydrant ' + '\n' + 'Hydrant health: ' + enemy.hydrant.hitPoints + '\n Hero health: ' + entities.hero.hitPoints);
+					gameEventService.encounterBroadcast('Hit hydrant ' + "\n" + 'Hydrant health: ' + enemy.hydrant.hitPoints + '\n Hero health: ' + entities.hero.hitPoints);
 					return false;
 				}
 			}
@@ -90,6 +90,10 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
 		initMapGrid : function(mapGrid) {
 			this.map_grid = mapGrid;
 		},
+		
+		initHeroInfo: function (hero){
+			gameEventService.speciesBroadcast(hero.species);
+		},
 
 		// Initialize and start our game
 		start : function(mapGrid) {
@@ -102,6 +106,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
 			}
 			this.loadGameBoards();
 			gameWrap.startGame(gameDiv, this);
+			this.initHeroInfo(entities.hero);
 		}
 	};
 });
