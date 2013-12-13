@@ -19,7 +19,8 @@ module.exports = function(config) {'use strict';
 
 		// list of files to exclude
 		exclude : [
-		'Source/GameWrapper.js'
+		'Source/GameWrapper.js',
+		'Source/ConfigData.js'
 		],
 
 		preprocessors : {

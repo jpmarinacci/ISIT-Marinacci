@@ -12,7 +12,8 @@ angular.module('classesMod', [])
 		var getClassesFromJson = $http.get('classes.json');
 	
 		getClassesFromJson.success(function(data, status, headers, config)  {
-			console.log(data, status, headers, config);
+			console.log(data);
+			//console.log(data, status, headers, config);
 			classes.push(data.classes);
 		});
 		

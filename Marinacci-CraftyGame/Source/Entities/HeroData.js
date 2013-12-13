@@ -25,6 +25,6 @@ angular.module('heroDataMod', ['ngResource']).constant('CONFIG', {
 			hero = queryResult[0].hero;
 		});
 	};
-	loadHeroFromData();
+	//loadHeroFromData();
 	return hero;
 });
