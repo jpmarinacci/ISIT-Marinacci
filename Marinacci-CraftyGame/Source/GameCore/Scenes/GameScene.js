@@ -65,11 +65,11 @@ Crafty.scene('Game', function() {'use strict';
 					// Place a Rock entity at the current tile
 					Crafty.e('Rock').at(x, y);
 					board[x][y] = true;
-				} else if (Math.random() < 0.08 && !board[x][y]) {
+				} else if (Math.random() < 0.1 && !board[x][y]) {
 					// Place a bush entity at the current tile
 					Crafty.e('Bush').at(x, y);
 					board[x][y] = true;
-				} else if (Math.random() < 0.04 && !board[x][y]) {
+				} else if (Math.random() < 0.07 && !board[x][y]) {
 					// Place a rock entity at the current tile
 					Crafty.e('Rock').at(x, y);
 					board[x][y] = true;
@@ -82,12 +82,12 @@ Crafty.scene('Game', function() {'use strict';
 			}
 		}
 		// Generate up between one and five enemys on the map in random locations
-		var max_enemys = 7;
+		var max_enemys = 20;
 		var enemyCount = 0;
 		while (enemyCount < 1) {
 			for (var col = 0; col < Crafty.game.map_grid.width; col++) {
 				for (var row = 0; row < Crafty.game.map_grid.height; row++) {
-					if (Math.random() < 0.03) {
+					if (Math.random() < Crafty.game.level/100) {
 						if (Crafty('Enemy').length < max_enemys && !board[col][row]) {
 							var enemy = Crafty.e('Enemy').at(col, row);
 							enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
@@ -99,13 +99,15 @@ Crafty.scene('Game', function() {'use strict';
 			}
 		}
 	};
+	/*
 	if (Crafty.game.level <= this.boards.length) {
 		this.gameBoard = this.boards[Crafty.game.level - 1];
 		createEntities(this.gameBoard);
 	} else {
 		randomizedGameBoard(this.gameBoard);
 	}
-
+	*/
+	randomizedGameBoard(this.gameBoard);
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);
