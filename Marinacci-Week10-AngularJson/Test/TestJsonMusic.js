@@ -59,17 +59,16 @@ describe("Test Music", function() {'use strict';
 		expect(musicSearchController.albums[2].album).toEqual('Houses of the Holy');
 	});
 	/*
-	 //Example
-	 it("Test load json name", function() {
-	 $httpBackend.expectGET('data.json').respond({
-	 "name": "NPC01",
-	 "hitPoints": 1,
-	 "damage": 2
-	 });
-	 myController.loadJson();
-	 $httpBackend.flush();
-	 expect(myController.data.name).toEqual("NPC01");
-	 });
-	 */
-
+	//Example
+	it("Test load json name", function() {
+		$httpBackend.expectGET('data.json').respond({
+			"name" : "NPC01",
+			"hitPoints" : 1,
+			"damage" : 2
+		});
+		myController.loadJson();
+		$httpBackend.flush();
+		expect(myController.data.name).toEqual("NPC01");
+	});
+	*/
 });

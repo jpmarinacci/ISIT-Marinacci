@@ -2,7 +2,7 @@
  * @author Charlie
  */
 angular.module('circleMod', [])
-.factory('circleFactory', function() {
+.factory('circleFactory', function() {'use strict';
 
     return {
         areaOfCircle : function(radius) {

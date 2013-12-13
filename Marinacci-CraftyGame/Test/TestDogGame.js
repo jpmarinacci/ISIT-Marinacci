@@ -74,35 +74,23 @@
 		expect(actual).toBe(true);
 	});
 	
-	/*
-	it("simulates going left", function() {
-		var actual = dogGameService.goLeft();
-		expect(actual).toBe(true);
-	});
-	
-	it("simulates call stop move", function() {
-		var actual = dogGameService.stopMove();
-		expect(actual).toBe(true);
-	}); */
-	/*
 	it("reports an event", function() {
 		var actual = dogGameService.reportEvent();
 		expect(actual).toEqual(true);
 	});
-
 	it("sends a change direction message", function() {
-		var testValue = "turtled change direction message";
+		var testValue = "turtle changed direction message";
 		var actual = dogGameService.changeDirectionMessage(testValue);
 		expect(actual).toEqual(true);
 	});
-
+	
 	it("sends a change direction message to dogcontroller", function() {
 		var testValue = "turtle soup in dog controller";
 		var actual = dogGameService.changeDirectionMessage(testValue);
 		expect(actual).toEqual(true);
 		expect(dogController.eventNote).toEqual(testValue);
 	});
-
+	
 	it("sends a debug message", function() {
 		var testValue = "turtled debug message";
 		var actual = dogGameService.sendDebugMessage(testValue);
@@ -127,9 +115,6 @@
 		expect(dogController.debugMessages).toEqual([testValue03, testValue02, testValue01]);
 	});
 	
-	it("is a very silly test", function() {
-		expect(true).toBe(true);
-	});
 	*/
 });
 

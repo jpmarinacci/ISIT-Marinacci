@@ -12,13 +12,12 @@ describe("TestDogController", function() {'use strict';
 	
 	beforeEach(inject(function($rootScope, $controller, $injector) {
 		dogController = $rootScope.$new();		
-		$controller('DogController', { $scope: dogController});		
-		
+		$controller('DogController', { $scope: dogController});
 	}));
-	/*
+	
 	it("Check Name", function() {
 		var actual = dogController.name;		
-		expect(actual).toEqual('DogPlayer');
+		expect(actual).toEqual('Fido');
 	});	
 	
 	it("Check Event Note", function() {
@@ -35,6 +34,5 @@ describe("TestDogController", function() {'use strict';
 		var actual = dogController.moveMessages;		
 		expect(actual).toEqual([]);
 	});
-	*/
 });
 
