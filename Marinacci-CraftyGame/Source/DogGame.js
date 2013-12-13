@@ -24,7 +24,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 			enemy.hydrant.hitPoints -= 3;
 		},
 		encounterFood : function(food) {
-			entities.hero.hitPoints +=5;
+			entities.hero.hitPoints +=3;
 			gameEventService.debugBroadcast("food");
 			gameEventService.encounterBroadcast('Food success');
 			return true;
