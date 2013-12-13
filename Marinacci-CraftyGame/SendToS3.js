@@ -28,7 +28,7 @@ function listBuckets(s3) { 'use strict';
 function writeFile(localFileName, nameOnS3, binary) { 'use strict';
 	// Read in the file, convert it to base64, store to S3
 	
-	nameOnS3 = "Crafty06" + nameOnS3;
+	nameOnS3 = "DogGame" + nameOnS3;
 	
 	fs.readFile(localFileName, function(err, data) {
 		if (err) {
