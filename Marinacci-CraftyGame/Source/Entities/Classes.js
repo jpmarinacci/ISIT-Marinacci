@@ -2,19 +2,20 @@
  * @author JP
  */
 
-
-angular.module('classesMod', [])
-.factory('classes', function($http) {'use strict';
+angular.module('classesMod', ['configMod'])
+.factory('classesFactory', function($http, configData) {'use strict';
 	
-	var classes=[];
-	var loadClasses = function() { 
+	var classesFactory = {};
+	classesFactory.classes=[];
+	
+	classesFactory.loadClasses = function() { 
 		console.log("load classes called");
 		var getClassesFromJson = $http.get('classes.json');
 	
 		getClassesFromJson.success(function(data, status, headers, config)  {
 			console.log(data);
 			//console.log(data, status, headers, config);
-			classes.push(data.classes);
+			classesFactory.classes.push(data.classes);
 		});
 		
 		getClassesFromJson.error(function(data, status, headers, config) {
@@ -22,6 +23,12 @@ angular.module('classesMod', [])
 			throw new Error('Could not load classes from Json file');
 		});
 	};
-	loadClasses();
-	return classes;
+
+	if (configData.testing === false) {
+		classesFactory.loadClasses();
+	}
+	
+	//var temp = ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"];
+	//classesFactory.classes=temp;
+	return classesFactory;
 });

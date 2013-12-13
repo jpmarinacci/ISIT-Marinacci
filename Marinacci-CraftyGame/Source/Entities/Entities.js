@@ -4,13 +4,13 @@
 
 /* global angular:true */
 
-angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classesMod']).factory('entities', function(hero, hydrant, speciesFactory, classes) {'use strict';
+angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classesMod']).factory('entities', function(hero, hydrant, speciesFactory, classesFactory) {'use strict';
 
 	var entities = {
 
 		hero : {
 			species: speciesFactory.species[4],
-			"class": classes[6],
+			"class": classesFactory.classes[6],
 			hitPoints : 20,
 			damage : 2,
 			//loadHeroFromData : function() {
