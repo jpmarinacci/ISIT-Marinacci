@@ -41,7 +41,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
 			if (entities.hero.hitPoints > 0) {
 
 				if (enemy.hydrant.hitPoints <= 0) {
-					gameEventService.encounterBroadcast('destroyed hydrant');`
+					gameEventService.encounterBroadcast('destroyed hydrant');
 					entities.hero.hitPoints+=2;
 					return true;
 				} else {

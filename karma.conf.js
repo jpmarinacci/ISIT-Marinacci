@@ -32,14 +32,24 @@ module.exports = function(config) {'use strict';
 
 		// list of files to exclude
 		exclude : [
-		'Marinacci-Week10-AngularJson/Test/TestJsonLoader.js',
-		'Marinacci-Week10-AngularMongo/Test/TestMain.js',
-		'Marinacci-Week10-AngularMongo/Test/TestMongoData.js'
+		'Marinacci-CraftyGame/Source/GameWrapper.js'
 		],
 
 		preprocessors : {
-			'client/*.js' : ['commonjs', 'coverage'],
-			'test/client/*.js' : ['commonjs']
+			'Marinacci-Week03-NPCs/Source/NpcController.js': ['commonjs', 'coverage'],
+		'Marinacci-Week03-NPCs/Test/TestNpcs.js': ['commonjs', 'coverage'],
+		'Marinacci-Week04-UnitTests/Source/MileConverter.js': ['commonjs', 'coverage'],
+		'Marinacci-Week04-UnitTests/Test/TestMilesConverter.js': ['commonjs', 'coverage'],
+		'Marinacci-Week05-RollDice/Source/RollDice.js': ['commonjs', 'coverage'],
+		'Marinacci-Week05-RollDice/Test/TestRollDice.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularModules/Source/*.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularModules/Test/*.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularJson/Source/*.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularJson/Test/*.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularMongo/Source/*.js': ['commonjs', 'coverage'],
+		'Marinacci-Week10-AngularMongo/Test/*.js': ['commonjs', 'coverage'],
+		'Marinacci-CraftyGame/Source/**/*.js': ['commonjs', 'coverage'],
+		'Marinacci-CraftyGame/Test/*.js': ['commonjs', 'coverage']
 		},
 
 		// use dots reporter, as travis terminal does not support escaping sequences

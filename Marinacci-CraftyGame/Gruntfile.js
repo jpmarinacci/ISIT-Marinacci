@@ -13,7 +13,6 @@ module.exports = function(grunt) { 'use strict';
 					'*/Ractive.js', 
 					'*/**/angular.js',
 					'**/Library/**',
-					'**/mainLibrary/**',
 					'**/node_modules/**',
 					'**/handlebars.js',
 					'**/jquery*.js',
@@ -29,8 +28,7 @@ module.exports = function(grunt) { 'use strict';
 		
 		clean :	{			
 			yourTarget : {				
-				src : [ "**/node_modules/**", '*/barFooGoo/**'
-				]				
+				src : [ "**/node_modules/**"				]				
 			}
 		}
 	});

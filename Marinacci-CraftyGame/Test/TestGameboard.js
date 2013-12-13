@@ -11,7 +11,7 @@ describe("TestGameboard", function() {'use strict';
 		module('dogGameMod');
 		module('dogPlayer');				
 	});
-	
+	/*
 	it("TestGameBoard Check DogGame Width", inject(function(dogGameService) {
 		var mapGrid = {
 			width : 18,
@@ -25,5 +25,6 @@ describe("TestGameboard", function() {'use strict';
 		var actual = dogGameService.width();		
 		expect(actual).toEqual(576);
 	}));
+	*/
 });
 

@@ -8,7 +8,8 @@ module.exports = function(config) {'use strict';
 		frameworks : ['jasmine', 'commonjs'],
 
 		// list of files / patterns to load in the browser
-		files : ['../mainLibrary/angular.js',
+		files : [
+		'../mainLibrary/angular.js',
 		'../mainLibrary/angular-mocks.js',
 		'../mainLibrary/angular-resource.js',
 		'../mainLibrary/jquery-1.8.3.min.js',

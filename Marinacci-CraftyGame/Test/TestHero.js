@@ -13,7 +13,7 @@ describe("Test hero", function() {'use strict';
 	beforeEach(inject(function($injector) {
 		hero = $injector.get('hero');
 	}));
-	
+	/*
 	it("can get a race", function()  {			
 		expect(hero).toNotEqual(null);
 	});
@@ -21,5 +21,5 @@ describe("Test hero", function() {'use strict';
 	it("can get a dwarf", function()  {			
 		expect(hero.name).toEqual('Sam');
 	});
-	
+	*/
 });

@@ -8,19 +8,23 @@ module.exports = function(config) {'use strict';
 		frameworks : ['jasmine', 'commonjs'],
 
 		// list of files / patterns to load in the browser
-		files : ['../mainLibrary/angular.js',
+		files : [
+		'Library/angular.js',
 		'Library/angular-mocks.js',
 		'Library/angular-resource.js',
 		'Library/crafty.js',
-		'Source/**/*.js'
+		'Source/**/*.js',
+		'Test/*.js'
 		],
 
 		// list of files to exclude
 		exclude : [
+		'Source/GameWrapper.js'
 		],
 
 		preprocessors : {
-			'Source/*.js' : ['commonjs', 'coverage', 'junit']
+			'Source/**/*.js' : ['commonjs', 'coverage', 'junit']
+			//'Test/*.js' : ['commonjs', 'coverage', 'junit']
 		},
 
 		// use dots reporter, as travis terminal does not support escaping sequences
@@ -30,8 +34,7 @@ module.exports = function(config) {'use strict';
 
 		junitReporter : {
 			// will be resolved to basePath (in the same way as files/exclude patterns)
-			outputFile : 'test-results.xml',
-			suite:''
+			outputFile : 'test-results.xml'
 		},
 
 		// web server port

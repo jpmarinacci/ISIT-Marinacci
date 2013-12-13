@@ -16,7 +16,7 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 		gameEventService = $injector.get('gameEventService');
 		
 	}));
-
+	/*
 	it("Change Direction Broadcast", function() {
 		var testValue = "Test Change Direction Broadcast";
 		gameEventService.changeDirectionBroadcast(testValue);
@@ -57,5 +57,5 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 		var actual = dogController.encounterMessage;			
 		expect(actual).toEqual('Encounter');
 	});
-	
+	*/
 });

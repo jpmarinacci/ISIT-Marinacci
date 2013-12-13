@@ -2,38 +2,46 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-
-		<title>TestCrafty</title>
-		<meta name="description" content="">
-		<meta name="author" content="charlie">
-
+		<title>Test Crafty Dog Game</title>
+		<meta name="description" content="Crafty Dog Game Unit Tests">
+		<meta name="author" content="JP">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 		<link href="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine.css" type="text/css" rel="stylesheet">
-  		<script src="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine.js"></script>
-  		<script src="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine-html.js"></script>
-  		<script src="../../mainLibrary/angular.js"></script>
-  		<script src="../../mainLibrary/angular-mocks.js"></script>
-  		<script src="../Library/crafty.js"></script>
-  		<script src="../../mainLibrary/JasmineStart.js"></script>
-  		<script src="../Source/GameCore/Actors.js"></script>
+		<link rel="shortcut icon" href="../../mainAssets/Robot.ico">
+		<link href="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine.css" type="text/css" rel="stylesheet">
+		<script src="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine.js"></script>
+		<script src="http://cdn.jsdelivr.net/jasmine/1.3.1/jasmine-html.js"></script>
+		<script src="../Library/angular.js"></script>
+		<script src="../Library/angular-mocks.js"></script>
+		<script src="../Library/angular-resource.js"></script>
+		<script src="../Library/crafty.js"></script>
+		<script src="../Library/JasmineStart.js"></script>
+		<script src="../Source/GameCore/Actors.js"></script>
 		<script src="../Source/GameCore/Food.js"></script>
-		<script src="../Source/GameCore/Grid.js"></script>	
+		<script src="../Source/GameCore/Grid.js"></script>
 		<script src="../Source/GameCore/Player.js"></script>
-		<script src="../Source/GameCore/Scenes.js"></script>
 		<script src="../Source/GameCore/Enemy.js"></script>
-		<script src="../Source/MockGameWrapper.js"></script>  		
+		<script src="../Source/GameCore/Scenes/LoadSprites.js"></script>
+		<script src="../Source/GameCore/Scenes/GameScene.js"></script>
+		<script src="../Source/GameCore/Scenes/VictoryScene.js"></script>
+		<script src="../Source/GameCore/Scenes/DefeatScene.js"></script>
 		<script src="../Source/Entities/Entities.js"></script>
 		<script src="../Source/Entities/HeroData.js"></script>
 		<script src="../Source/Entities/Species.js"></script>
-  		<script src="../Source/DogPlayer.js"></script>
-  		<script src="../Source/DogGame.js"></script>  		  		
-  		<script src="TestDogPlayer.js"></script>
-  		<script src="TestDogGame.js"></script>
-  		<script src="TestGameboard.js"></script>
-  		<script src="TestBroadcasts.js"></script>
+		<script src="../Source/Entities/Hydrant.js"></script>
+		<script src="../Source/Entities/Classes.js"></script>
+		<script src="../Source/GameBoards.js"></script>
+		<script src="../Source/DogPlayer.js"></script>
+		<script src="../Source/DogGame.js"></script>
+		<script src="MockGameWrapper.js"></script>
+		<!--script src="TestDogPlayer.js"></script-->
+		<script src="TestDogGame.js"></script>
+		<!--script src="TestGameboard.js"></script-->
+		<!--script src="TestBroadcasts.js"></script-->
 	</head>
 
 	<body>
-		<div id="gameBoard"> </div>
+		<div id="gameBoard">
+			
+		</div>
 	</body>
 </html>
