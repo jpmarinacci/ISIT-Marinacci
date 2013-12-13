@@ -1,7 +1,7 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
-.factory('dogGameService', function(gameEventService, entities, gameWrap) {
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
+.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {
 	'use strict';
 	return {
 
@@ -14,6 +14,10 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 				width : 48,
 				height : 48
 			}
+		},
+		boards: [],
+		loadGameBoards: function(){
+			this.boards=gameBoards;
 		},
 		level: 1,
 
@@ -96,6 +100,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod'])
 			} else {
 				this.map_grid = this.defaultMapGrid;
 			}
+			this.loadGameBoards();
 			gameWrap.startGame(gameDiv, this);
 		}
 	};
