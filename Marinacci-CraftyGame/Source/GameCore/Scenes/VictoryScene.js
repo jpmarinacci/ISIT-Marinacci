@@ -11,6 +11,8 @@ Crafty.scene('Victory', function() { 'use strict';
 
 	// advance to the next level when a key is pressed
 	this.nextLevel = function() {
+		Crafty.game.level++;
+		/*
 		switch (Crafty.game.level){
 			case 1:
 			Crafty.game.level=2;
@@ -18,9 +20,12 @@ Crafty.scene('Victory', function() { 'use strict';
 			case 2:
 			Crafty.game.level=3;
 			break;
+			case 3:
+			Crafty.game.level++;
 			default:
 			Crafty.game.level=1;		
 		}
+		*/
 		Crafty.scene('Game');
 	};
 	

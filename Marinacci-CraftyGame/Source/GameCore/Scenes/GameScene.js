@@ -3,7 +3,7 @@
  */
 
 // Draw the initial game state
-Crafty.scene('Game', function() { 'use strict';
+Crafty.scene('Game', function() {'use strict';
 
 	this.boards = Crafty.game.boards;
 
@@ -15,12 +15,12 @@ Crafty.scene('Game', function() { 'use strict';
 			this.gameBoard[i][j] = false;
 		}
 	}
-	
+
 	var createEntity = function(name, col, row) {
 		Crafty.e(name).at(col, row);
-		};
-		
-		var createEntities = function(board) {
+	};
+
+	var createEntities = function(board) {
 		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
 				var gridValue = board[y][x];
@@ -36,8 +36,7 @@ Crafty.scene('Game', function() { 'use strict';
 					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
 					Crafty.game.newEnemy(enemy);
 				} else if (gridValue === 5) {
-					//this.player = Crafty.e('PlayerCharacter').at(x, y);
-					var player =createEntity('PlayerCharacter', x, y);
+					var player = createEntity('PlayerCharacter', x, y);
 					//Crafty.game.newHero(player);
 					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
 
@@ -45,45 +44,43 @@ Crafty.scene('Game', function() { 'use strict';
 			}
 		}
 	};
-	this.gameBoard=this.boards[Crafty.game.level-1];
-	createEntities(this.gameBoard);
-		/*var initLevel = function (initGameBoard, initBoards, initLevelNumber){
-			var index=initLevelNumber-1;
-			initGameBoard=initBoards[index];
-			createEntities(this.gameBoard);
-			//randomizedGameBoard(this.gameBoard);
-		};	
-		var levelNumber=this.level;
-		initLevel(this.gameboard, this.boards, levelNumber);*/
-			
+
 	var randomizedGameBoard = function(board) {
-		
-	// Player character, placed at 4, 5 on our grid
-	var player = Crafty.e('PlayerCharacter').at(4, 5);
-	//Crafty.game.newHero(player);
-	//this.gameBoard[this.player.at().x][this.player.at().y] = true;
-	
+
+		// Player character, placed at random location on our grid
+		var xpos = Math.floor(Math.random() * 14 + 1);
+		var ypos = Math.floor(Math.random() * 8 + 1);
+		var player = Crafty.e('PlayerCharacter').at(xpos, ypos);
+		board[xpos][ypos] = true;
+		//board[player.at().x][player.at().y] = true;
+		//Crafty.game.newHero(player);
+		//this.gameBoard[this.player.at().x][this.player.at().y] = true;
+
 		// Place a Rock at every edge square on our grid of 16x16 tiles
-		
 		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
 				var at_edge = x === 0 || x === Crafty.game.map_grid.width - 1 || y === 0 || y === Crafty.game.map_grid.height - 1;
-	
+
 				if (at_edge) {
 					// Place a Rock entity at the current tile
 					Crafty.e('Rock').at(x, y);
 					board[x][y] = true;
-				} else if (Math.random() < 0.06 && !board[x][y]) {
+				} else if (Math.random() < 0.08 && !board[x][y]) {
 					// Place a bush entity at the current tile
 					Crafty.e('Bush').at(x, y);
 					board[x][y] = true;
+				} else if (Math.random() < 0.04 && !board[x][y]) {
+					// Place a rock entity at the current tile
+					Crafty.e('Rock').at(x, y);
+					board[x][y] = true;
+
 					// Place a food entity at the current tile
 				} else if (Math.random() < 0.05 && !board[x][y]) {
 					Crafty.e('Food').at(x, y);
 					board[x][y] = true;
 				}
 			}
-		}	
+		}
 		// Generate up between one and five enemys on the map in random locations
 		var max_enemys = 7;
 		var enemyCount = 0;
@@ -102,8 +99,13 @@ Crafty.scene('Game', function() { 'use strict';
 			}
 		}
 	};
+	if (Crafty.game.level <= this.boards.length) {
+		this.gameBoard = this.boards[Crafty.game.level - 1];
+		createEntities(this.gameBoard);
+	} else {
+		randomizedGameBoard(this.gameBoard);
+	}
 
-	//randomizedGameBoard(this.gameBoard);
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);
@@ -111,7 +113,7 @@ Crafty.scene('Game', function() { 'use strict';
 			Crafty.scene('Victory');
 		}
 	});
-}, function() { 'use strict';
+}, function() {'use strict';
 	// Remove our event binding from above so that we don't
 	//  end up having multiple redundant event watchers after
 	//  multiple restarts of the game
