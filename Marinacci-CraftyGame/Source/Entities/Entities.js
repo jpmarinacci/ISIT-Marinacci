@@ -35,7 +35,7 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			};
 		}
 	};
-	//entities.hero.loadHero();
+	entities.hero.loadHero();
 	//entities.hero.loadHeroFromData();
 	return entities;
 });
