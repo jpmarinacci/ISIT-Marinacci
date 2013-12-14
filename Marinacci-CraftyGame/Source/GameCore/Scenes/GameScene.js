@@ -99,15 +99,14 @@ Crafty.scene('Game', function() {'use strict';
 			}
 		}
 	};
-	/*
+	
 	if (Crafty.game.level <= this.boards.length) {
 		this.gameBoard = this.boards[Crafty.game.level - 1];
 		createEntities(this.gameBoard);
 	} else {
 		randomizedGameBoard(this.gameBoard);
 	}
-	*/
-	randomizedGameBoard(this.gameBoard);
+
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);
