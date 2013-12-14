@@ -2,10 +2,14 @@
  * @author JP
  */
 
-angular.module('gameboardsMod', []).factory('gameBoards', function($http) {'use strict';
+angular.module('gameBoardsMod', ['configMod'])
+.factory('gameBoards', function($http, configData) {'use strict';
+
 
 	//tempBoardsObject-ie json format
-	var boardsObject = {"boards" : 
+	var boardsObject = {
+		
+		"boards" : 
 	[
 		[
 			[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -44,23 +48,27 @@ angular.module('gameboardsMod', []).factory('gameBoards', function($http) {'use 
 	]
 	};
 	var boards = boardsObject.boards;
-
+	
 	//Charlie - this function seems to get back data, sets boards = to an array full of arrays - checked in the debugger
 	//yet before I can send it back somehow boards becomes empty - ponderous
-	/*
-	var loadBoards = function() {
+	
+	boards.loadBoards = function() {
 
 		$http.get('gameBoards.json').success(function(data, status, headers, config) {
 			console.log("load gameboards from json file success");
-			console.log(data, status, headers, config);
+			console.log(data);
+			//console.log(data, status, headers, config);
 			boards = data.boards;
 			console.log("boards array length = " + boards.length);
 		}).error(function(data, status, headers, config) {
 			console.log(data, status, headers, config);
 			throw new Error('Could not load gameBoards from Json file');
 		});
-	}();
-	*/
+	};
+	
+	if (configData.testing===false){
+		boards.loadBoards();
+	}
 	
 	return boards;
 });

@@ -1,6 +1,6 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameboardsMod'])
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 .factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {
 	'use strict';
 	return {

@@ -1,9 +1,9 @@
 /**
- * @author Charlie Calvert
+ * @author JP
  */
 
 // specs code
-describe("Test Game Board", function() {'use strict';
+describe("Test Game Map Grid", function() {'use strict';
 		
 	
 	beforeEach(function() {
