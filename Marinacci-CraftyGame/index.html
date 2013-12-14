@@ -3,10 +3,12 @@
 <head>
     <title>Doggy Game</title>
     <link rel="shortcut icon" href="Assets/doggy.ico">
-    <link href="Style/index.css" rel="stylesheet" type="text/css" />    
+    <link  href='Style/bootstrap.min.css' rel='stylesheet' type="text/css" />    
+    <link href="Style/index.css" rel="stylesheet" type="text/css" />
     <script src="Library/angular.js"></script>
     <script src="Library/angular-resource.js"></script>
-	<script src="Library/crafty.js"></script>	
+	<script src="Library/crafty.js"></script>
+	<script src="Library/ui-bootstrap-tpls-0.1.0.js"></script>	
 	<script src="Source/GameCore/Actors.js"></script>
 	<script src="Source/GameCore/Food.js"></script>
 	<script src="Source/GameCore/Grid.js"></script>	
@@ -34,14 +36,19 @@
     
     <div id="textDisplay" ng-controller="DogController">
         <h1>Doggy Game</h1>
-        <p>{{name}}</p>
-        <p>{{speciesName}}</p>        
-        <p>{{eventNote}}</p>
-        <p>{{encounterMessage}}</p>
-        <p>Move Messages</p>
+        <p><span class ="myLabel">Character:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{name}}</span></p>
+        <p><span class ="myLabel">Species:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{speciesName}}</span></p>
+        <p><span class="myLabel">Class:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{className}}</span></p>
+        <p><span class="myLabel">Level:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{level}}</span></p>
+        <p><span class="myLabel">Enemies:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{enemyCount}}</span></p>
+        <p><span class="myLabel">Hero Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{heroHealth}}</span></p>
+        <p><span class="myLabel">Current Hydrant Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{hydrantHealth}}</span></p>
+        <p><span class="myLabel">Direction:&nbsp;&nbsp;&nbsp;<span class="infoBox">{{direction}}</span></p>
+        <ul><li ng-repeat="encounterMessage in encounterMessages">{{encounterMessage.message}}</li></ul>
+        <!--p>Move Messages:</p>
         <select size=3 ng-model="messageDisplay" ng-options="msg for msg in moveMessages"> </select><br>
-        <p>Debug Messages</p>
-        	<select size=3 ng-model="messageBar" ng-options="message for message in debugMessages"> </select><br>              
+        <p>Debug Messages:</p>
+        <select size=3 ng-model="messageBar" ng-options="message for message in debugMessages"> </select><br-->              
     </div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 
 // Draw the initial game state
 Crafty.scene('Game', function() {'use strict';
-
+	Crafty.game.initHero();
 	this.boards = Crafty.game.boards;
 
 	// A 2D array to keep track of all gameBoard tiles
@@ -21,6 +21,7 @@ Crafty.scene('Game', function() {'use strict';
 	};
 
 	var createEntities = function(board) {
+		var enemyCount=0;
 		for (var x = 0; x < Crafty.game.map_grid.width; x++) {
 			for (var y = 0; y < Crafty.game.map_grid.height; y++) {
 				var gridValue = board[y][x];
@@ -32,17 +33,19 @@ Crafty.scene('Game', function() {'use strict';
 					createEntity('Food', x, y);
 				} else if (gridValue === 4) {
 					//createEnemy(x, y);
+					enemyCount++;
 					var enemy = Crafty.e('Enemy').at(x, y);
-					enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
+					enemy.setName('Enemy '+ enemyCount);
 					Crafty.game.newEnemy(enemy);
 				} else if (gridValue === 5) {
 					var player = createEntity('PlayerCharacter', x, y);
-					//Crafty.game.newHero(player);
 					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
 
 				}
 			}
 		}
+		Crafty.game.enemyCount=enemyCount;
+		Crafty.game.enemyCountMessage(enemyCount);
 	};
 
 	var randomizedGameBoard = function(board) {
@@ -62,8 +65,13 @@ Crafty.scene('Game', function() {'use strict';
 				var at_edge = x === 0 || x === Crafty.game.map_grid.width - 1 || y === 0 || y === Crafty.game.map_grid.height - 1;
 
 				if (at_edge) {
-					// Place a Rock entity at the current tile
-					Crafty.e('Rock').at(x, y);
+					// Place a Rock or a Bush entity at the current tile
+					if(Math.random()>0.5){
+						Crafty.e('Rock').at(x, y);
+					}else
+					{
+						Crafty.e('Bush').at(x, y);
+					}
 					board[x][y] = true;
 				} else if (Math.random() < 0.1 && !board[x][y]) {
 					// Place a bush entity at the current tile
@@ -98,15 +106,15 @@ Crafty.scene('Game', function() {'use strict';
 				}
 			}
 		}
+		Crafty.game.enemyCount=enemyCount;
+		Crafty.game.enemyCountMessage(enemyCount);
 	};
-	
 	if (Crafty.game.level <= this.boards.length) {
 		this.gameBoard = this.boards[Crafty.game.level - 1];
 		createEntities(this.gameBoard);
 	} else {
 		randomizedGameBoard(this.gameBoard);
 	}
-
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);

@@ -27,9 +27,10 @@ Crafty.c('Enemy', {
 			//case 3:
 				//this.sprite(3, 0);
 				//break;
-
 			default:
 				Crafty.audio.play('marioKick');
+				Crafty.game.enemyCount--;
+				Crafty.game.enemyCountMessage(this.enemyCount);
 				this.destroy();
 				Crafty.trigger('EnemyDestroyed', this);			
 				break;

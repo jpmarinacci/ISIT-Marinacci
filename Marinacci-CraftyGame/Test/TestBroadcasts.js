@@ -16,7 +16,7 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 		gameEventService = $injector.get('gameEventService');
 		
 	}));
-	/*
+	
 	it("Change Direction Broadcast", function() {
 		var testValue = "Test Change Direction Broadcast";
 		gameEventService.changeDirectionBroadcast(testValue);
@@ -31,12 +31,6 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 		gameEventService.changeDirectionBroadcast(testValue02);
 		var actual = dogController.moveMessages;			
 		expect(actual).toEqual([testValue02, testValue01]);
-	});
-	
-	it("Change Hydrant Broadcast", function() {
-		gameEventService.hydrantBroadcast("Goober");
-		var actual = dogController.eventNote;			
-		expect(actual).toEqual('Goober');
 	});
 	
 	it("Tests a Debug Broadcast", function() {
@@ -54,8 +48,8 @@ describe("Test Broadcasts: gameEventService", function() {'use strict';
 	
 	it("Tests Encounter Broadcast", function() {
 		gameEventService.encounterBroadcast("Encounter");
-		var actual = dogController.encounterMessage;			
+		var actual = dogController.encounterMessages[0].message;			
 		expect(actual).toEqual('Encounter');
 	});
-	*/
+	
 });

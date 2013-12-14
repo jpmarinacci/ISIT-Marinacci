@@ -1,4 +1,4 @@
-body {
+﻿body {
 	background: #00FF55;
 }
 
@@ -7,21 +7,32 @@ body {
 	height: 400px;
 	background-color: #00BB88;
 }*/
-
+#gameBoard{
+	margin:10px 10px;
+	border:solid #000000;
+}
 #textDisplay, #gameBoard {
 	float: left;
 }
 
 #textDisplay {
+	margin-top: 10px;
 	width: 250px;
 	background-color: #00AA44;
 	margin-left: 50px;
 	padding: 5px;
 	border: solid black 2px; 
+	font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size:large;
 }
 #Banner
 {   
 	height:480px;
 	width:672px;
   	text-align:center;
+}
+
+.myLabel{
+}
+.infoBox{
 }

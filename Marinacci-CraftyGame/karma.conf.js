@@ -13,6 +13,7 @@ module.exports = function(config) {'use strict';
 		'Library/angular-mocks.js',
 		'Library/angular-resource.js',
 		'Library/crafty.js',
+		'Library/ui-bootstrap-tpls-0.1.0.js',
 		'Source/**/*.js',
 		'Test/*.js'
 		],

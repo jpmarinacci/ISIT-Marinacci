@@ -11,8 +11,8 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 
 		hero : {
 			species: speciesFactory.species[4],
-			"class": classesFactory.classes[6],
-			hitPoints : 20,
+			className: classesFactory.classes[Math.floor(Math.random()*3)+4],
+			health : 20,
 			damage : 2,
 			loadHeroFromData : function() {
 				heroFactory.query({}, function(queryResult) {
@@ -21,14 +21,15 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			},
 			loadHero : function() {
 				if (hero){
-					entities.hero = hero;
+					entities.hero.health = hero.health;
+					entities.hero.damage = hero.damage;
 				}
 			}
 		},
 		
 		hydrant : function() {
 			return {
-				hitPoints : 6,
+				health : 6,
 				damage : 1,
 				loadHydrant : function() {
 					entities.hydrant = hydrant;
@@ -36,7 +37,7 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			};
 		}
 	};
-	entities.hero.loadHero();
+	//entities.hero.loadHero();
 	//entities.hero.loadHeroFromData();
 	return entities;
 });

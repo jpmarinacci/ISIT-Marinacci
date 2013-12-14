@@ -28,7 +28,7 @@ angular.module('classesMod', ['configMod'])
 		classesFactory.loadClasses();
 	}
 	
-	//var temp = ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"];
-	//classesFactory.classes=temp;
+	var temp = ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"];
+	classesFactory.classes=temp;
 	return classesFactory;
 });

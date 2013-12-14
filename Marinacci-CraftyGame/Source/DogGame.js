@@ -20,53 +20,61 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 			this.boards=gameBoards;
 		},
 		level: 1,
+		
+		points:0,
 
 		enemys : [],
+		enemyCount:0,
 		
 		encounterEnemy : function(enemy) {
-			entities.hero.hitPoints -= 2;
-			enemy.hydrant.hitPoints -= 3;
+			//entities.hero.health -= 2;
+			enemy.hydrant.health -= 3;
+			if(enemy.hydrant.health<0){
+				enemy.hydrant.health=0;
+			}
+			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
+			gameEventService.heroHealthBroadcast(entities.hero.health);
 		},
 		encounterFood : function(food) {
-			entities.hero.hitPoints +=3;
-			gameEventService.debugBroadcast('ate some food hero health: ' + entities.hero.hitPoints);
+			entities.hero.health +=5;
+			gameEventService.heroHealthBroadcast(entities.hero.health);
 			gameEventService.encounterBroadcast('Found item: Food');
 			return true;
 		},
 		encounter : function(enemy) {
-
-			gameEventService.debugBroadcast('Hydrant hit points: ' + enemy.hydrant.hitPoints);
 			this.encounterEnemy(enemy);
-			gameEventService.debugBroadcast('Hit Hydrant, hydrant health: ' + enemy.hydrant.hitPoints + ' hero health: ' + entities.hero.hitPoints);
-			if (entities.hero.hitPoints > 0) {
+			if (entities.hero.health > 0) {
 
-				if (enemy.hydrant.hitPoints <= 0) {
+				if (enemy.hydrant.health <= 0) {
 					gameEventService.encounterBroadcast('destroyed hydrant');
-					entities.hero.hitPoints+=2;
 					return true;
 				} else {
-					gameEventService.encounterBroadcast('Hit hydrant ' + "\n" + 'Hydrant health: ' + enemy.hydrant.hitPoints + '\n Hero health: ' + entities.hero.hitPoints);
+					gameEventService.encounterBroadcast('hit hydrant');
 					return false;
 				}
 			}
 			else
 			{
-				entities.hero.hitPoints=20;
+				entities.hero.health=20;
+				gameEventService.heroHealthBroadcast(entities.hero.health);
 				Crafty.scene('Defeat');			
 			}
 		},
 
 		newEnemy : function(enemy) {
 			enemy.hydrant = entities.hydrant();
+			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
 			return this.enemys.push(enemy);
 		},
 		
-		newHero : function(player){
-			//entities.hero=player;
+		initHero : function(){
+			gameEventService.heroHealthBroadcast(entities.hero.health);
+			gameEventService.speciesBroadcast(entities.hero.species);
+			gameEventService.classBroadcast(entities.hero.className);
 		},
 
-		reportEvent : function(message) {
-			return gameEventService.hydrantBroadcast(message);
+		reportEncounter : function(message) {
+			return gameEventService.encounterBroadcast(message);
 		},
 
 		changeDirectionMessage : function(message) {
@@ -75,6 +83,14 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 
 		sendDebugMessage : function(message) {
 			return gameEventService.debugBroadcast(message);
+		},
+		
+		changeLevelMessage: function(message){
+			return gameEventService.levelBroadcast(message);
+		},
+		
+		enemyCountMessage: function(message){
+			return gameEventService.enemyCountBroadcast(message);
 		},
 
 		// Get width of the game screen in pixels

@@ -29,7 +29,7 @@ angular.module('speciesMod', ['configMod'])
 		speciesFactory.species.push(speciesFactory.loadSpecies());
 	}
 	
-	//var temp = ["Dwarf", "Halfling","Elf", "Human", "Dog"];
-	//speciesFactory.species=temp;
+	var temp = ["Dwarf", "Halfling","Elf", "Human", "Dog"];
+	speciesFactory.species=temp;
 	return speciesFactory;
 });

@@ -3,7 +3,7 @@
  */
 
 // specs code
-describe("TestDogController", function() {'use strict';
+describe("Test Dog Controller", function() {'use strict';
 	var dogController = null;	
 	
 	beforeEach(function() {
@@ -15,24 +15,28 @@ describe("TestDogController", function() {'use strict';
 		$controller('DogController', { $scope: dogController});
 	}));
 	
-	it("Check Name", function() {
+	it("checks player name", function() {
 		var actual = dogController.name;		
 		expect(actual).toEqual('Fido');
 	});	
 	
-	it("Check Event Note", function() {
+	it("checks event note", function() {
 		var actual = dogController.eventNote;		
-		expect(actual).toEqual('no messages');
+		expect(actual).toEqual('');
 	});
 	
-	it("Check Debug Messages", function() {
+	it("checks debug messages", function() {
 		var actual = dogController.debugMessages;		
 		expect(actual).toEqual([]);
 	});
 	
-	it("Check move Messages", function() {
+	it("checks move Messages", function() {
 		var actual = dogController.moveMessages;		
 		expect(actual).toEqual([]);
+	});
+	it("checks species name", function(){
+		var actual = dogController.speciesName;		
+		expect(actual).toEqual("");
 	});
 });
 

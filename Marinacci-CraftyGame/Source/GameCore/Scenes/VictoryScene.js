@@ -12,6 +12,7 @@ Crafty.scene('Victory', function() { 'use strict';
 	// advance to the next level when a key is pressed
 	this.nextLevel = function() {
 		Crafty.game.level++;
+		Crafty.game.changeLevelMessage(Crafty.game.level);
 		/*
 		switch (Crafty.game.level){
 			case 1:

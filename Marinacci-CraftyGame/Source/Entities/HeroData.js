@@ -28,7 +28,7 @@ angular.module('heroDataMod', ['ngResource', 'configMod']).constant('CONFIG', {
 	};
 	// https://api.mongolab.com/api/1/databases/jpdata/collections/craftyGame?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG
 	if(configData.testing === false){
-		loadHeroFromData();
+		//loadHeroFromData();
 	}
 	return hero;
 });

@@ -59,13 +59,13 @@
 		var actual = dogGameService.newEnemy({});
 		expect(actual).toEqual(1);	
 	});
-	/*
+	
 	it("simulates an encounter", function() {
-		var actual = dogGameService.encounter({ hydrant: { hitPoints: 25 } });
+		var actual = dogGameService.encounter({ hydrant: { health: 25 } });
 		expect(actual).toBe(false);
 	});
 	it("simulates an encounter hydrant end", function() {
-		var actual = dogGameService.encounter({ hydrant: { hitPoints: 0 } });
+		var actual = dogGameService.encounter({ hydrant: { health: 0 } });
 		expect(actual).toBe(true);
 	});
 	
@@ -74,8 +74,8 @@
 		expect(actual).toBe(true);
 	});
 	
-	it("reports an event", function() {
-		var actual = dogGameService.reportEvent();
+	it("reports an encounter", function() {
+		var actual = dogGameService.reportEncounter();
 		expect(actual).toEqual(true);
 	});
 	it("sends a change direction message", function() {
@@ -115,6 +115,5 @@
 		expect(dogController.debugMessages).toEqual([testValue03, testValue02, testValue01]);
 	});
 	
-	*/
 });
 

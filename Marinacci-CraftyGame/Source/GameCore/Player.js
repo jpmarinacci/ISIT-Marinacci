@@ -96,7 +96,7 @@ Crafty.c('PlayerCharacter', {
 			return;
 		}
 
-		Crafty.game.reportEvent("Found Hydrant: " + data[0].obj._entityName);
+		Crafty.game.reportEncounter("Found Hydrant: " + data[0].obj._entityName);
 		if (Crafty.game.encounter(data[0].obj)) {
 			var enemy = data[0].obj;
 			enemy.visit();
