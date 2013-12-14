@@ -73,7 +73,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 			gameEventService.classBroadcast(entities.hero.className);
 		},
 
-		reportEncounter : function(message) {
+		reportEncounterMessage : function(message) {
 			return gameEventService.encounterBroadcast(message);
 		},
 

@@ -15,15 +15,12 @@ describe("Test Dog Controller", function() {'use strict';
 		$controller('DogController', { $scope: dogController});
 	}));
 	
+	/*
 	it("checks player name", function() {
 		var actual = dogController.name;		
-		expect(actual).toEqual('Fido');
-	});	
-	
-	it("checks event note", function() {
-		var actual = dogController.eventNote;		
 		expect(actual).toEqual('');
-	});
+	});	
+	*/
 	
 	it("checks debug messages", function() {
 		var actual = dogController.debugMessages;		

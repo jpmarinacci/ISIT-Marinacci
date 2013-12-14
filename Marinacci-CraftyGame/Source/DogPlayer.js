@@ -4,7 +4,7 @@
 
  /* jshint devel: true */
 
-angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap'])
+angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
 .factory('gameEventService', function($rootScope) { 'use strict';
 	return {
 		message: "",
@@ -67,7 +67,7 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap'])
 		}
 	};
 })
-.controller('DogController', function($scope, $dialog, gameEventService, dogGameService) { 'use strict';
+.controller('DogController', function($scope, $dialog, gameEventService, dogGameService, configData) { 'use strict';
 
 	$scope.name = "";
 	$scope.speciesName = "";
@@ -100,7 +100,9 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap'])
 		});
 	};
 	
-	$scope.edit($scope.name);
+	if(!configData.testing){
+		$scope.edit($scope.name);
+	}
 	dogGameService.start();
 
 	$scope.$on('debugBroadcast', function() {		

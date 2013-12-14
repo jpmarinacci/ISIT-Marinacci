@@ -19,12 +19,14 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 					entities.hero = queryResult[0].hero;
 				});
 			},
+			/*
 			loadHero : function() {
 				if (hero){
 					entities.hero.health = hero.health;
 					entities.hero.damage = hero.damage;
 				}
 			}
+			*/
 		},
 		
 		hydrant : function() {

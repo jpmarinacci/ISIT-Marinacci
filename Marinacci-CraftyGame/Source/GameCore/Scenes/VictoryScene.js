@@ -13,20 +13,6 @@ Crafty.scene('Victory', function() { 'use strict';
 	this.nextLevel = function() {
 		Crafty.game.level++;
 		Crafty.game.changeLevelMessage(Crafty.game.level);
-		/*
-		switch (Crafty.game.level){
-			case 1:
-			Crafty.game.level=2;
-			break;
-			case 2:
-			Crafty.game.level=3;
-			break;
-			case 3:
-			Crafty.game.level++;
-			default:
-			Crafty.game.level=1;		
-		}
-		*/
 		Crafty.scene('Game');
 	};
 	

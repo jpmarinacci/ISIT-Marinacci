@@ -74,21 +74,32 @@
 		expect(actual).toBe(true);
 	});
 	
+	/*
 	it("reports an encounter", function() {
-		var actual = dogGameService.reportEncounter();
+		var testValue = 'encounter message';
+		var actual = dogGameService.reportEncounterMessage(testValue);
 		expect(actual).toEqual(true);
 	});
+	*/
+	
+	it("sends an encounter message to dogController", function() {
+		var testValue = 'encounter message';
+		var actual = dogGameService.reportEncounterMessage(testValue);
+		//expect(actual).toEqual(true);
+		expect(dogController.encounterMessages[0].message).toEqual(testValue);
+	});
+	
 	it("sends a change direction message", function() {
 		var testValue = "turtle changed direction message";
 		var actual = dogGameService.changeDirectionMessage(testValue);
 		expect(actual).toEqual(true);
 	});
 	
-	it("sends a change direction message to dogcontroller", function() {
+	it("sends a change direction message to dogController", function() {
 		var testValue = "turtle soup in dog controller";
 		var actual = dogGameService.changeDirectionMessage(testValue);
 		expect(actual).toEqual(true);
-		expect(dogController.eventNote).toEqual(testValue);
+		expect(dogController.direction).toEqual(testValue);
 	});
 	
 	it("sends a debug message", function() {
