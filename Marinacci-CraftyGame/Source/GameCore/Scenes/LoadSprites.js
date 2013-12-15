@@ -1,5 +1,5 @@
 /**
- * @author Charlie
+ * @author Charlie / JP
  */
 
 /* jshint browser: true */

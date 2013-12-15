@@ -1,5 +1,5 @@
 /**
- * @author Charlie Calvert
+ * @author JP
  */
 
 // Food is a tile on the grid that the PC can eat

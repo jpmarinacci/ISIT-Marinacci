@@ -2,7 +2,6 @@
  * @author JP
  */
 
-// specs code
 describe("Test Game Map Grid", function() {'use strict';
 		
 	

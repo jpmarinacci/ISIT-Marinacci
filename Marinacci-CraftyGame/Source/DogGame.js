@@ -1,3 +1,6 @@
+/**
+ * @author JP
+ */
 /* jshint browser: true */
 
 angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'configMod'])

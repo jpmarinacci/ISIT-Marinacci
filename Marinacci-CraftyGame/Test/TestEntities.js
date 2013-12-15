@@ -2,7 +2,6 @@
  * @author JP
  */
 
-// specs code
 describe("Test Entities", function() {'use strict';
 
 	var entities = null;
