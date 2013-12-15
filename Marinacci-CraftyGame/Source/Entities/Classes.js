@@ -4,7 +4,8 @@
 
 angular.module('classesMod', ['configMod']).factory('classTypes', function($http, configData) {'use strict';
 
-	if (!configData) {
+	/*
+	if (!configData.testing) {
 		//return $http.get('classes.json');
 		return {
 			classes : [],
@@ -23,8 +24,9 @@ angular.module('classesMod', ['configMod']).factory('classTypes', function($http
 			}
 		};
 	} else {
+		*/
 		return {
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		};
-	}
+	//}
 });

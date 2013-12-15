@@ -1,5 +1,5 @@
 /**
- * @author Charlie Calvert
+ * @author Charlie Calvert /JP
  */
 
 /* jshint devel: true */
