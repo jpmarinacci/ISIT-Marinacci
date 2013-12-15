@@ -8,7 +8,7 @@ angular.module('hydrantMod', [])
 	return {
 		hydrant : function() {
 			return {
-				health : 2,
+				health : 9,
 				damage : 2
 			};
 		}

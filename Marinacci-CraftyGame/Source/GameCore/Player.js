@@ -87,19 +87,22 @@ Crafty.c('PlayerCharacter', {
 
 	// Respond to this player visiting an enemy
 	visitEnemy : function(data) {'use strict';
+		var enemy = data[0].obj;
 		this.stopMovement();
-
+		Crafty.game.reportEncounterMessage("Found Hydrant: " + data[0].obj._entityName);
+		Crafty.game.currentEnemy=enemy.hydrant;
+		Crafty.game.sendHydrantHealthMessage(Crafty.game.currentEnemy.health);
+		enemy.visit();
+		
 		// If we are in an encounter, then we do nothing until the user
 		// asks to move again.
 		if (this.encounterMode) {
 			this.fightMode = true;
 			return;
 		}
-
-		Crafty.game.reportEncounterMessage("Found Hydrant: " + data[0].obj._entityName);
-		if (Crafty.game.encounter(data[0].obj)) {
-			var enemy = data[0].obj;
-			enemy.visit();
+		if (Crafty.game.encounterEnemy(data[0].obj)) {
+			enemy = data[0].obj;
+			enemy.destroyEnemy();
 			this.fightMode = false;
 		} else {
 			this.encounterMode = true;
@@ -113,7 +116,7 @@ Crafty.c('PlayerCharacter', {
 		}
 		var food = data[0].obj;
 		// food.sprite(0,2);
-		food.visit();
+		food.eat();
 		this.encounterMode = true;
 	}
 });

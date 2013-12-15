@@ -28,6 +28,10 @@ angular.module('speciesMod', ['configMod'])
 	if (configData.testing === false) {
 		speciesFactory.species.push(speciesFactory.loadSpecies());
 	}
+	else
+	{
+		speciesFactory.species= ["Dwarf", "Halfling","Elf", "Human", "Dog"];
+	}
 	
 	var temp = ["Dwarf", "Halfling","Elf", "Human", "Dog"];
 	speciesFactory.species=temp;

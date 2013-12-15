@@ -4,7 +4,7 @@
 
 describe("Test classes", function() {'use strict';
 
-	var classesFactory = null;
+	var classTypes = null;
 	var $httpBackend = null;
 	var configurationData = null;
 
@@ -14,7 +14,7 @@ describe("Test classes", function() {'use strict';
 	});
 
 	beforeEach(inject(function($injector) {
-		classesFactory = $injector.get('classesFactory');
+		classTypes = $injector.get('classTypes');
 	}));
 
 	beforeEach(inject(function(_$httpBackend_) {
@@ -30,8 +30,8 @@ describe("Test classes", function() {'use strict';
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory).toNotEqual(null);
+		classTypes.loadclasses();
+		expect(classTypes).toNotEqual(null);
 		$httpBackend.flush();
 	});
 
@@ -40,16 +40,16 @@ describe("Test classes", function() {'use strict';
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory.classes[0]).toEqual('Dwarf');
+		classTypes.loadclasses();
+		expect(classTypes.classes[0]).toEqual('Dwarf');
 		$httpBackend.flush();
 	});
 	it("can get a hafling", function() {
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory.classes[1]).toEqual('Halfling');
+		classTypes.loadclasses();
+		expect(classTypes.classes[1]).toEqual('Halfling');
 		$httpBackend.flush();
 	});
 
@@ -57,8 +57,8 @@ describe("Test classes", function() {'use strict';
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory.classes[2]).toEqual('Elf');
+		classTypes.loadclasses();
+		expect(classTypes.classes[2]).toEqual('Elf');
 		$httpBackend.flush();
 	});
 
@@ -66,8 +66,8 @@ describe("Test classes", function() {'use strict';
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory.classes[3]).toEqual('Human');
+		classTypes.loadclasses();
+		expect(classTypes.classes[3]).toEqual('Human');
 		$httpBackend.flush();
 	});
 
@@ -75,8 +75,8 @@ describe("Test classes", function() {'use strict';
 		$httpBackend.expectGET('classes.json').respond({
 			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
 		});
-		classesFactory.loadclasses();
-		expect(classesFactory.classes[4]).toEqual('Dog');
+		classTypes.loadclasses();
+		expect(classTypes.classes[4]).toEqual('Dog');
 		$httpBackend.flush();
 	});
 	*/

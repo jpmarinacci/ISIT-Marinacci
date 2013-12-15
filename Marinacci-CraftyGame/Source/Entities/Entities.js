@@ -29,15 +29,17 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			*/
 		},
 		
+		//hydrant: hydrant
 		hydrant : function() {
 			return {
-				health : 6,
-				damage : 1,
+				health : 9,
+				damage : 2,
 				loadHydrant : function() {
 					entities.hydrant = hydrant;
 				}
 			};
 		}
+		
 	};
 	
 	//

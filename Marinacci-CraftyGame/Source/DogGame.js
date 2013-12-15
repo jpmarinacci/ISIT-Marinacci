@@ -1,7 +1,7 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'configMod'])
-.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap, configData) {'use strict';
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
+.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {'use strict';
 	return {
 
 		map_grid : null,
@@ -25,16 +25,23 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 		mainHero : entities.hero,
 		enemies : [],
 		enemyCount : 0,
+		currentEnemy: {},
 		
 		newEnemy : function(enemy) {
 			enemy.hydrant = entities.hydrant();
-			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
 			return this.enemies.push(enemy);
 		},
-		encounter : function(enemy) {
-			this.encounterEnemy(enemy);
+		encounterEnemy : function(enemy) {
+			this.mainHero.health -= enemy.hydrant.damage;
+			enemy.hydrant.health -= this.mainHero.damage;
+			if (enemy.hydrant.health < 0) {
+				enemy.hydrant.health = 0;
+			}
+			this.currentEnemy = enemy.hydrant;
+			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
 			if (this.mainHero.health > 0) {
-
+				
 				if (enemy.hydrant.health <= 0) {
 					gameEventService.encounterBroadcast('destroyed hydrant');
 					return true;
@@ -43,23 +50,12 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 					return false;
 				}
 			} else {
+				//case that hero loses
 				this.mainHero.health = 20;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
-				if (!configData.testing) {
-					Crafty.scene('Defeat');
-				}
+				Crafty.scene('Defeat');
 				return false;
 			}
-		},
-
-		encounterEnemy : function(enemy) {
-			this.mainHero.health -= enemy.hydrant.damage;
-			enemy.hydrant.health -= this.mainHero.damage;
-			if (enemy.hydrant.health < 0) {
-				enemy.hydrant.health = 0;
-			}
-			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
-			gameEventService.heroHealthBroadcast(this.mainHero.health);
 		},
 		
 		encounterFood : function(food) {
@@ -87,6 +83,10 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 
 		enemyCountMessage : function(message) {
 			return gameEventService.enemyCountBroadcast(message);
+		},
+		
+		sendHydrantHealthMessage : function(message){
+			return gameEventService.hydrantHealthBroadcast(message);
 		},
 
 		changeDirectionMessage : function(message) {

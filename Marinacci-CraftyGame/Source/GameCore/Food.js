@@ -9,7 +9,7 @@ Crafty.c('Food', {
 		this.requires('Actor, spr_food');
 	},
 
-	visit: function() { 'use strict';
+	eat: function() { 'use strict';
 		this.destroy();
 		Crafty.audio.play('marioCoin');
 		Crafty.game.encounterFood(this);

@@ -17,10 +17,6 @@ angular.module('heroDataMod', ['ngResource', 'configMod']).constant('CONFIG', {
 			method : 'PUT'
 		}
 	});
-	
-	heroLoader.prototype.getHero = function() {
-		return this.hero;
-	};
 	/*
 	var loadHeroFromData = function() {
 		hero.getHero.query({}, function(queryResult) {

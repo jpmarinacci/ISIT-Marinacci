@@ -61,7 +61,7 @@ describe("Test Dog Game", function() {'use strict';
 	});
 
 	it("simulates an encounter", function() {
-		var actual = dogGameService.encounter({
+		var actual = dogGameService.encounterEnemy({
 			hydrant : {
 				health : 6,
 				damage: 2
@@ -72,9 +72,9 @@ describe("Test Dog Game", function() {'use strict';
 	
 	it("simulates an encounter hero end", function() {
 		dogGameService.mainHero.health=2;
-		var actual = dogGameService.encounter({
+		var actual = dogGameService.encounterEnemy({
 			hydrant : {
-				health : 25,
+				health : 2,
 				damage : 2
 			}
 		});
@@ -83,7 +83,7 @@ describe("Test Dog Game", function() {'use strict';
 	
 
 	it("simulates an encounter hydrant end", function() {
-		var actual = dogGameService.encounter({
+		var actual = dogGameService.encounterEnemy({
 			hydrant : {
 				health : 0,
 				damage:2
