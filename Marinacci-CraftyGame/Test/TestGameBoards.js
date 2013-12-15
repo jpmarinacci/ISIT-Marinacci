@@ -64,7 +64,9 @@ describe("Test Game Boards Module", function() {'use strict';
 				]]
 		});
 		boards.loadBoards();
-		expect(boards.length).toEqual(3);
+		var actualLength = boards.length;
+		expect(boards).toNotEqual(null);
+		expect(actualLength).toNotEqual(0);
 		$httpBackend.flush();
 	});
 	/*

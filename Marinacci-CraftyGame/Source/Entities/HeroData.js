@@ -1,6 +1,7 @@
 /**
  * @author JP
  */
+
 /* global angular */
 
 angular.module('heroDataMod', ['ngResource', 'configMod']).constant('CONFIG', {

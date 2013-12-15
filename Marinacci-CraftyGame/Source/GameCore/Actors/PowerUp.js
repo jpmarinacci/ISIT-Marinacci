@@ -13,10 +13,6 @@ Crafty.c('PowerUp', {
 		this.destroy();
 		Crafty.audio.play('marioFlagPole');
 		Crafty.game.encounterPowerUp(this);
-	},
-
-	switchComponent: function() { 'use strict';
-		this.toggleComponent('Food01', 'Food02');
 	}
 });
 

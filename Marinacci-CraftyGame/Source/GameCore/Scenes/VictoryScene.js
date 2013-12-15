@@ -10,7 +10,9 @@ Crafty.scene('Victory', function() { 'use strict';
 		.text("<div id='Banner'>Level Passed!</div>")
 		.textColor('#FFFFFF')
 		.textFont({ family: 'Segoe',  size: '48px', weight: 'bold' });
-
+	if((Crafty.game.level)%5===1){
+			Crafty.audio.play('stageClear');
+		}
 	// advance to the next level when a key is pressed
 	this.nextLevel = function() {
 		Crafty.game.level++;

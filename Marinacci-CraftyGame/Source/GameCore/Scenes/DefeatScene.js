@@ -10,7 +10,7 @@ Crafty.scene('Defeat', function() { 'use strict';
         .textColor('#FF0000')
         .textFont({ family: 'Segoe', size: '48px', weight: 'bold' });
 
-
+	Crafty.audio.play('uhOh');
 	// restart the game when a key is pressed
 	this.restart = function() {
 		Crafty.scene('Game');
