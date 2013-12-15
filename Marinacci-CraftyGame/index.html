@@ -9,15 +9,17 @@
     <script src="Library/angular-resource.js"></script>
 	<script src="Library/crafty.js"></script>
 	<script src="Library/ui-bootstrap-tpls-0.1.0.js"></script>	
-	<script src="Source/GameCore/Actors.js"></script>
-	<script src="Source/GameCore/Food.js"></script>
+	<script src="Source/GameCore/Actors/Actors.js"></script>
+	<script src="Source/GameCore/Actors/Food.js"></script>
+	<script src="Source/GameCore/Actors/Boulder.js"></script>
+	<script src="Source/GameCore/Actors/PowerUp.js"></script>
+	<script src="Source/GameCore/Actors/Player.js"></script>
+	<script src="Source/GameCore/Actors/Enemy.js"></script>
 	<script src="Source/GameCore/Grid.js"></script>	
-	<script src="Source/GameCore/Player.js"></script>
 	<script src="Source/GameCore/Scenes/LoadSprites.js"></script>
 	<script src="Source/GameCore/Scenes/GameScene.js"></script>
 	<script src="Source/GameCore/Scenes/VictoryScene.js"></script>
 	<script src="Source/GameCore/Scenes/DefeatScene.js"></script>
-	<script src="Source/GameCore/Enemy.js"></script>
 	<script src="Source/Entities/Entities.js"></script>
 	<script src="Source/Entities/HeroData.js"></script>
 	<script src="Source/Entities/Hydrant.js"></script>
@@ -40,9 +42,9 @@
         <p><span class ="myLabel">Character:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{name}}</span></p>
         <p><span class ="myLabel">Species:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{speciesType}}</span></p>
         <p><span class="myLabel">Class:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{classType}}</span></p>
+        <p><span class="myLabel">Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{heroHealth}}</span></p>
         <p><span class="myLabel">Level:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{level}}</span></p>
         <p><span class="myLabel">Enemies:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{enemyCount}}</span></p>
-        <p><span class="myLabel">Hero Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{heroHealth}}</span></p>
         <p><span class="myLabel">Current Hydrant Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{hydrantHealth}}</span></p>
         <p><span class="myLabel">Direction:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{direction}}</span></p>
         <ul><li ng-repeat="encounterMessage in encounterMessages">{{encounterMessage.message}}</li></ul>

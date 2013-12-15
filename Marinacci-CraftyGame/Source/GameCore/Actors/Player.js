@@ -1,9 +1,5 @@
 /**
- * @author Charlie
- */
-
-/**
- * @author Charlie
+ * @author Charlie /JP
  */
 // This is the player-controlled character
 Crafty.c('PlayerCharacter', {
@@ -13,6 +9,8 @@ Crafty.c('PlayerCharacter', {
 		.stopOnSolids()
 		.onHit('Enemy', this.visitEnemy)
 		.onHit('Food', this.visitFood)
+		.onHit('Boulder', this.visitBoulder)
+		.onHit('PowerUp', this.visitPowerUp)
 		// These next lines define our four animations
 		// each call to .animate specifies:
 		// - the name of the animation
@@ -89,7 +87,6 @@ Crafty.c('PlayerCharacter', {
 	visitEnemy : function(data) {'use strict';
 		var enemy = data[0].obj;
 		this.stopMovement();
-		Crafty.game.reportEncounterMessage("Found Hydrant: " + data[0].obj._entityName);
 		Crafty.game.currentEnemy=enemy.hydrant;
 		Crafty.game.sendHydrantHealthMessage(Crafty.game.currentEnemy.health);
 		enemy.visit();
@@ -117,8 +114,28 @@ Crafty.c('PlayerCharacter', {
 			return;
 		}
 		var food = data[0].obj;
-		// food.sprite(0,2);
 		food.eat();
 		this.encounterMode = true;
+	},
+	
+	visitBoulder: function(data){'use strict';
+		this.stopMovement();
+		if (this.encounterMode) {
+			return;
+		}
+		var boulder = data[0].obj;
+		boulder.smash();
+		this.encounterMode = true;
+	
+	},
+	visitPowerUp: function(data){'use strict';
+		this.stopMovement();
+		if (this.encounterMode) {
+			return;
+		}
+		var powerUp = data[0].obj;
+		powerUp.use();
+		this.encounterMode = true;
 	}
+	
 });

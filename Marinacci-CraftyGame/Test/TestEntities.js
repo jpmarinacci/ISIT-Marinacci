@@ -52,7 +52,7 @@ describe("Test Entities", function() {'use strict';
 
 	it("can get hero default damage", function() {
 		var actualHero = entities.hero;
-		expect(actualHero.damage).toEqual(3);
+		expect(actualHero.damage).toEqual(2);
 	});
 
 	it("can get a hydrant", function() {

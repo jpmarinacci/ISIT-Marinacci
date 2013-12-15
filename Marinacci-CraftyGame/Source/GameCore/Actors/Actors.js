@@ -22,3 +22,11 @@ Crafty.c('Bush', {
         this.requires('Actor, Solid, spr_bush');
     },
 });
+
+Crafty.c('Tree', {
+	init: function() { 'use strict';
+		this.requires('Actor, Solid, spr_tree');
+	}
+	
+});
+

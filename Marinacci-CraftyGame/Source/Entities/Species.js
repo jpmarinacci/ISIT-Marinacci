@@ -2,6 +2,8 @@
  * @author JP
  */
 
+/* global angular:true */
+
 angular.module('speciesMod', ['configMod'])
 .factory('speciesTypes', function($http, configData) {'use strict';
 
@@ -9,13 +11,11 @@ angular.module('speciesMod', ['configMod'])
 	speciesTypes.species = [];
 
 	speciesTypes.loadSpecies = function() {
-		//console.log("load species called");
+		console.log("load species called");
 		var getSpeciesFromJson = $http.get('species.json');
 
 		getSpeciesFromJson.success(function(data, status, headers, config) {
-			//console.log(data);
-			//console.log(data, status, headers, config);
-			//speciesFactory.species.push(data.species);
+			console.log(data, status, headers, config);
 			return data.species;
 		});
 
@@ -26,10 +26,11 @@ angular.module('speciesMod', ['configMod'])
 	};
 
 	//if (configData.testing === false) {
-		//speciesTypes.species.push(speciesFactory.loadSpecies());
+		//speciesTypes.species.push(speciesTypes.loadSpecies());
 	//} else {
 		var temp = ["Dwarf", "Halfling", "Elf", "Human", "Dog"];
 		speciesTypes.species = temp;
-		return speciesTypes;
 	//}
+		return speciesTypes;
+
 });

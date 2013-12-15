@@ -127,7 +127,10 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
 	});
 
 	$scope.$on('encounterBroadcast', function() {
-		$scope.encounterMessages.length = 0;
+		if($scope.encounterMessages.length>4){
+			$scope.encounterMessages.splice(0,1);
+			//$scope.encounterMessages.length = 0;
+		}	
 		$scope.$apply(function() {
 			$scope.encounterMessages.push({
 				'message' : gameEventService.message

@@ -1,5 +1,5 @@
 /**
- * @author Charlie Calvert
+ * @author Charlie Calvert / JP
  */
 
 /* global angular:true */
@@ -9,11 +9,12 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 
 	var entities = {
 
+		//hero: hero,
 		hero : {
 			species: speciesTypes.species[4],
 			classType: classTypes.classes[Math.floor(Math.random()*3)+4],
 			health : 20,
-			damage : 3,
+			damage : 2,
 			/*
 			loadHeroFromData : function() {
 				hero.query({}, function(queryResult) {
@@ -21,13 +22,6 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 					entities.hero.damage = queryResult[0].hero.damage;
 				});
 			},
-			/*
-			loadHero : function() {
-				if (hero){
-					entities.hero.health = hero.health;
-					entities.hero.damage = hero.damage;
-				}
-			}
 			*/
 		},
 		
@@ -45,9 +39,7 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 		}
 		
 	};
-	
-	//
-	//entities.hero.loadHero();
+
 	//entities.hero.loadHeroFromData();
 	return entities;
 });

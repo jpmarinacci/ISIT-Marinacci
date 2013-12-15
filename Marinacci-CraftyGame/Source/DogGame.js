@@ -43,15 +43,17 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			if (this.mainHero.health > 0) {
 				
 				if (enemy.hydrant.health <= 0) {
-					gameEventService.encounterBroadcast('Destroyed Hydrant');
+					gameEventService.encounterBroadcast('Destroyed '+ enemy._entityName);
+					gameEventService.encounterBroadcast('100 Points');
 					return true;
 				} else {
-					gameEventService.encounterBroadcast('hit hydrant');
+					gameEventService.encounterBroadcast('Hit '+ enemy._entityName);
 					return false;
 				}
 			} else {
 				//case that hero loses
 				this.mainHero.health = 20;
+				this.mainHero.damage =2;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
 				this.level=1;
 				gameEventService.levelBroadcast(this.level);
@@ -70,7 +72,23 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			gameEventService.pointsBroadcast(this.points);
 			gameEventService.heroHealthBroadcast(this.mainHero.health);
 			gameEventService.encounterBroadcast('Found Item: Food');
+			gameEventService.encounterBroadcast('Health +5');
+			gameEventService.encounterBroadcast('25 Points');
 			return true;
+		},
+		encounterBoulder : function(boulder){
+			gameEventService.encounterBroadcast("Smashed Bonus Boulder");
+			gameEventService.encounterBroadcast("50 Points");
+			this.points+=50;
+			gameEventService.pointsBroadcast(this.points);
+		},
+		encounterPowerUp : function(powerUp){
+			this.mainHero.damage+=1;
+			this.points+=500;
+			gameEventService.pointsBroadcast(this.points);
+			gameEventService.encounterBroadcast('Found Item: Power Up');
+			gameEventService.encounterBroadcast('Damage +1');
+			gameEventService.encounterBroadcast('500 Points');
 		},
 
 		initHeroInfo : function() {

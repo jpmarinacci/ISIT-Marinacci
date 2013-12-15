@@ -31,11 +31,17 @@ Crafty.scene('Game', function() {'use strict';
 					createEntity('Bush', x, y);
 				} else if (gridValue === 3) {
 					createEntity('Food', x, y);
+				} else if (gridValue === 7) {
+					createEntity('Tree', x, y);
+				} else if (gridValue === 6) {
+					createEntity('Boulder', x, y);
+				} else if (gridValue === 8) {
+					createEntity('PowerUp', x, y);
 				} else if (gridValue === 4) {
 					//createEnemy(x, y);
 					enemyCount++;
 					var enemy = Crafty.e('Enemy').at(x, y);
-					enemy.setName('Enemy '+ enemyCount);
+					enemy.setName('Hydrant '+ enemyCount);
 					Crafty.game.newEnemy(enemy);
 				} else if (gridValue === 5) {
 					var player = createEntity('PlayerCharacter', x, y);
@@ -49,7 +55,9 @@ Crafty.scene('Game', function() {'use strict';
 	};
 
 	var randomizedGameBoard = function(board) {
-
+		
+		var edgeThing;
+		var edgeDefined = false;
 		// Player character, placed at random location on our grid
 		var xpos = Math.floor(Math.random() * 14 + 1);
 		var ypos = Math.floor(Math.random() * 8 + 1);
@@ -66,27 +74,69 @@ Crafty.scene('Game', function() {'use strict';
 
 				if (at_edge) {
 					// Place a Rock or a Bush entity at the current tile
-					if(Math.random()>0.5){
-						Crafty.e('Rock').at(x, y);
-					}else
+					var random = Math.random();
+					if(random <=0.25){
+						if(!edgeDefined){
+							edgeThing = 'rock';
+							edgeDefined = true;
+						}	
+					}else if (random >0.25 && random <=0.5)
 					{
-						Crafty.e('Bush').at(x, y);
+						if(!edgeDefined){
+							edgeThing = 'bush';
+							edgeDefined = true;
+						}
 					}
+					else if (random >0.5 && random <=0.75)
+					{
+						if(!edgeDefined){
+							edgeThing = 'tree';
+							edgeDefined = true;
+						}
+					}
+					else
+					{
+						if(!edgeDefined){
+							edgeThing = 'boulder';
+							edgeDefined = true;
+						}
+					}
+					if(edgeThing === 'rock'){
+						Crafty.e('Rock').at(x, y);
+					}else if (edgeThing==='bush'){
+						Crafty.e('Bush').at(x, y);
+					}else {
+						Crafty.e('Tree').at(x, y);
+					}
+
 					board[x][y] = true;
-				} else if (Math.random() < 0.1 && !board[x][y]) {
+				} 
+				//non edge
+				else if (Math.random() < 0.1 && !board[x][y]) {
 					// Place a bush entity at the current tile
 					Crafty.e('Bush').at(x, y);
 					board[x][y] = true;
-				} else if (Math.random() < 0.07 && !board[x][y]) {
+				} else if (Math.random() < 0.03 && !board[x][y]) {
 					// Place a rock entity at the current tile
 					Crafty.e('Rock').at(x, y);
 					board[x][y] = true;
-
 					// Place a food entity at the current tile
-				} else if (Math.random() < 0.05 && !board[x][y]) {
+				} else if (Math.random() < 0.01 && !board[x][y]) {
+					// Place a bush entity at the current tile
+					Crafty.e('Tree').at(x, y);
+					board[x][y] = true;
+				} else if (Math.random() < 0.03 && !board[x][y]) {
+					// Place a rock entity at the current tile
+					Crafty.e('Boulder').at(x, y);
+					board[x][y] = true;
+				}else if (Math.random() < 0.05 && !board[x][y]) {
 					Crafty.e('Food').at(x, y);
 					board[x][y] = true;
+				}else if (Math.random() < 0.001 && !board[x][y]) {
+					Crafty.e('PowerUp').at(x, y);
+					board[x][y] = true;
 				}
+				
 			}
 		}
 		// Generate up between one and five enemys on the map in random locations
@@ -99,7 +149,7 @@ Crafty.scene('Game', function() {'use strict';
 						if (Crafty('Enemy').length < max_enemys && !board[col][row]) {
 							var enemy = Crafty.e('Enemy').at(col, row);
 							enemyCount++;
-							enemy.setName('Enemy '+ enemyCount);
+							enemy.setName('Hydrant '+ enemyCount);
 							Crafty.game.newEnemy(enemy);		
 						}
 					}
