@@ -99,6 +99,16 @@ describe("Test Dog Game", function() {'use strict';
 		var actual = dogGameService.encounterFood({ }, 0);
 		expect(actual).toBe(true);
 	});
+	
+	it("simulates a boulder encounter", function() {
+		var actual = dogGameService.encounterBoulder({ }, 0);
+		expect(actual).toBe(true);
+	});
+	
+	it("simulates a powerUp encounter", function() {
+		var actual = dogGameService.encounterPowerUp({ }, 0);
+		expect(actual).toBe(true);
+	});
 
 	it("sends initial hero health information to dogController", function() {
 		var actualHealth = dogGameService.mainHero.health;
@@ -203,6 +213,22 @@ describe("Test Dog Game", function() {'use strict';
 		var testValue = 'encounter message';
 		var actual = dogGameService.reportEncounterMessage(testValue);
 		expect(dogController.encounterMessages[0].message).toEqual(testValue);
+	});
+	
+	it("sends 6 encounter messages to dogController - splices down 5", function(){
+		var testValue1 = "Russel Wilson";
+		var testValue2 = "Richard Sherman";
+		var testValue3 = "Marshon Lynch";
+		var testValue4 = "Kam Chancellor";
+		var testValue5 = "Earl Thomas III";
+		var testValue6 = "Percy Harvin";
+		dogGameService.reportEncounterMessage(testValue1);
+		dogGameService.reportEncounterMessage(testValue2);
+		dogGameService.reportEncounterMessage(testValue3);
+		dogGameService.reportEncounterMessage(testValue4);
+		dogGameService.reportEncounterMessage(testValue5);
+		dogGameService.reportEncounterMessage(testValue6);
+		expect(dogController.encounterMessages.length).toEqual(5);
 	});
 	
 	it("sends a score points message", function() {

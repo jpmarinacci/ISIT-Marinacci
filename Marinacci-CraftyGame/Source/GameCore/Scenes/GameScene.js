@@ -6,6 +6,7 @@
 Crafty.scene('Game', function() {'use strict';
 	Crafty.game.initHeroInfo();
 	this.boards = Crafty.game.boards;
+	var blah = Crafty.game.boards.countTotalEnemies();
 
 	// A 2D array to keep track of all gameBoard tiles
 	this.gameBoard = new Array(Crafty.game.map_grid.width);

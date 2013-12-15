@@ -80,7 +80,8 @@ angular.module('gameBoardsMod', ['configMod'])
 		]
 	]
 	};
-	var boards = boardsObject.boards;
+	var boards = [];
+	boards = boardsObject.boards;
 	
 	//Charlie - this function seems to get back data, sets boards = to an array full of arrays - checked in the debugger
 	//yet before I can send it back somehow boards becomes empty - ponderous
@@ -98,10 +99,41 @@ angular.module('gameBoardsMod', ['configMod'])
 			throw new Error('Could not load gameBoards from Json file');
 		});
 	};
+	boards.numberOfBoards = function(){
+		return boards.length;
+	};
 	
-	if (configData.testing===false){
-		boards.loadBoards();
-	}
+	boards.countTotalEnemies = function(){
+		var enemyCount ="";
+		for(var gameBoards=0; gameBoards < boards.length; gameBoards++){
+			for(var boardIndex=0; boardIndex< boards[0].length; boardIndex++){
+				for(var rowIndex=0; rowIndex< 16; rowIndex++){
+					if (boards[gameBoards][boardIndex][rowIndex]===4){
+						enemyCount ++;
+						}
+					}
+				}
+		}
+		return enemyCount;
+	};
+	
+	boards.countTotalFoodItems = function(){
+		var foodCount ="";
+		for(var gameBoards=0; gameBoards < boards.length; gameBoards++){
+			for(var boardIndex=0; boardIndex< boards[0].length; boardIndex++){
+				for(var rowIndex=0; rowIndex< 16; rowIndex++){
+					if (boards[gameBoards][boardIndex][rowIndex]===3){
+						foodCount ++;
+						}
+					}
+				}
+		}
+		return foodCount;
+	};
+	
+	//if (configData.testing===false){
+		//boards.loadBoards();
+	//}
 	
 	return boards;
 });

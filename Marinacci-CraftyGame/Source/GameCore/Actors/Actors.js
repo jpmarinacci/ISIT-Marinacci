@@ -1,5 +1,5 @@
 /**
- * @author Charlie
+ * @author Charlie / JP
  */
 
 // An "Actor" is drawn on a Canvas and located on a 2D Grid

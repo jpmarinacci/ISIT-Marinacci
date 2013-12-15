@@ -69,6 +69,22 @@ describe("Test Game Boards Module", function() {'use strict';
 		expect(actualLength).toNotEqual(0);
 		$httpBackend.flush();
 	});
+	
+	it("can get gameBoards count", function(){
+		var actual = boards.numberOfBoards();
+		expect(actual).toEqual(boards.length);
+	});
+	
+	it("can get total number of enemies in all game boards", function(){
+		var actual = boards.countTotalEnemies();
+		expect(actual).toBeGreaterThan(25);
+	});
+	
+	it("can get total number of food items in all game boards", function(){
+		var actual = boards.countTotalFoodItems();
+		expect(actual).toBeGreaterThan(50);
+	});
+	
 	/*
 	it("can get an error when loading Json", function() {
 		$httpBackend.expectGET('gameBoards.json').respond('');

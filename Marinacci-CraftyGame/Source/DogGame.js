@@ -81,6 +81,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			gameEventService.encounterBroadcast("50 Points");
 			this.points+=50;
 			gameEventService.pointsBroadcast(this.points);
+			return true;
 		},
 		encounterPowerUp : function(powerUp){
 			this.mainHero.damage+=1;
@@ -89,6 +90,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			gameEventService.encounterBroadcast('Found Item: Power Up');
 			gameEventService.encounterBroadcast('Damage +1');
 			gameEventService.encounterBroadcast('500 Points');
+			return true;
 		},
 
 		initHeroInfo : function() {
