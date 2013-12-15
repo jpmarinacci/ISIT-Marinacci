@@ -146,4 +146,5 @@ walkDirs('Library');
 walkDirs('Source');
 walkDirs('Style');
 writeFile('index.html', '/index.html', false);
+writeFile('inputName.html', '/inputName.html', false);
 listBuckets(s3);
