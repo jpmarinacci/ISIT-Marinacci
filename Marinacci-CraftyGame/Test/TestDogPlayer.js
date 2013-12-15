@@ -22,8 +22,8 @@ describe("Test Dog Controller", function() {'use strict';
 		expect(actual).toEqual("Fido");
 	});
 
-	it("checks species name", function() {
-		var actual = dogController.speciesName;
+	it("checks species type", function() {
+		var actual = dogController.speciesType;
 		expect(actual).toEqual("");
 	});
 	

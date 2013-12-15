@@ -7,6 +7,7 @@
 	height: 400px;
 	background-color: #00BB88;
 }*/
+
 #gameBoard{
 	margin:10px 10px;
 	border:solid #000000;
@@ -22,7 +23,7 @@
 	margin-left: 50px;
 	padding: 5px;
 	border: solid black 2px; 
-	font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-family:Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 	font-size:large;
 }
 #Banner
@@ -36,3 +37,24 @@
 }
 .infoBox{
 }
+#pointsDisplayWrapper{
+	display:inline-block;
+	clear:both;
+	margin:10px 10px;
+	width:768px;
+	text-align:center;
+	
+}
+
+#pointsDisplay{
+	border: solid black 2px;
+	background-color:green;
+	font-family:Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+	font-size:large;
+	color:black;
+}
+
+
+
+
+

@@ -21,25 +21,15 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 		level : 1,
 
 		points : 0,
-		
-		mainHero: entities.hero,
+
+		mainHero : entities.hero,
 		enemies : [],
 		enemyCount : 0,
-
-		encounterEnemy : function(enemy) {
-			this.mainHero.health -= enemy.hydrant.damage;
-			enemy.hydrant.health -= this.mainHero.damage;
-			if (enemy.hydrant.health < 0) {
-				enemy.hydrant.health = 0;
-			}
+		
+		newEnemy : function(enemy) {
+			enemy.hydrant = entities.hydrant();
 			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
-			gameEventService.heroHealthBroadcast(this.mainHero.health);
-		},
-		encounterFood : function(food) {
-			this.mainHero.health += 5;
-			gameEventService.heroHealthBroadcast(this.mainHero.health);
-			gameEventService.encounterBroadcast('Found item: Food');
-			return true;
+			return this.enemies.push(enemy);
 		},
 		encounter : function(enemy) {
 			this.encounterEnemy(enemy);
@@ -55,23 +45,36 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			} else {
 				this.mainHero.health = 20;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
-				if(!configData.testing){
+				if (!configData.testing) {
 					Crafty.scene('Defeat');
 				}
 				return false;
 			}
 		},
 
-		newEnemy : function(enemy) {
-			enemy.hydrant = entities.hydrant();
+		encounterEnemy : function(enemy) {
+			this.mainHero.health -= enemy.hydrant.damage;
+			enemy.hydrant.health -= this.mainHero.damage;
+			if (enemy.hydrant.health < 0) {
+				enemy.hydrant.health = 0;
+			}
 			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
-			return this.enemies.push(enemy);
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
+		},
+		
+		encounterFood : function(food) {
+			this.mainHero.health += 5;
+			this.points+=25;
+			gameEventService.pointsBroadcast(this.points);
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
+			gameEventService.encounterBroadcast('Found item: Food');
+			return true;
 		},
 
 		initHeroInfo : function() {
 			gameEventService.heroHealthBroadcast(this.mainHero.health);
 			gameEventService.speciesBroadcast(this.mainHero.species);
-			gameEventService.classBroadcast(this.mainHero.className);
+			gameEventService.classBroadcast(this.mainHero.classType);
 		},
 
 		sendDebugMessage : function(message) {
@@ -92,6 +95,10 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 
 		reportEncounterMessage : function(message) {
 			return gameEventService.encounterBroadcast(message);
+		},
+		
+		scorePointsMessage: function(message){
+			return gameEventService.pointsBroadcast(message);
 		},
 
 		// Get width of the game screen in pixels

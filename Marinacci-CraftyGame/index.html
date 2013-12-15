@@ -34,21 +34,24 @@
         
     </div>
     
-    <div id="textDisplay" ng-controller="DogController">
+    <div ng-controller="DogController">
+    <div id="textDisplay">
         <h1>Doggy Game</h1>
         <p><span class ="myLabel">Character:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{name}}</span></p>
-        <p><span class ="myLabel">Species:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{speciesName}}</span></p>
-        <p><span class="myLabel">Class:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{className}}</span></p>
+        <p><span class ="myLabel">Species:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{speciesType}}</span></p>
+        <p><span class="myLabel">Class:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{classType}}</span></p>
         <p><span class="myLabel">Level:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{level}}</span></p>
         <p><span class="myLabel">Enemies:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{enemyCount}}</span></p>
         <p><span class="myLabel">Hero Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{heroHealth}}</span></p>
         <p><span class="myLabel">Current Hydrant Health:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{hydrantHealth}}</span></p>
-        <p><span class="myLabel">Direction:&nbsp;&nbsp;&nbsp;<span class="infoBox">{{direction}}</span></p>
+        <p><span class="myLabel">Direction:&nbsp;&nbsp;&nbsp;</span><span class="infoBox">{{direction}}</span></p>
         <ul><li ng-repeat="encounterMessage in encounterMessages">{{encounterMessage.message}}</li></ul>
         <!--p>Move Messages:</p>
         <select size=3 ng-model="messageDisplay" ng-options="msg for msg in moveMessages"> </select><br>
         <p>Debug Messages:</p>
         <select size=3 ng-model="messageBar" ng-options="message for message in debugMessages"> </select><br-->              
+    </div>
+    <div id="pointsDisplayWrapper"><span class="label" id="pointsDisplay">POINTS:&nbsp;&nbsp;{{points}}</span></div>
     </div>
 </body>
 </html>

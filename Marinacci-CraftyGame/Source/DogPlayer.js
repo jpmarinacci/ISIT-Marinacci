@@ -57,14 +57,19 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 		encounterBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('encounterBroadcast');
+		},
+		
+		pointsBroadcast: function(message){
+			this.message=message;
+			this.broadcastMessage('pointsBroadcast');
 		}
 	};
 }).controller('DogController', function($scope, $dialog, gameEventService, dogGameService, configData) {'use strict';
 
 	$scope.name = "Fido";
-	$scope.speciesName = "";
+	$scope.speciesType = "";
 	$scope.level = 1;
-	$scope.className = "";
+	$scope.classType = "";
 	$scope.enemyCount = "";
 	$scope.heroHealth = "";
 	$scope.hydrantHealth = "";
@@ -73,6 +78,7 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 	$scope.debugMessages = [];
 	$scope.moveMessages = [];
 	$scope.encounterMessages = [];
+	$scope.points = 0;
 
 	var dialogOptions = {
 		controller : 'EditCtrl',
@@ -122,13 +128,13 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 
 	$scope.$on('speciesBroadcast', function() {
 		$scope.$apply(function() {
-			$scope.speciesName = gameEventService.message;
+			$scope.speciesType = gameEventService.message;
 		});
 	});
 
 	$scope.$on('classBroadcast', function() {
 		$scope.$apply(function() {
-			$scope.className = gameEventService.message;
+			$scope.classType = gameEventService.message;
 		});
 	});
 
@@ -153,6 +159,12 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 	$scope.$on('hydrantHealthBroadcast', function() {
 		$scope.$apply(function() {
 			$scope.hydrantHealth = gameEventService.message;
+		});
+	});
+	
+	$scope.$on('pointsBroadcast', function() {
+		$scope.$apply(function() {
+			$scope.points = gameEventService.message;
 		});
 	});
 

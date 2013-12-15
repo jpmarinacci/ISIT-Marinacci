@@ -29,6 +29,8 @@ Crafty.c('Enemy', {
 				//break;
 			default:
 				Crafty.audio.play('marioKick');
+				Crafty.game.points+=100;
+				Crafty.game.scorePointsMessage(Crafty.game.points);
 				Crafty.game.enemyCount--;
 				Crafty.game.enemyCountMessage(this.enemyCount);
 				this.destroy();

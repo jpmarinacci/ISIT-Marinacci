@@ -96,6 +96,24 @@ describe("Test Dog Game", function() {'use strict';
 		var actual = dogGameService.encounterFood({ }, 0);
 		expect(actual).toBe(true);
 	});
+	
+	it("sends initial hero health information to dogController", function(){
+		var actualHealth = dogGameService.mainHero.health; 
+		dogGameService.initHeroInfo();
+		expect(dogController.heroHealth).toEqual(actualHealth);
+	});
+	
+	it("sends initial hero species information to dogController", function(){
+		var actualSpecies = dogGameService.mainHero.species; 
+		dogGameService.initHeroInfo();
+		expect(dogController.speciesType).toEqual(actualSpecies);
+	});
+	
+	it("sends initial hero class information to dogController", function(){
+		var actualClassType = dogGameService.mainHero.classType; 
+		dogGameService.initHeroInfo();
+		expect(dogController.classType).toEqual(actualClassType);
+	});
 
 	it("sends a debug message", function() {
 		var testValue = "turtled debug message";
