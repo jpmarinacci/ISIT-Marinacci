@@ -85,7 +85,8 @@ describe("Test Dog Game", function() {'use strict';
 	it("simulates an encounter hydrant end", function() {
 		var actual = dogGameService.encounter({
 			hydrant : {
-				health : 0
+				health : 0,
+				damage:2
 			}
 		});
 		expect(actual).toBe(true);

@@ -1,7 +1,7 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
-.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {'use strict';
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'configMod'])
+.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap, configData) {'use strict';
 	return {
 
 		map_grid : null,
@@ -55,7 +55,9 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
 			} else {
 				this.mainHero.health = 20;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
-				Crafty.scene('Defeat');
+				if(!configData.testing){
+					Crafty.scene('Defeat');
+				}
 				return false;
 			}
 		},
