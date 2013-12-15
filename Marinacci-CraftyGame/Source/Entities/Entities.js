@@ -5,12 +5,12 @@
 /* global angular:true */
 
 angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classesMod'])
-.factory('entities', function(hero, hydrant, speciesFactory, classTypes) {'use strict';
+.factory('entities', function(hero, hydrant, speciesTypes, classTypes) {'use strict';
 
 	var entities = {
 
 		hero : {
-			species: speciesFactory.species[4],
+			species: speciesTypes.species[4],
 			classType: classTypes.classes[Math.floor(Math.random()*3)+4],
 			health : 20,
 			damage : 3,

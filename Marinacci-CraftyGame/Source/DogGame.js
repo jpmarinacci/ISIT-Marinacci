@@ -53,6 +53,10 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 				//case that hero loses
 				this.mainHero.health = 20;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
+				this.level=1;
+				gameEventService.levelBroadcast(this.level);
+				this.points=0;
+				gameEventService.pointsBroadcast(this.points);
 				if(!configData.testing){
 					Crafty.scene('Defeat');
 				}

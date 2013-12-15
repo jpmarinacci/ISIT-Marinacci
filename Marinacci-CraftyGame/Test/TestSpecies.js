@@ -12,12 +12,9 @@ describe("Test Species", function() {'use strict';
 		module('speciesMod');
 		module('configMod');
 	});
-
-	beforeEach(inject(function($injector) {
-		speciesFactory = $injector.get('speciesFactory');
-	}));
-
-	beforeEach(inject(function(_$httpBackend_) {
+	
+	beforeEach(inject(function($injector, _$httpBackend_) {
+		speciesFactory = $injector.get('speciesTypes');
 		$httpBackend = _$httpBackend_;
 	}));
 
@@ -30,7 +27,7 @@ describe("Test Species", function() {'use strict';
 		$httpBackend.expectGET('species.json').respond({
 			"species" : ["Dwarf", "Halfling", "Elf", "Human", "Dog"]
 		});
-		speciesFactory.loadSpecies(speciesFactory);
+		speciesFactory.loadSpecies();
 		expect(speciesFactory).toNotEqual(null);
 		$httpBackend.flush();
 	});

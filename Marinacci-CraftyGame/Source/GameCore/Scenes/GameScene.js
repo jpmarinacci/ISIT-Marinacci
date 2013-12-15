@@ -98,9 +98,9 @@ Crafty.scene('Game', function() {'use strict';
 					if (Math.random() < Crafty.game.level/100) {
 						if (Crafty('Enemy').length < max_enemys && !board[col][row]) {
 							var enemy = Crafty.e('Enemy').at(col, row);
-							enemy.setName(enemy._entityName.replace('Entity', 'Enemy'));
-							Crafty.game.newEnemy(enemy);
 							enemyCount++;
+							enemy.setName('Enemy '+ enemyCount);
+							Crafty.game.newEnemy(enemy);		
 						}
 					}
 				}

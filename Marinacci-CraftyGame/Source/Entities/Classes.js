@@ -2,31 +2,34 @@
  * @author JP
  */
 
-angular.module('classesMod', ['configMod']).factory('classTypes', function($http, configData) {'use strict';
+angular.module('classesMod', ['configMod'])
+.factory('classTypes', function($http, configData) {'use strict';
 
-	/*
-	if (!configData.testing) {
-		//return $http.get('classes.json');
-		return {
-			classes : [],
-			loadClasses : function() {
-				console.log("load classes called");
-				var getClassesFromJson = $http.get('classes.json');
-				getClassesFromJson.success(function(data, status, headers, config) {
-					console.log(data);
-					this.classes = data.classes;
-				});
+	var classTypes = {};
+	classTypes.classes = [];
 
-				getClassesFromJson.error(function(data, status, headers, config) {
-					console.log(data, status, headers, config);
-					throw new Error('Could not load classes from Json file');
-				});
-			}
-		};
-	} else {
-		*/
-		return {
-			"classes" : ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"]
-		};
+	classTypes.loadClasses = function() {
+		//console.log("load classType called");
+		var getClassesFromJson = $http.get('classes.json');
+		
+		getClassesFromJson.success(function(data, status, headers, config) {
+			//console.log(data);
+			//console.log(data, status, headers, config);
+			//classTypes.classType.push(data.classes);
+			return data.classes;
+		});
+
+		getClassesFromJson.error(function(data, status, headers, config) {
+			console.log(data, status, headers, config);
+			throw new Error('Could not load classes from Json file');
+		});
+	};
+
+	//if (!configData.testing) {
+		//classTypes.classes.push(classTypes.loadClasses());
+	//} else {
+		var temp = ["Cleric", "Fighter", "Thief", "Wizard", "Mutt", "Scavenger", "Attack Dog"];
+		classTypes.classes = temp;
+		return classTypes;
 	//}
 });
