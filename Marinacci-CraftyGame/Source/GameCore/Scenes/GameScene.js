@@ -4,7 +4,7 @@
 
 // Draw the initial game state
 Crafty.scene('Game', function() {'use strict';
-	Crafty.game.initHero();
+	Crafty.game.initHeroInfo();
 	this.boards = Crafty.game.boards;
 
 	// A 2D array to keep track of all gameBoard tiles

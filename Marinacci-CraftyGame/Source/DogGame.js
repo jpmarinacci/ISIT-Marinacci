@@ -1,12 +1,11 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
-.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {
-	'use strict';
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
+.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {'use strict';
 	return {
 
 		map_grid : null,
-		misses: 0,
+		misses : 0,
 		defaultMapGrid : {
 			width : 16,
 			height : 10,
@@ -15,35 +14,36 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 				height : 48
 			}
 		},
-		boards: [],
-		loadGameBoards: function(){
-			this.boards=gameBoards;
+		boards : [],
+		loadGameBoards : function() {
+			this.boards = gameBoards;
 		},
-		level: 1,
-		
-		points:0,
+		level : 1,
 
-		enemys : [],
-		enemyCount:0,
+		points : 0,
 		
+		mainHero: entities.hero,
+		enemies : [],
+		enemyCount : 0,
+
 		encounterEnemy : function(enemy) {
-			//entities.hero.health -= 2;
-			enemy.hydrant.health -= 3;
-			if(enemy.hydrant.health<0){
-				enemy.hydrant.health=0;
+			this.mainHero.health -= enemy.hydrant.damage;
+			enemy.hydrant.health -= this.mainHero.damage;
+			if (enemy.hydrant.health < 0) {
+				enemy.hydrant.health = 0;
 			}
 			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
-			gameEventService.heroHealthBroadcast(entities.hero.health);
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
 		},
 		encounterFood : function(food) {
-			entities.hero.health +=5;
-			gameEventService.heroHealthBroadcast(entities.hero.health);
+			this.mainHero.health += 5;
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
 			gameEventService.encounterBroadcast('Found item: Food');
 			return true;
 		},
 		encounter : function(enemy) {
 			this.encounterEnemy(enemy);
-			if (entities.hero.health > 0) {
+			if (this.mainHero.health > 0) {
 
 				if (enemy.hydrant.health <= 0) {
 					gameEventService.encounterBroadcast('destroyed hydrant');
@@ -52,45 +52,44 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 					gameEventService.encounterBroadcast('hit hydrant');
 					return false;
 				}
-			}
-			else
-			{
-				entities.hero.health=20;
-				gameEventService.heroHealthBroadcast(entities.hero.health);
-				Crafty.scene('Defeat');			
+			} else {
+				this.mainHero.health = 20;
+				gameEventService.heroHealthBroadcast(this.mainHero.health);
+				Crafty.scene('Defeat');
+				return false;
 			}
 		},
 
 		newEnemy : function(enemy) {
 			enemy.hydrant = entities.hydrant();
 			gameEventService.hydrantHealthBroadcast(enemy.hydrant.health);
-			return this.enemys.push(enemy);
-		},
-		
-		initHero : function(){
-			gameEventService.heroHealthBroadcast(entities.hero.health);
-			gameEventService.speciesBroadcast(entities.hero.species);
-			gameEventService.classBroadcast(entities.hero.className);
+			return this.enemies.push(enemy);
 		},
 
-		reportEncounterMessage : function(message) {
-			return gameEventService.encounterBroadcast(message);
+		initHeroInfo : function() {
+			gameEventService.heroHealthBroadcast(this.mainHero.health);
+			gameEventService.speciesBroadcast(this.mainHero.species);
+			gameEventService.classBroadcast(this.mainHero.className);
+		},
+
+		sendDebugMessage : function(message) {
+			return gameEventService.debugBroadcast(message);
+		},
+
+		changeLevelMessage : function(message) {
+			return gameEventService.levelBroadcast(message);
+		},
+
+		enemyCountMessage : function(message) {
+			return gameEventService.enemyCountBroadcast(message);
 		},
 
 		changeDirectionMessage : function(message) {
 			return gameEventService.changeDirectionBroadcast(message);
 		},
 
-		sendDebugMessage : function(message) {
-			return gameEventService.debugBroadcast(message);
-		},
-		
-		changeLevelMessage: function(message){
-			return gameEventService.levelBroadcast(message);
-		},
-		
-		enemyCountMessage: function(message){
-			return gameEventService.enemyCountBroadcast(message);
+		reportEncounterMessage : function(message) {
+			return gameEventService.encounterBroadcast(message);
 		},
 
 		// Get width of the game screen in pixels
@@ -105,10 +104,6 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod','gameBoardsMod'])
 
 		initMapGrid : function(mapGrid) {
 			this.map_grid = mapGrid;
-		},
-		
-		initHeroInfo: function (hero){
-			gameEventService.speciesBroadcast(hero.species);
 		},
 
 		// Initialize and start our game
