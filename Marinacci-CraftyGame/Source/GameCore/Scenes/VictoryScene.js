@@ -7,7 +7,9 @@ Crafty.scene('Victory', function() { 'use strict';
 	// Display some text in celebration of the victory
 	Crafty.e('2D, DOM, Text')
 		.attr({ x: 0, y: 0 })
-		.text("<div id='Banner'>Level Passed!</div>").textFont({ family: 'Segoe',  size: '44px', weight: 'bold' }).textColor('#FF0000');
+		.text("<div id='Banner'>Level Passed!</div>")
+		.textColor('#FFFFFF')
+		.textFont({ family: 'Segoe',  size: '48px', weight: 'bold' });
 
 	// advance to the next level when a key is pressed
 	this.nextLevel = function() {

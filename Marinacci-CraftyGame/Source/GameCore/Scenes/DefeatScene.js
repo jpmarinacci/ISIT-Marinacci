@@ -7,7 +7,7 @@ Crafty.scene('Defeat', function() { 'use strict';
 	Crafty.e('2D, DOM, Text')
 		.attr({ x: 0, y: 0 })
 		.text("<div id='Banner'>Hydrant Soaked You!</div>")
-        .textColor('#FFFFFF')
+        .textColor('#FF0000')
         .textFont({ family: 'Segoe', size: '48px', weight: 'bold' });
 
 
