@@ -126,7 +126,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			}
 			this.loadGameBoards();
 			gameWrap.startGame(gameDiv, this);
-			this.initHeroInfo(entities.hero);
+			this.initHeroInfo();
 		}
 	};
 });

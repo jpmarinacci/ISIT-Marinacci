@@ -4,7 +4,8 @@
 
 /* jshint devel: true */
 
-angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory('gameEventService', function($rootScope) {'use strict';
+angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
+.factory('gameEventService', function($rootScope) {'use strict';
 	return {
 		message : "",
 
