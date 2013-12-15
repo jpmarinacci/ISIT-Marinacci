@@ -175,8 +175,13 @@ describe("Test Dog Game", function() {'use strict';
 	it("sends an encounter message to dogController", function() {
 		var testValue = 'encounter message';
 		var actual = dogGameService.reportEncounterMessage(testValue);
-		//expect(actual).toEqual(true);
 		expect(dogController.encounterMessages[0].message).toEqual(testValue);
+	});
+	
+	it("sends a score points message to dogController", function() {
+		var testValue = 5000;
+		var actual = dogGameService.scorePointsMessage(testValue);
+		expect(dogController.points).toEqual(testValue);
 	});
 
 });

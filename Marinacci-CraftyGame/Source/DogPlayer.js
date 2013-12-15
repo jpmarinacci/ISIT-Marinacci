@@ -81,11 +81,11 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 	$scope.points = 0;
 
 	var dialogOptions = {
-		controller : 'EditCtrl',
+		controller : 'EditNameController',
 		templateUrl : 'inputName.html'
 	};
 
-	$scope.edit = function(name) {
+	$scope.inputName = function(name) {
 		var itemToEdit = name;
 		$dialog.dialog(angular.extend(dialogOptions, {
 			resolve : {
@@ -100,7 +100,7 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 
 	//if testing then don't pop up the edit Dialog
 	if (!configData.testing) {
-		$scope.edit($scope.name);
+		$scope.inputName($scope.name);
 	}
 	dogGameService.start();
 
@@ -171,7 +171,7 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod']).factory
 });
 
 // the dialog is injected in the specified controller
-function EditCtrl($scope, name, dialog) {'use strict';
+function EditNameController($scope, name, dialog) {'use strict';
 
 	$scope.playerName = name;
 

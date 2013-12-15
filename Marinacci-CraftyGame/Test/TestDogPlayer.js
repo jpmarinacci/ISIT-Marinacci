@@ -5,16 +5,30 @@
 // specs code
 describe("Test Dog Controller", function() {'use strict';
 	var dogController = null;
+	var dialog = null;
+	
+	var fakeDialog = {
+            open: function()
+            {
+                return {
+                    then: function(callback) {
+                        callback("userName");
+                    }
+                };
+            }
+        };
 
 	beforeEach(function() {
 		module('dogPlayer');
+		module('ui.bootstrap.dialog');
 	});
 
-	beforeEach(inject(function($rootScope, $controller, $injector) {
+	beforeEach(inject(function($rootScope, $controller, $dialog) {
 		dogController = $rootScope.$new();
 		$controller('DogController', {
 			$scope : dogController
 		});
+		spyOn($dialog, 'dialog').andReturn(fakeDialog);
 	}));
 
 	it("checks player name", function() {
@@ -41,6 +55,12 @@ describe("Test Dog Controller", function() {'use strict';
 		var actual = dogController.moveMessages;
 		expect(actual).toEqual([]);
 	});
-
+	
+	
+	it("calls inputName and returns a value to controller", function(){
+		dogController.inputName(dogController.name);
+		var actual = dogController.name; 
+		expect(actual).toEqual("userName");
+	});
 });
 
