@@ -97,15 +97,17 @@ Crafty.c('PlayerCharacter', {
 		// If we are in an encounter, then we do nothing until the user
 		// asks to move again.
 		if (this.encounterMode) {
-			this.fightMode = true;
+			//this.fightMode = true;
 			return;
 		}
 		if (Crafty.game.encounterEnemy(data[0].obj)) {
 			enemy = data[0].obj;
 			enemy.destroyEnemy();
 			this.fightMode = false;
+			this.resetAnimation();
 		} else {
 			this.encounterMode = true;
+			this.fightMode = true;
 		}
 	},
 

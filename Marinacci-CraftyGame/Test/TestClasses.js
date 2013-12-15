@@ -7,17 +7,14 @@ describe("Test classes", function() {'use strict';
 	var classTypes = null;
 	var $httpBackend = null;
 	var configurationData = null;
-
+	
 	beforeEach(function() {
 		module('classesMod');
 		module('configMod');
 	});
 
-	beforeEach(inject(function($injector) {
+	beforeEach(inject(function($injector, _$httpBackend_) {
 		classTypes = $injector.get('classTypes');
-	}));
-
-	beforeEach(inject(function(_$httpBackend_) {
 		$httpBackend = _$httpBackend_;
 	}));
 

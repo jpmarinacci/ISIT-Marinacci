@@ -14,9 +14,11 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			classType: classTypes.classes[Math.floor(Math.random()*3)+4],
 			health : 20,
 			damage : 3,
+			/*
 			loadHeroFromData : function() {
-				heroFactory.query({}, function(queryResult) {
-					entities.hero = queryResult[0].hero;
+				hero.query({}, function(queryResult) {
+					entities.hero.health = queryResult[0].hero.health;
+					entities.hero.damage = queryResult[0].hero.damage;
 				});
 			},
 			/*
@@ -34,9 +36,11 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			return {
 				health : 9,
 				damage : 2,
+				/*
 				loadHydrant : function() {
 					entities.hydrant = hydrant;
 				}
+				*/
 			};
 		}
 		

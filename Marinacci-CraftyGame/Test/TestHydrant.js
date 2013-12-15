@@ -20,8 +20,12 @@ describe("Test hydrant", function() {'use strict';
 	});
 	
 	it("can make a hydrant", function()  {
+		var testHydrant = {
+				health : 9,
+				damage : 2
+			};
 		var actualHydrant = hydrant.hydrant();
-		expect(actualHydrant.health).toEqual(2);
-		expect(actualHydrant.damage).toEqual(2);
+		expect(actualHydrant.health).toEqual(testHydrant.health);
+		expect(actualHydrant.damage).toEqual(testHydrant.damage);
 	});
 });

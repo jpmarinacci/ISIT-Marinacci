@@ -1,7 +1,7 @@
 /* jshint browser: true */
 
-angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
-.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap) {'use strict';
+angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'configMod'])
+.factory('dogGameService', function(gameEventService, entities, gameBoards, gameWrap, configData) {'use strict';
 	return {
 
 		map_grid : null,
@@ -43,7 +43,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
 			if (this.mainHero.health > 0) {
 				
 				if (enemy.hydrant.health <= 0) {
-					gameEventService.encounterBroadcast('destroyed hydrant');
+					gameEventService.encounterBroadcast('Destroyed Hydrant');
 					return true;
 				} else {
 					gameEventService.encounterBroadcast('hit hydrant');
@@ -53,7 +53,9 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
 				//case that hero loses
 				this.mainHero.health = 20;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
-				Crafty.scene('Defeat');
+				if(!configData.testing){
+					Crafty.scene('Defeat');
+				}
 				return false;
 			}
 		},
@@ -63,7 +65,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod'])
 			this.points+=25;
 			gameEventService.pointsBroadcast(this.points);
 			gameEventService.heroHealthBroadcast(this.mainHero.health);
-			gameEventService.encounterBroadcast('Found item: Food');
+			gameEventService.encounterBroadcast('Found Item: Food');
 			return true;
 		},
 

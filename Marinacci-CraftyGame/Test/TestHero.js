@@ -2,24 +2,39 @@
  * @author Charlie
  */
 
-describe("Test hero", function() {'use strict';
+describe("Test hero data", function() {'use strict';
 		
-	var hero = null;
+	var heroFactory = null;
+	var $httpBackend = null;
 	
 	beforeEach(function() {
-		module('heroMod');				
+		module('heroDataMod');
+		module('configMod');				
 	});
 	
-	beforeEach(inject(function($injector) {
-		hero = $injector.get('hero');
+	beforeEach(inject(function($injector, _$httpBackend_) {
+		heroFactory = $injector.get('hero');
+		$httpBackend = _$httpBackend_;
 	}));
-	/*
-	it("can get a race", function()  {			
-		expect(hero).toNotEqual(null);
+	
+	afterEach(function() {
+		$httpBackend.verifyNoOutstandingExpectation();
+		$httpBackend.verifyNoOutstandingRequest();
 	});
 	
-	it("can get a dwarf", function()  {			
-		expect(hero.name).toEqual('Sam');
+	it("can get a hero factory", function()  {	
+		expect(heroFactory).toNotEqual(null);
+	});
+	
+	/*
+	it("can get a hero", function()  {
+		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/craftyGame?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG')
+		.respond([{"hero" : { "health" : "20" , "damage" : "3"}}]);
+		var actualHero = heroFactory.loadHeroFromData();
+		expect(actualHero).toNotEqual(null);
+		expect(actualHero.health).toEqual(20);
+		//expect(actualHero.damage).toEqual(3);
+		$httpBackend.flush();
 	});
 	*/
 });

@@ -1,10 +1,11 @@
 /**
- * @author Charlie Calvert
+ * @author Charlie Calvert / JP
  */
 
 // specs code
 describe("Test Dog Controller", function() {'use strict';
 	var dogController = null;
+	//var editNameController = null;
 	var dialog = null;
 	
 	var fakeDialog = {
@@ -29,6 +30,10 @@ describe("Test Dog Controller", function() {'use strict';
 			$scope : dogController
 		});
 		spyOn($dialog, 'dialog').andReturn(fakeDialog);
+		//editNameController = $rootScope.$new();
+		//$controller('EditNameController',{
+			//$scope : editNameController
+		//});
 	}));
 
 	it("checks player name", function() {
@@ -56,11 +61,18 @@ describe("Test Dog Controller", function() {'use strict';
 		expect(actual).toEqual([]);
 	});
 	
-	
 	it("calls inputName and returns a value to controller", function(){
 		dogController.inputName(dogController.name);
 		var actual = dogController.name; 
 		expect(actual).toEqual("userName");
 	});
+	
+	/*
+	it("", function() {
+		dogController.inputName("FunkyBob");
+		var actualPlayerName = editNameController.playerName;
+		expect(actualPlayerName).toEqual("FunkyBob");
+	});
+	*/
 });
 

@@ -64,14 +64,18 @@ describe("Test Dog Game", function() {'use strict';
 		var actual = dogGameService.encounterEnemy({
 			hydrant : {
 				health : 6,
-				damage: 2
+				damage : 2
 			}
 		});
 		expect(actual).toBe(false);
 	});
-	
+
 	it("simulates an encounter hero end", function() {
-		dogGameService.mainHero.health=2;
+		var testHero = {
+			health : 2,
+			damage : 2
+		};
+		dogGameService.mainHero = testHero;
 		var actual = dogGameService.encounterEnemy({
 			hydrant : {
 				health : 2,
@@ -80,13 +84,12 @@ describe("Test Dog Game", function() {'use strict';
 		});
 		expect(actual).toBe(false);
 	});
-	
 
 	it("simulates an encounter hydrant end", function() {
 		var actual = dogGameService.encounterEnemy({
 			hydrant : {
 				health : 0,
-				damage:2
+				damage : 2
 			}
 		});
 		expect(actual).toBe(true);
@@ -96,21 +99,21 @@ describe("Test Dog Game", function() {'use strict';
 		var actual = dogGameService.encounterFood({ }, 0);
 		expect(actual).toBe(true);
 	});
-	
-	it("sends initial hero health information to dogController", function(){
-		var actualHealth = dogGameService.mainHero.health; 
+
+	it("sends initial hero health information to dogController", function() {
+		var actualHealth = dogGameService.mainHero.health;
 		dogGameService.initHeroInfo();
 		expect(dogController.heroHealth).toEqual(actualHealth);
 	});
-	
-	it("sends initial hero species information to dogController", function(){
-		var actualSpecies = dogGameService.mainHero.species; 
+
+	it("sends initial hero species information to dogController", function() {
+		var actualSpecies = dogGameService.mainHero.species;
 		dogGameService.initHeroInfo();
 		expect(dogController.speciesType).toEqual(actualSpecies);
 	});
-	
-	it("sends initial hero class information to dogController", function(){
-		var actualClassType = dogGameService.mainHero.classType; 
+
+	it("sends initial hero class information to dogController", function() {
+		var actualClassType = dogGameService.mainHero.classType;
 		dogGameService.initHeroInfo();
 		expect(dogController.classType).toEqual(actualClassType);
 	});
@@ -139,25 +142,43 @@ describe("Test Dog Game", function() {'use strict';
 		expect(dogController.debugMessages).toEqual([testValue03, testValue02, testValue01]);
 	});
 	
-	it("sends a level update message to dogController", function(){
+	it("sends a level update message", function() {
+		var testValue = 69;
+		var actual = dogGameService.changeLevelMessage(testValue);
+		expect(actual).toEqual(true);
+	});
+
+	it("sends a level update message to dogController", function() {
 		var testValue = 420;
 		var actual = dogGameService.changeLevelMessage(testValue);
 		expect(dogController.level).toEqual(testValue);
-		
+
 	});
-	it("sends an enemyCount update message to dogController", function(){
-		var testValue=12;
-		var actual=dogGameService.enemyCountMessage(testValue);
+	
+	it("sends an enemyCount message", function() {
+		var testValue = 3;
+		var actual = dogGameService.enemyCountMessage(testValue);
+		expect(actual).toEqual(true);
+	});
+	
+	it("sends an enemyCount update message to dogController", function() {
+		var testValue = 12;
+		var actual = dogGameService.enemyCountMessage(testValue);
 		expect(dogController.enemyCount).toEqual(testValue);
 	});
-
-	/*
-	 it("reports an encounter", function() {
-	 var testValue = 'encounter message';
-	 var actual = dogGameService.reportEncounterMessage(testValue);
-	 expect(actual).toEqual(true);
-	 });
-	 */
+	
+	it("sends a hydrant health message", function() {
+		var testValue = 8;
+		var actual = dogGameService.sendHydrantHealthMessage(testValue);
+		expect(actual).toEqual(true);
+	});
+	
+	it("sends a hydrant health message to dogController", function() {
+		var testValue = "hydrant health update message";
+		var actual = dogGameService.sendHydrantHealthMessage(testValue);
+		expect(actual).toEqual(true);
+		expect(dogController.hydrantHealth).toEqual(testValue);
+	});
 
 	it("sends a change direction message", function() {
 		var testValue = "turtle changed direction message";
@@ -171,6 +192,12 @@ describe("Test Dog Game", function() {'use strict';
 		expect(actual).toEqual(true);
 		expect(dogController.direction).toEqual(testValue);
 	});
+	
+	it("reports an encounter", function() {
+		var testValue = 'encounter message';
+		var actual = dogGameService.reportEncounterMessage(testValue);
+		expect(actual).toEqual(true);
+	});
 
 	it("sends an encounter message to dogController", function() {
 		var testValue = 'encounter message';
@@ -178,6 +205,12 @@ describe("Test Dog Game", function() {'use strict';
 		expect(dogController.encounterMessages[0].message).toEqual(testValue);
 	});
 	
+	it("sends a score points message", function() {
+		var testValue = 8675309;
+		var actual = dogGameService.scorePointsMessage(testValue);
+		expect(actual).toEqual(true);
+	});
+
 	it("sends a score points message to dogController", function() {
 		var testValue = 5000;
 		var actual = dogGameService.scorePointsMessage(testValue);

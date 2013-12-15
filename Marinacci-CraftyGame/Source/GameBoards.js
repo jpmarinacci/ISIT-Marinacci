@@ -55,11 +55,11 @@ angular.module('gameBoardsMod', ['configMod'])
 	boards.loadBoards = function() {
 
 		$http.get('gameBoards.json').success(function(data, status, headers, config) {
-			console.log("load gameboards from json file success");
-			console.log(data);
+			//console.log("load gameboards from json file success");
+			//console.log(data);
 			//console.log(data, status, headers, config);
 			boards = data.boards;
-			console.log("boards array length = " + boards.length);
+			//console.log("boards array length = " + boards.length);
 		}).error(function(data, status, headers, config) {
 			console.log(data, status, headers, config);
 			throw new Error('Could not load gameBoards from Json file');

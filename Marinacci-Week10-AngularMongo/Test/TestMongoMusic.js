@@ -34,7 +34,8 @@ describe("Test Mongo Music", function() {'use strict';
 	});
 
 	it("can get music data", function() {
-		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/Music?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG').respond([{
+		$httpBackend.expectGET('https://api.mongolab.com/api/1/databases/jpdata/collections/Music?apiKey=8nZ9MUgCVTyWV-8vMfufSdjKb14fArUG')
+		.respond([{
 			"musician" : "Beatles",
 			"album" : "Abbey Road"
 		}, {

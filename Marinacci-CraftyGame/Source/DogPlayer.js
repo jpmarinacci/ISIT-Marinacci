@@ -22,31 +22,37 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
 		levelBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('levelBroadcast');
+			return true;
 		},
 
 		enemyCountBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('enemyCountBroadcast');
+			return true;
 		},
 
 		speciesBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('speciesBroadcast');
+			return true;
 		},
 
 		classBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('classBroadcast');
+			return true;
 		},
 
 		heroHealthBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('heroHealthBroadcast');
+			return true;
 		},
 
 		hydrantHealthBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('hydrantHealthBroadcast');
+			return true;
 		},
 		
 		changeDirectionBroadcast : function(message) {
@@ -58,11 +64,13 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
 		encounterBroadcast : function(message) {
 			this.message = message;
 			this.broadcastMessage('encounterBroadcast');
+			return true;
 		},
 		
 		pointsBroadcast: function(message){
 			this.message=message;
 			this.broadcastMessage('pointsBroadcast');
+			return true;
 		}
 	};
 }).controller('DogController', function($scope, $dialog, gameEventService, dogGameService, configData) {'use strict';
