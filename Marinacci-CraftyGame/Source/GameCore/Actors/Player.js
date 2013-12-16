@@ -110,9 +110,9 @@ Crafty.c('PlayerCharacter', {
 
 	visitFood : function(data) {'use strict';
 		this.stopMovement();
-		if (this.encounterMode) {
-			return;
-		}
+		//if (this.encounterMode) {
+			//return;
+		//}
 		var food = data[0].obj;
 		food.eat();
 		this.encounterMode = true;

@@ -46,7 +46,6 @@ Crafty.scene('Game', function() {'use strict';
 				} else if (gridValue === 5) {
 					var player = createEntity('PlayerCharacter', x, y);
 					//this.gameBoard[this.player.at().x][this.player.at().y] = true;
-
 				}
 			}
 		}
@@ -63,8 +62,6 @@ Crafty.scene('Game', function() {'use strict';
 		var ypos = Math.floor(Math.random() * 8 + 1);
 		var player = Crafty.e('PlayerCharacter').at(xpos, ypos);
 		board[xpos][ypos] = true;
-		//board[player.at().x][player.at().y] = true;
-		//Crafty.game.newHero(player);
 		//this.gameBoard[this.player.at().x][this.player.at().y] = true;
 
 		// Place a Rock at every edge square on our grid of 16x16 tiles
@@ -79,7 +76,8 @@ Crafty.scene('Game', function() {'use strict';
 						if(!edgeDefined){
 							edgeThing = 'rock';
 							edgeDefined = true;
-						}	
+						}
+					//Switch case would probably be more elegant here -- work for later..	
 					}else if (random >0.25 && random <=0.5)
 					{
 						if(!edgeDefined){
@@ -108,7 +106,6 @@ Crafty.scene('Game', function() {'use strict';
 					}else {
 						Crafty.e('Tree').at(x, y);
 					}
-
 					board[x][y] = true;
 				} 
 				//non edge
@@ -159,12 +156,22 @@ Crafty.scene('Game', function() {'use strict';
 		Crafty.game.enemyCount=enemyCount;
 		Crafty.game.enemyCountMessage(enemyCount);
 	};
+	
+	/*
+	//Start the game on specified level
+	var testLevel=9;
+	this.gameBoard = this.boards[testLevel-1];
+	createEntities(this.gameBoard);
+	*/
+
+	//main gameBoard initializer
 	if (Crafty.game.level <= this.boards.length) {
 		this.gameBoard = this.boards[Crafty.game.level - 1];
 		createEntities(this.gameBoard);
 	} else {
 		randomizedGameBoard(this.gameBoard);
 	}
+
 	// Show the victory screen once all enemies are visisted
 	this.showVictory = this.bind('EnemyDestroyed', function() {
 		Crafty.game.sendDebugMessage("Enemies Left: " + Crafty('Enemy').length);

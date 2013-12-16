@@ -1,0 +1,14 @@
+- Put CraftyGame into it's own repository
+- fix tests
+- fix data
+- add Damage display
+- add more enemies/enemy types
+- add invisible tiles.. etc
+- possibly add different character selection screne
+- keydown enter event at inputControl
+- color scheme - centering css
+- possibly increase gameboard size... maybe
+- fix encounter 'feel'
+- save best score data
+- make encounter message x 3 into message
+- add more levels

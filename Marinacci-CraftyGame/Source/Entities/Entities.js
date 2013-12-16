@@ -14,7 +14,7 @@ angular.module('entitiesMod', ['heroDataMod',  'hydrantMod','speciesMod','classe
 			species: speciesTypes.species[4],
 			classType: classTypes.classes[Math.floor(Math.random()*3)+4],
 			health : 20,
-			damage : 2,
+			damage : 3,
 			/*
 			loadHeroFromData : function() {
 				hero.query({}, function(queryResult) {

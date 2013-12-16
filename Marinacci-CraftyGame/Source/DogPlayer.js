@@ -127,7 +127,7 @@ angular.module('dogPlayer', ['dogGameMod', 'ui.bootstrap', 'configMod'])
 	});
 
 	$scope.$on('encounterBroadcast', function() {
-		if($scope.encounterMessages.length>4){
+		if($scope.encounterMessages.length>2){
 			$scope.encounterMessages.splice(0,1);
 			//$scope.encounterMessages.length = 0;
 		}	

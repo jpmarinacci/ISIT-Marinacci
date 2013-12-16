@@ -56,7 +56,7 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			} else {
 				//case that hero loses
 				this.mainHero.health = 20;
-				this.mainHero.damage =2;
+				this.mainHero.damage = 3;
 				gameEventService.heroHealthBroadcast(this.mainHero.health);
 				//this.level=1;
 				gameEventService.levelBroadcast(this.level);
@@ -80,7 +80,8 @@ angular.module('dogGameMod', ['entitiesMod', 'gameWrapMod', 'gameBoardsMod', 'co
 			return true;
 		},
 		encounterBoulder : function(boulder){
-			gameEventService.encounterBroadcast("Smashed Bonus Boulder");
+			gameEventService.encounterBroadcast("Smashed Boulder");
+			gameEventService.encounterBroadcast("Bonus");
 			gameEventService.encounterBroadcast("50 Points");
 			this.points+=50;
 			gameEventService.pointsBroadcast(this.points);
