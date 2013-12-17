@@ -9,7 +9,7 @@ var s3 = new AWS.S3();
 var fs = require('fs');
 var walk = require('walk');
 
-var bucketName = 'Melvenware';
+var bucketName = 'Nacciware';
 
 function listBuckets(s3) { 'use strict';
 	console.log("calling listBuckets");

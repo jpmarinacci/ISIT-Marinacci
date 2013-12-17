@@ -12,3 +12,4 @@
 - save best score data
 - make encounter message x 3 into message
 - add more levels
+- rename game - maybe Hydrant Battle ...
